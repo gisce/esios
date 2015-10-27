@@ -28,11 +28,11 @@ class ProfilePVPC(Indicator):
         return request, parsers.parse_json
 
 
-class ProfilePVPC20A(Indicator):
+class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
 
-class ProfilePVPC20DHA(Indicator):
+class ProfilePVPC20DHA(ProfilePVPC):
     path = 'indicators/527'
 
 
