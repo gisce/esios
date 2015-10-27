@@ -7,6 +7,7 @@ setup(
     packages=find_packages(),
     url='https://github.com/gisce/esios',
     license='MIT',
+    install_requires=['libsaas'],
     author='GISCE-TI, S.L.',
     author_email='devel@gisce.net',
     description=''
