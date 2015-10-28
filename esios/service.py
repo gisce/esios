@@ -3,11 +3,13 @@ import json
 from libsaas import http
 from libsaas.services import base
 
-
 from esios import indicators
 
 
 class Esios(base.Resource):
+    """e.sios Service API.
+    :param token: token to access the API
+    """
     def __init__(self, token):
         self.token = token
         self.apiroot = 'https://api.esios.ree.es'
@@ -34,12 +36,18 @@ class Esios(base.Resource):
 
     @base.resource(indicators.ProfilePVPC20A)
     def profile_pvpc_20A(self):
+        """Get the profiles to invoice PVPC for 2.0A
+        """
         return indicators.ProfilePVPC20A(self)
 
     @base.resource(indicators.ProfilePVPC20DHA)
     def profile_pvpc_20DHA(self):
+        """Get the profiles to invoice PVPC for 2.0DHA
+        """
         return indicators.ProfilePVPC20DHA(self)
 
     @base.resource(indicators.ProfilePVPC20DHS)
     def profile_pvpc_20DHS(self):
+        """Get the profiles to invoice PVPC for 2.0DHS
+        """
         return indicators.ProfilePVPC20DHS(self)
