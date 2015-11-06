@@ -36,5 +36,5 @@ class ProfilePVPC20DHA(ProfilePVPC):
     path = 'indicators/527'
 
 
-class ProfilePVPC20DHS(Indicator):
+class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
