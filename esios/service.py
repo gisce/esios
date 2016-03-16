@@ -4,6 +4,7 @@ from libsaas import http
 from libsaas.services import base
 
 from esios import indicators
+from esios import archives
 
 
 class Esios(base.Resource):
@@ -51,3 +52,15 @@ class Esios(base.Resource):
         """Get the profiles to invoice PVPC for 2.0DHS
         """
         return indicators.ProfilePVPC20DHS(self)
+
+    @base.resource(archives.Liquicomun)
+    def liquicomun(self):
+        """Get the liquicomun zip file
+        """
+        return archives.Liquicomun(self)
+
+    @base.resource(archives.A1_liquicomun)
+    def A1_liquicomun(self):
+        """Get the liquicomun zip file
+        """
+        return archives.A1_liquicomun(self)
