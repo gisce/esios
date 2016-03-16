@@ -36,7 +36,7 @@ with description('Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] == 'A1'
 
-        with it('should download C2 for 3 months ago'):
+        with it('should download C2 or A3 for 3 months ago'):
             today = datetime.today() - timedelta(days=93)
             start = datetime(today.year, today.month, 1)
             last_month_day = calendar.monthrange(start.year, start.month)[1]
@@ -47,7 +47,7 @@ with description('Liquicomun file'):
             c = StringIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
-            assert zf.namelist()[0][:2] == 'C2'
+            assert zf.namelist()[0][:2] in ('A3', 'C2')
 
 with description('A1 Liquicomun file'):
     with context('Instance'):

@@ -6,6 +6,11 @@ from libsaas import http, parsers, port
 from libsaas.services import base
 
 
+LIQUICOMUN_PRIORITY = [
+    'C5', 'A5', 'C4', 'A4', 'C3', 'A3', 'C2', 'A2', 'C1', 'A1'
+]
+
+
 def parser_none(body, code, headers):
     return body
 
@@ -15,6 +20,9 @@ class Archive(base.RESTResource):
 
     def get_filename(self):
         return self.__class__.__name__
+
+    def order_key_function(self, param):
+        return param['name']
 
     @base.apimethod
     def get(self, start_date, end_date):
@@ -39,9 +47,9 @@ class Archive(base.RESTResource):
 
         body = self.get(start_date, end_date)
         regs = [a for a in body['archives'] if filename in a['name']]
-        sorted_list = sorted(regs, key=lambda k: k['name'])
+        sorted_list = sorted(regs, key=self.order_key_function)
         # gets last (better) file
-        url = sorted_list[-1]['download']['url']
+        url = sorted_list[0]['download']['url']
 
         request = http.Request('GET', self.parent.get_url() + url)
 
@@ -52,6 +60,9 @@ class Liquicomun(Archive):
 
     def get_filename(self):
         return super(Liquicomun, self).get_filename().lower()
+
+    def order_key_function(self, param):
+        return LIQUICOMUN_PRIORITY.index(param['name'][:2])
 
 class A1_liquicomun(Archive):
     pass
