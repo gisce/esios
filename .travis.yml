@@ -6,11 +6,4 @@ install:
     "pip install -r requirements_dev.txt"
     "pip install ."
 script:
-  - python setup.py test
-notifications:
-  webhooks:
-    urls:
-      - $GITTER_WEBHOOK
-    on_success: always
-    on_failure: always
-    on_start: true
+  - mamba
