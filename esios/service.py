@@ -6,7 +6,6 @@ from libsaas.services import base
 from esios import indicators
 from esios import archives
 
-
 class Esios(base.Resource):
     """e.sios Service API.
     :param token: token to access the API
@@ -64,3 +63,9 @@ class Esios(base.Resource):
         """Get the liquicomun zip file
         """
         return archives.A1_liquicomun(self)
+
+    @base.resource(archives.A2_liquicomun)
+    def A2_liquicomun(self):
+        """Get the liquicomun zip file
+        """
+        return archives.A2_liquicomun(self)

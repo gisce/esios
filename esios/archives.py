@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
-import json
 
 from libsaas import http, parsers, port
 from libsaas.services import base
+
+from esios.utils import translate_param, serialize_param
 
 
 LIQUICOMUN_PRIORITY = [
@@ -25,27 +26,40 @@ class Archive(base.RESTResource):
         return param['name']
 
     @base.apimethod
-    def get(self, start_date, end_date):
+    def get(self, start_date, end_date, taxonomy_terms=None):
         assert isinstance(start_date, datetime)
         assert isinstance(end_date, datetime)
+        if taxonomy_terms is None:
+            taxonomy_terms = []
+        assert isinstance(taxonomy_terms, (list, tuple))
         date_type = 'datos'
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
+        locale = 'en'
+        param_list = ('locale', 'start_date', 'end_date', 'date_type')
+        if taxonomy_terms:
+            param_list += ('taxonomy_terms',)
         params = base.get_params(
-            ('start_date', 'end_date', 'date_type'), locals()
+            param_list,
+            locals(),
+            translate_param=translate_param,
+            serialize_param=serialize_param,
         )
         request = http.Request('GET', self.get_url(), params)
 
         return request, parsers.parse_json
 
     @base.apimethod
-    def download(self, start_date, end_date):
+    def download(self, start_date, end_date, taxonomy_terms=None):
         assert isinstance(start_date, datetime)
         assert isinstance(end_date, datetime)
+        if taxonomy_terms is None:
+            taxonomy_terms = []
+        assert isinstance(taxonomy_terms, (list, tuple))
         # gets filename from class name
         filename = self.get_filename()
 
-        body = self.get(start_date, end_date)
+        body = self.get(start_date, end_date, taxonomy_terms)
         regs = [a for a in body['archives'] if filename in a['name']]
         sorted_list = sorted(regs, key=self.order_key_function)
         # gets last (better) file
@@ -64,5 +78,16 @@ class Liquicomun(Archive):
     def order_key_function(self, param):
         return LIQUICOMUN_PRIORITY.index(param['name'][:2])
 
+    def get(self, start_date, end_date, taxonomy_terms=None):
+        if taxonomy_terms is None:
+            taxonomy_terms = []
+        taxonomy_terms.append('Settlements')
+        return super(Liquicomun, self).get(start_date, end_date, taxonomy_terms)
+
+
 class A1_liquicomun(Archive):
+    pass
+
+
+class A2_liquicomun(Archive):
     pass
