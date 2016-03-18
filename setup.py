@@ -10,5 +10,5 @@ setup(
     install_requires=['libsaas'],
     author='GISCE-TI, S.L.',
     author_email='devel@gisce.net',
-    description=''
+    description='Interact with e.sios API',
 )
