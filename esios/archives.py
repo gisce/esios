@@ -8,7 +8,8 @@ from esios.utils import translate_param, serialize_param
 
 
 LIQUICOMUN_PRIORITY = [
-    'C5', 'A5', 'C4', 'A4', 'C3', 'A3', 'C2', 'A2', 'C1', 'A1'
+    'C7', 'A7', 'C6', 'A6', 'C5', 'A5', 'C4', 'A4', 'C3', 'A3', 'C2', 'A2',
+    'C1', 'A1'
 ]
 
 

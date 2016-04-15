@@ -59,6 +59,32 @@ with description('Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('A3', 'C2')
 
+        with it('should download C6 o C5 for a year ago'):
+            today = datetime.today() - timedelta(days=730)
+            start = datetime(today.year, today.month, 1)
+            last_month_day = calendar.monthrange(start.year, start.month)[1]
+            end = datetime(start.year, start.month, last_month_day)
+
+            e = Esios(self.token)
+            res = e.liquicomun().download(start, end)
+            c = StringIO(res)
+            zf = zipfile.ZipFile(c)
+            assert zf.testzip() is None
+            assert zf.namelist()[0][:2] in ('C6', 'C5')
+
+        with it('should download C7,A7,C6,A6,C5 or A5 for a long time ago'):
+            today = datetime.today() - timedelta(days=730)
+            start = datetime(today.year, today.month, 1)
+            last_month_day = calendar.monthrange(start.year, start.month)[1]
+            end = datetime(start.year, start.month, last_month_day)
+
+            e = Esios(self.token)
+            res = e.liquicomun().download(start, end)
+            c = StringIO(res)
+            zf = zipfile.ZipFile(c)
+            assert zf.testzip() is None
+            assert zf.namelist()[0][:2] in ('A7', 'C7', 'A6', 'C6', 'C5', 'A5')
+
 # with description('A1 Liquicomun file'):
 #     with before.all:
 #         ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
