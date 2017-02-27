@@ -7,9 +7,6 @@ from libsaas.services import base
 class Indicator(base.RESTResource):
     path = 'indicators'
 
-
-class ProfilePVPC(Indicator):
-
     @base.apimethod
     def get(self, start_date, end_date):
         assert isinstance(start_date, datetime)
@@ -28,6 +25,9 @@ class ProfilePVPC(Indicator):
         return request, parsers.parse_json
 
 
+class ProfilePVPC(Indicator):
+    pass
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -38,3 +38,19 @@ class ProfilePVPC20DHA(ProfilePVPC):
 
 class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
+
+
+class PricePVPC(Indicator):
+    pass
+
+
+class PricePVPC20A(ProfilePVPC):
+    path = 'indicators/1013'
+
+
+class PricePVPC20DHA(ProfilePVPC):
+    path = 'indicators/1014'
+
+
+class PricePVPC20DHS(ProfilePVPC):
+    path = 'indicators/1015'
