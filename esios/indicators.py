@@ -8,8 +8,7 @@ class Indicator(base.RESTResource):
     path = 'indicators'
 
 
-class ProfilePVPC(Indicator):
-
+class DateRangeIndicator(Indicator):
     @base.apimethod
     def get(self, start_date, end_date):
         assert isinstance(start_date, datetime)
@@ -18,7 +17,7 @@ class ProfilePVPC(Indicator):
             raise Exception('Start date must have time zone')
         if end_date.tzinfo is None:
             raise Exception('End date must have time zone')
-        time_trunc = 'hour'
+        time_trunc = self.time_trunc
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
         params = base.get_params(
@@ -26,6 +25,10 @@ class ProfilePVPC(Indicator):
         )
         request = http.Request('GET', self.get_url(), params)
         return request, parsers.parse_json
+
+
+class ProfilePVPC(DateRangeIndicator):
+    time_trunc = 'hour'
 
 
 class ProfilePVPC20A(ProfilePVPC):
