@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from expects.testing import failure
 from expects import *
 
@@ -59,7 +60,7 @@ with description('Indicators file'):
             data = profile.get(self.start_date, self.end_date)
             profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal('Tarifa 2.0.DHS (vehículo eléctrico)')
+                equal(u'Tarifa 2.0.DHS (vehículo eléctrico)')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Perfiles de consumo')
@@ -81,7 +82,7 @@ with description('Indicators file'):
                 equal(u'PVPC T. Defecto')
             )
             expect(data['indicator']['name']).to(
-                contain('Término de facturación')
+                contain(u'Término de facturación')
             )
             expect(len(data['indicator']['values'])).to(equal(744))
 
@@ -94,7 +95,7 @@ with description('Indicators file'):
                 equal(u'PVPC T. Eficiencia 2 periodos')
             )
             expect(data['indicator']['name']).to(
-                contain('Término de facturación')
+                contain(u'Término de facturación')
             )
             expect(len(data['indicator']['values'])).to(equal(744))
 
@@ -104,10 +105,10 @@ with description('Indicators file'):
             assert isinstance(prices, PricePVPC20DHS)
             data = prices.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal('PVPC V. Eléctrico')
+                equal(u'PVPC V. Eléctrico')
             )
             expect(data['indicator']['name']).to(
-                contain('Término de facturación')
+                contain(u'Término de facturación')
             )
             expect(len(data['indicator']['values'])).to(equal(744))
 
@@ -123,7 +124,7 @@ with description('Indicators file'):
                 equal(u'PVPC T. Defecto')
             )
             expect(data['indicator']['name']).to(
-                contain('Término de facturación')
+                contain(u'Término de facturación')
             )
             expect(dateutil.parser.parse(
                 data['indicator']['values'][0]['datetime']
@@ -157,7 +158,7 @@ with description('Indicators file'):
                 equal(u'PVPC T. Defecto')
             )
             expect(data['indicator']['name']).to(
-                contain('Término de facturación')
+                contain(u'Término de facturación')
             )
 
             expect(dateutil.parser.parse(
