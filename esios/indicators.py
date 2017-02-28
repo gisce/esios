@@ -31,6 +31,14 @@ class ProfilePVPC(DateRangeIndicator):
     time_trunc = 'hour'
 
 
+class PricePVPC(DateRangeIndicator):
+    time_trunc = 'hour'
+
+
+class PriceSPOT(DateRangeIndicator):
+    time_trunc = 'hour'
+
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -41,3 +49,47 @@ class ProfilePVPC20DHA(ProfilePVPC):
 
 class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
+
+
+class PricePVPC20A(ProfilePVPC):
+    path = 'indicators/1013'
+
+
+class PricePVPC20DHA(ProfilePVPC):
+    path = 'indicators/1014'
+
+
+class PricePVPC20DHS(ProfilePVPC):
+    path = 'indicators/1015'
+
+
+class PriceSPOTDaily(PriceSPOT):
+    path = 'indicators/600'
+
+
+class PriceSPOTIntraday1(PriceSPOT):
+    path = 'indicators/612'
+
+
+class PriceSPOTIntraday2(PriceSPOT):
+    path = 'indicators/613'
+
+
+class PriceSPOTIntraday3(PriceSPOT):
+    path = 'indicators/614'
+
+
+class PriceSPOTIntraday4(PriceSPOT):
+    path = 'indicators/615'
+
+
+class PriceSPOTIntraday5(PriceSPOT):
+    path = 'indicators/616'
+
+
+class PriceSPOTIntraday6(PriceSPOT):
+    path = 'indicators/617'
+
+
+class PriceSPOTIntraday7(PriceSPOT):
+    path = 'indicators/618'
