@@ -17,9 +17,7 @@ with description('Indicators file'):
         self.token = ESIOS_TOKEN
         self.tz = timezone('Europe/Madrid')
         self.start_date = self.tz.localize(datetime(2017, 1, 1, 0, 0))
-        print self.start_date.isoformat()
         self.end_date = self.tz.localize(datetime(2017, 1, 31, 23, 59))
-        print self.end_date.isoformat()
 
     with context('ProfilePVPC'):
         with it('Returns ProfilePVPC instance'):
@@ -131,8 +129,6 @@ with description('Indicators file'):
                 data['indicator']['values'][0]['datetime']
             ).hour).to(equal(0))
 
-            for i in range(696, 720):
-                print "{0}: {1}".format(i, data['indicator']['values'][i]['datetime'])
             # Summer hour 2 (24 * 29 + 3 = 699)
             # Summer 2:00
             summer_hour = data['indicator']['values'][698]['datetime']
