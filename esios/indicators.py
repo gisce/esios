@@ -51,15 +51,15 @@ class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
 
 
-class PricePVPC20A(ProfilePVPC):
+class PricePVPC20A(PricePVPC):
     path = 'indicators/1013'
 
 
-class PricePVPC20DHA(ProfilePVPC):
+class PricePVPC20DHA(PricePVPC):
     path = 'indicators/1014'
 
 
-class PricePVPC20DHS(ProfilePVPC):
+class PricePVPC20DHS(PricePVPC):
     path = 'indicators/1015'
 
 
