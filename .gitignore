@@ -36,3 +36,6 @@ nosetests.xml
 .pydevproject
 
 docs/_build
+
+# PyCharm IDE
+.idea
