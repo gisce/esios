@@ -52,6 +52,11 @@ class Esios(base.Resource):
         """
         return indicators.ProfilePVPC20DHS(self)
 
+    @base.resource(indicators.LinkBalanceMorocco)
+    def link_balance_morocco(self):
+        """Morocco interconnection balance real time measurements."""
+        return indicators.LinkBalanceMorocco(self)
+
     @base.resource(archives.Liquicomun)
     def liquicomun(self):
         """Get the liquicomun zip file
