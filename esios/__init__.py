@@ -4,4 +4,4 @@ try:
 except Exception as e:
     VERSION = 'unknown'
 
-from service import Esios
+from .service import Esios
