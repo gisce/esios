@@ -4,7 +4,7 @@ from expects import *
 from datetime import datetime, timedelta
 import calendar
 import zipfile
-from StringIO import StringIO
+from io import StringIO
 import json
 import os
 
