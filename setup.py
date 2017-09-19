@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='esios',
-    version='0.1.9',
+    version='0.1.10',
     packages=find_packages(),
     url='https://github.com/gisce/esios',
     license='MIT',
