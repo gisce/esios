@@ -70,7 +70,7 @@ with description('Liquicomun file'):
             c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
-            assert zf.namelist()[0][:2] in ('C6', 'C5')
+            assert zf.namelist()[0][:2] in ('A5', 'A6', 'C6', 'C5'), "Current namelist '{}'".format(zf.namelist()[0][:2])
 
         with it('should download C7,A7,C6,A6,C5 or A5 for a long time ago'):
             today = datetime.today() - timedelta(days=730)
