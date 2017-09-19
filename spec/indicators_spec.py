@@ -32,7 +32,7 @@ with description('Indicators file'):
             assert isinstance(profile, ProfilePVPC20A)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Tarifa 2.0A (peaje por defecto)')
+                equal(u'Tarifa 2.0.A (peaje por defecto)')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Perfiles de consumo')
