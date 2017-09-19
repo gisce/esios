@@ -4,7 +4,7 @@ from expects import *
 from datetime import datetime, timedelta
 import calendar
 import zipfile
-from io import StringIO
+from io import BytesIO
 import json
 import os
 
@@ -41,7 +41,7 @@ with description('Liquicomun file'):
 
             e = Esios(self.token)
             res = e.liquicomun().download(start, end)
-            c = StringIO(res)
+            c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('A1', 'A2')
@@ -54,7 +54,7 @@ with description('Liquicomun file'):
 
             e = Esios(self.token)
             res = e.liquicomun().download(start, end)
-            c = StringIO(res)
+            c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('A3', 'C2')
@@ -67,7 +67,7 @@ with description('Liquicomun file'):
 
             e = Esios(self.token)
             res = e.liquicomun().download(start, end)
-            c = StringIO(res)
+            c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('C6', 'C5')
@@ -80,7 +80,7 @@ with description('Liquicomun file'):
 
             e = Esios(self.token)
             res = e.liquicomun().download(start, end)
-            c = StringIO(res)
+            c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('A7', 'C7', 'A6', 'C6', 'C5', 'A5')
@@ -98,7 +98,7 @@ with description('Liquicomun file'):
 #
 #             e = Esios(self.token)
 #             res = e.A1_liquicomun().download(start, end)
-#             c = StringIO(res)
+#             c = BytesIO(res)
 #             zf = zipfile.ZipFile(c)
 #             assert zf.testzip() is None
 #             assert zf.namelist()[0][:2] == 'A1'
@@ -116,7 +116,7 @@ with description('Liquicomun file'):
 #
 #             e = Esios(self.token)
 #             res = e.A2_liquicomun().download(start, end)
-#             c = StringIO(res)
+#             c = BytesIO(res)
 #             zf = zipfile.ZipFile(c)
 #             assert zf.testzip() is None
 #             assert zf.namelist()[0][:2] == 'A2'
