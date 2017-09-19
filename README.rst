@@ -7,6 +7,7 @@ E.Sios API
 Interact with e.sios API
 
 
-### Usage
+Usage
+------
 
-Ensure that `ESIOS_TOKEN` var exists and is exported for the working env.
+Ensure that ``ESIOS_TOKEN`` var exists and is exported for the working env.
