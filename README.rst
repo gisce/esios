@@ -6,6 +6,7 @@ E.Sios API
 
 Interact with e.sios API
 
+http://esios.readthedocs.org/
 
 Usage
 ------
