@@ -6,12 +6,12 @@ from libsaas.services import base
 
 from esios.utils import translate_param, serialize_param
 
-
 LIQUICOMUN_PRIORITY = [
-    'C7', 'A7', 'C6', 'A6', 'C5', 'A5', 'C4', 'A4', 'C3', 'A3', 'C2', 'A2',
+    'C7', 'A7', 'C6',
+    #'A6', 'C5', 'A5', 'C4', 'A4',    Disabled due to lack of Perd* files on the 2012-2017 tests
+    'C3', 'A3', 'C2', 'A2',
     'C1', 'A1'
 ]
-
 
 def parser_none(body, code, headers):
     return body
