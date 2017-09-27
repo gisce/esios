@@ -59,7 +59,7 @@ with description('Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] in ('A3', 'C2')
 
-        with it('should download C6 o C5 for a year ago'):
+        with it('should download C6 or C4 for a year ago'):
             today = datetime.today() - timedelta(days=730)
             start = datetime(today.year, today.month, 1)
             last_month_day = calendar.monthrange(start.year, start.month)[1]
@@ -70,7 +70,7 @@ with description('Liquicomun file'):
             c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
-            assert zf.namelist()[0][:2] in ('A5', 'A6', 'C6', 'C5'), "Current namelist '{}'".format(zf.namelist()[0][:2])
+            assert zf.namelist()[0][:2] in ('C4', 'A6', 'C6'), "Current namelist '{}'".format(zf.namelist()[0][:2])
 
         with it('should download C7,A7,C6,A6,C5 or A5 for a long time ago'):
             today = datetime.today() - timedelta(days=730)
