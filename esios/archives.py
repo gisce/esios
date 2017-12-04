@@ -26,8 +26,8 @@ class Archive(base.RESTResource):
     def order_key_function(self, param):
         return param['name']
 
-    def validate_dates(start, end):
-        pass
+    def validate_dates(self, start, end):
+        return True
 
     @base.apimethod
     def get(self, start_date, end_date, taxonomy_terms=None):
@@ -36,6 +36,8 @@ class Archive(base.RESTResource):
         if taxonomy_terms is None:
             taxonomy_terms = []
         assert isinstance(taxonomy_terms, (list, tuple))
+
+        assert self.validate_dates(start_date, end_date), "Dates are not in the expected range for the requested version"
         date_type = 'datos'
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
