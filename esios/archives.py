@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
+from dateutil import relativedelta
 
 from libsaas import http, parsers, port
 from libsaas.services import base
@@ -26,7 +27,7 @@ class Archive(base.RESTResource):
     def order_key_function(self, param):
         return param['name']
 
-    def validate_dates(self, start, end):
+    def validate_range(self, start, end):
         return True
 
     @base.apimethod
@@ -37,7 +38,7 @@ class Archive(base.RESTResource):
             taxonomy_terms = []
         assert isinstance(taxonomy_terms, (list, tuple))
 
-        assert self.validate_dates(start_date, end_date), "Dates are not in the expected range for the requested version"
+        assert self.validate_range(start_date, end_date), "Dates are not in the expected range for the requested version"
         date_type = 'datos'
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
@@ -94,7 +95,23 @@ class Liquicomun(Archive):
 
 class A1_liquicomun(Archive):
     """ This month and future """
-    ## Validate dates in A1 period (this month & future)
+
+    def validate_range(self, start, end):
+        ## Validate range for A1 period (this month & future)
+        ### toDo acotar future
+
+        today = datetime.today()
+        try:
+            first_day_current_month = datetime(today.year, today.month, 1)
+            assert start >= first_day_current_month
+
+            last_day_current_month = first_day_current_month + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+            assert end <= last_day_current_month
+        except:
+            return False
+
+        return True
+
 
     def order_key_function(self, param):
         print (param)
