@@ -62,6 +62,7 @@ class Archive(base.RESTResource):
 
         body = self.get(start_date, end_date, taxonomy_terms)
         regs = [a for a in body['archives'] if filename in a['name']]
+
         sorted_list = sorted(regs, key=self.order_key_function)
         # gets last (better) file
         url = sorted_list[0]['download']['url']
@@ -87,8 +88,18 @@ class Liquicomun(Archive):
 
 
 class A1_liquicomun(Archive):
-    pass
+    """ This month and future """
+    ## Validate dates in A1 period (this month & future)
+
+    def order_key_function(self, param):
+        print (param)
+        if type(param) == list:
+            param = param[0]
+        name = (param['name'])
+        assert name == "A1_liquicomun"
+        return LIQUICOMUN_PRIORITY.index(name[:2])
 
 
-class A2_liquicomun(Archive):
+class A2_liquicomun(Liquicomun):
+    """ Just previous month """
     pass
