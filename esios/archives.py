@@ -26,6 +26,9 @@ class Archive(base.RESTResource):
     def order_key_function(self, param):
         return param['name']
 
+    def validate_dates(start, end):
+        pass
+
     @base.apimethod
     def get(self, start_date, end_date, taxonomy_terms=None):
         assert isinstance(start_date, datetime)
