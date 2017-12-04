@@ -98,6 +98,8 @@ class Generic_Liquicomun(Archive):
 
     # Liquicomun version
     version = None
+    expected_range_start = None
+    expected_range_end = None
 
     def order_key_function(self, param):
         if type(param) == list:
@@ -109,45 +111,25 @@ class Generic_Liquicomun(Archive):
 
 
     def validate_range(self, start, end):
-        pass
-
-
-class A1_liquicomun(Generic_Liquicomun):
-    """ This month and future """
-
-    version = "A1"
-    def validate_range(self, start, end):
-        ## Validate range for A1 period (this month & future)
-        ### toDo acotar future
-
-        today = datetime.today()
+        """ Validate range for generic period """
         try:
-            first_day_current_month = datetime(today.year, today.month, 1)
-            assert start >= first_day_current_month
-
-            last_day_current_month = first_day_current_month + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
-            assert end <= last_day_current_month
+            assert start >= self.expected_range_start
+            assert end <= self.expected_range_end
         except:
             return False
 
         return True
+
+class A1_liquicomun(Generic_Liquicomun):
+    """ A1: This month and future """
+    ### toDo acotar future
+    version = "A1"
+    expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
 
 class A2_liquicomun(Generic_Liquicomun):
-    """ This month and future """
-
+    """ A2: Just previous month """
     version = "A2"
-    def validate_range(self, start, end):
-        ## Validate range for A2 period (just previous month)
-        ### toDo acotar future
-        today = datetime.today()
-        try:
-            first_day_previous_month = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
-            assert start >= first_day_previous_month
-
-            last_day_previous_month = first_day_previous_month + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
-            assert end <= last_day_previous_month
-        except:
-            return False
-
-        return True
+    expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(months=1)
+    expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
