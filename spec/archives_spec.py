@@ -11,7 +11,7 @@ import os
 
 
 from esios import Esios
-from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun
+from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun, C2_liquicomun
 
 # with description('Liquicomun file'):
 #     with before.all:
@@ -117,27 +117,63 @@ from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun
 #                 it_works = False
 #
 #             assert not it_works, "A1 for -1 month must not work! This must be an A2"
+#
+# with description('A2 Liquicomun file'):
+#     with before.all:
+#         ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
+#         self.token = ESIOS_TOKEN
+#     with context('Instance'):
+#         with it('can get A2_liquicomun for a valid date'):
+#             today = datetime.today()
+#
+#             # Previous month
+#             start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
+#             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+#
+#             e = Esios(self.token)
+#             res = e.A2_liquicomun().download(start, end)
+#             c = BytesIO(res)
+#             zf = zipfile.ZipFile(c)
+#             assert zf.testzip() is None
+#             assert zf.namelist()[0][:2] == 'A2'
+#
+#         with it('can get A2_liquicomun for an invalid date'):
+#             today = datetime.today()
+#
+#             # This month
+#             start = datetime(today.year, today.month, 1)
+#             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+#
+#             e = Esios(self.token)
+#
+#             it_works = True
+#             try:
+#                 res = e.A2_liquicomun().download(start, end)
+#             except:
+#                 it_works = False
+#
+#             assert not it_works, "A1 for -1 month must not work! This must be an A2"
 
-with description('A2 Liquicomun file'):
+with description('C2 Liquicomun file'):
     with before.all:
         ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
         self.token = ESIOS_TOKEN
     with context('Instance'):
-        with it('can get A2_liquicomun for a valid date'):
+        with it('can get C2_liquicomun for a valid date'):
             today = datetime.today()
 
             # Previous month
-            start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
+            start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=2)
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             e = Esios(self.token)
-            res = e.A2_liquicomun().download(start, end)
+            res = e.C2_liquicomun().download(start, end)
             c = BytesIO(res)
             zf = zipfile.ZipFile(c)
             assert zf.testzip() is None
-            assert zf.namelist()[0][:2] == 'A2'
+            assert zf.namelist()[0][:2] == 'C2'
 
-        with it('can get A2_liquicomun for an invalid date'):
+        with it('can get C2_liquicomun for an invalid date'):
             today = datetime.today()
 
             # This month
@@ -148,7 +184,7 @@ with description('A2 Liquicomun file'):
 
             it_works = True
             try:
-                res = e.A2_liquicomun().download(start, end)
+                res = e.C2_liquicomun().download(start, end)
             except:
                 it_works = False
 

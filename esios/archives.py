@@ -120,6 +120,7 @@ class Generic_Liquicomun(Archive):
 
         return True
 
+
 class A1_liquicomun(Generic_Liquicomun):
     """ A1: This month and future """
     ### toDo acotar future
