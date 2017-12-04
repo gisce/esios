@@ -93,9 +93,29 @@ class Liquicomun(Archive):
         return super(Liquicomun, self).get(start_date, end_date, taxonomy_terms)
 
 
-class A1_liquicomun(Archive):
+class Generic_Liquicomun(Archive):
+    """ Generic Liquicomun class, suitable to subsitute Liquicomun, pending to clarify """
+
+    # Liquicomun version
+    version = None
+
+    def order_key_function(self, param):
+        if type(param) == list:
+            param = param[0]
+        name = param['name']
+
+        assert name[:2] == self.version, "Expected version must be '{}', current '{}' ['{}']". format(self.version, name[:2], name)
+        return LIQUICOMUN_PRIORITY.index(name[:2])
+
+
+    def validate_range(self, start, end):
+        pass
+
+
+class A1_liquicomun(Generic_Liquicomun):
     """ This month and future """
 
+    version = "A1"
     def validate_range(self, start, end):
         ## Validate range for A1 period (this month & future)
         ### toDo acotar future
@@ -113,15 +133,21 @@ class A1_liquicomun(Archive):
         return True
 
 
-    def order_key_function(self, param):
-        print (param)
-        if type(param) == list:
-            param = param[0]
-        name = (param['name'])
-        assert name == "A1_liquicomun"
-        return LIQUICOMUN_PRIORITY.index(name[:2])
+class A2_liquicomun(Generic_Liquicomun):
+    """ This month and future """
 
+    version = "A2"
+    def validate_range(self, start, end):
+        ## Validate range for A2 period (just previous month)
+        ### toDo acotar future
+        today = datetime.today()
+        try:
+            first_day_previous_month = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
+            assert start >= first_day_previous_month
 
-class A2_liquicomun(Liquicomun):
-    """ Just previous month """
-    pass
+            last_day_previous_month = first_day_previous_month + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+            assert end <= last_day_previous_month
+        except:
+            return False
+
+        return True
