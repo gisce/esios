@@ -69,3 +69,9 @@ class Esios(base.Resource):
         """Get the liquicomun zip file
         """
         return archives.A2_liquicomun(self)
+
+    @base.resource(archives.C2_liquicomun)
+    def C2_liquicomun(self):
+        """Get the liquicomun zip file
+        """
+        return archives.C2_liquicomun(self)
