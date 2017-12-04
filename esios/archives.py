@@ -124,12 +124,41 @@ class A1_liquicomun(Generic_Liquicomun):
     """ A1: This month and future """
     ### toDo acotar future
     version = "A1"
+
+    # First day of current month
     expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+    # Last day of current month
     expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
 
 class A2_liquicomun(Generic_Liquicomun):
     """ A2: Just previous month """
     version = "A2"
+
+    # First day of -1 month
     expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(months=1)
+
+    # Last day of -1 month
     expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+
+
+class C2_liquicomun(Generic_Liquicomun):
+    """ C2: <=-2months last day to <=-2months last day """
+    version = "C2"
+
+    # Last day of -2 month
+    expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+
+    # Last day of -2 month
+    expected_range_end = expected_range_start
+
+    def validate_range(self, start, end):
+        """ Validate C2 range  start < 31/-2n and end <= 31/-2n """
+        try:
+            assert start <= self.expected_range_start
+            assert end <= self.expected_range_end
+        except:
+            return False
+
+        return True
