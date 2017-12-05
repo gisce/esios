@@ -9,14 +9,17 @@ from io import BytesIO
 import json
 import os
 
-
 from esios import Esios
 from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun, C2_liquicomun
 
-with description('Liquicomun file'):
+with description('Base Liquicomun'):
     with before.all:
         ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
         self.token = ESIOS_TOKEN
+
+        today = datetime.today()
+
+        self.e = Esios(self.token)
 
     with context('Instance'):
         with it('Returns liquicomun instance'):
@@ -86,12 +89,11 @@ with description('Liquicomun file'):
             assert zf.testzip() is None
 #             assert zf.namelist()[0][:2] in ('A7', 'C7', 'A6', 'C6', 'C5', 'A5')
 
-with description('A1 Liquicomun file'):
-    with before.all:
-        ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
-        self.token = ESIOS_TOKEN
-    with context('Instance'):
-        with it('can get A1_liquicomun for a valid date'):
+
+
+
+    with context('A1 instance'):
+        with it('can get the A1 for a valid date'):
             today = datetime.today()
             start = datetime(today.year, today.month, 1)
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
@@ -103,7 +105,7 @@ with description('A1 Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] == 'A1'
 
-        with it('can get A1_liquicomun for an invalid date'):
+        with it('can\'t get the A1 for an invalid date'):
             today = datetime.today()
             start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
@@ -118,12 +120,9 @@ with description('A1 Liquicomun file'):
 
             assert not it_works, "A1 for -1 month must not work! This must be an A2"
 
-with description('A2 Liquicomun file'):
-    with before.all:
-        ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
-        self.token = ESIOS_TOKEN
-    with context('Instance'):
-        with it('can get A2_liquicomun for a valid date'):
+
+    with context('A2 instance'):
+        with it('can get the related A2 for a valid date'):
             today = datetime.today()
 
             # Previous month
@@ -137,7 +136,7 @@ with description('A2 Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] == 'A2'
 
-        with it('can get A2_liquicomun for an invalid date'):
+        with it('can\'t get the related A2 for an invalid date'):
             today = datetime.today()
 
             # This month
@@ -154,12 +153,9 @@ with description('A2 Liquicomun file'):
 
             assert not it_works, "A1 for -1 month must not work! This must be an A2"
 
-with description('C2 Liquicomun file'):
-    with before.all:
-        ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
-        self.token = ESIOS_TOKEN
-    with context('Instance'):
-        with it('can get C2_liquicomun for a valid date'):
+
+    with context('C2 instance'):
+        with it('can get the C2 for a valid date'):
             today = datetime.today()
 
             # Previous month
@@ -173,7 +169,7 @@ with description('C2 Liquicomun file'):
             assert zf.testzip() is None
             assert zf.namelist()[0][:2] == 'C2'
 
-        with it('can get C2_liquicomun for an invalid date'):
+        with it('can\'t get the C2 for an invalid date'):
             today = datetime.today()
 
             # This month
@@ -190,23 +186,16 @@ with description('C2 Liquicomun file'):
 
             assert not it_works, "A1 for -1 month must not work! This must be an A2"
 
-with description('Liquicomun'):
-    with before.all:
-        ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
-        self.token = ESIOS_TOKEN
-
-        today = datetime.today()
-
-        # A year ago
-        self.start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=12)
-        self.end = self.start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
-
-        # Expected C5, C4, C3, C2
-        self.expected_version_list = ["C5", "C4", "C3", "C2"]
-
-        self.e = Esios(self.token)
 
     with context('Instance with next'):
+        with before.all:
+            # Expected C5, C4, C3, C2
+            self.expected_version_list = ["C5", "C4", "C3", "C2"]
+            
+            # A year ago
+            self.start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=12)
+            self.end = self.start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+
         with it('can get the n=0 //a C5'):
             next = 0
             expected = self.expected_version_list[next] # "C5"
