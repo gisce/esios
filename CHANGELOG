@@ -1,0 +1,6 @@
+# 0.3.0
+- Archive.download() now permit "next" param to be able to select the next available version of the file
+- Provided specific Liquicomun versions with time periods assertion
+  - A1_Liquicomun
+  - A2_Liquicomun
+  - C2_liquicomun
