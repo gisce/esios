@@ -13,11 +13,11 @@ from esios import Esios
 from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun, C2_liquicomun
 
 
-def test_expected_to_work(the_class, start, end, expected_versions):
+def test_expected_to_work(the_class, start, end, expected_versions, next=0):
     """
     General expected to work method
     """
-    res = the_class().download(start, end)
+    res = the_class().download(start, end, next=next)
 
     c = BytesIO(res)
     zf = zipfile.ZipFile(c)
