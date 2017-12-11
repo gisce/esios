@@ -23,10 +23,10 @@ def test_expected_to_work(the_class, start, end, expected_versions, next=0):
     zf = zipfile.ZipFile(c)
     assert zf.testzip() is None
     assert zf.namelist()[0][:2] in expected_versions
+    return True
 
 
-
-def test_expected_to_break(the_class, start, end, assert_message, next):
+def test_expected_to_break(the_class, start, end, assert_message, next=0):
     """
     General assert to break method
     """
@@ -37,6 +37,7 @@ def test_expected_to_break(the_class, start, end, assert_message, next):
         it_works = False
 
     assert not it_works, assert_message
+    return True
 
 
 
@@ -70,7 +71,7 @@ with description('Base Liquicomun'):
             end = datetime(today.year, today.month, last_month_day)
 
             expected_versions = ('A1', 'A2')
-            test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
         with it('should download C2 or A3 for 3 months ago'):
             today = self.today - timedelta(days=93)
@@ -79,7 +80,7 @@ with description('Base Liquicomun'):
             end = datetime(start.year, start.month, last_month_day)
 
             expected_versions = ('A3', 'C2')
-            test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
         with it('should download C6 o C5 for a year ago'):
             today = self.today - timedelta(days=730)
@@ -88,7 +89,7 @@ with description('Base Liquicomun'):
             end = datetime(start.year, start.month, last_month_day)
 
             expected_versions = ('A5', 'A6', 'C6', 'C5')
-            test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
         with it('should download C7,A7,C6,A6,C5 or A5 for a long time ago'):
             today = self.today - timedelta(days=730)
@@ -97,7 +98,7 @@ with description('Base Liquicomun'):
             end = datetime(start.year, start.month, last_month_day)
 
             expected_versions = ('A7', 'C7', 'A6', 'C6', 'C5', 'A5')
-            test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
 
     with context('A1 instance'):
@@ -108,7 +109,7 @@ with description('Base Liquicomun'):
 
 
             expected_versions = ('A1')
-            test_expected_to_work(the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions)
 
 
         with it('can\'t get the A1 for an invalid date'):
@@ -119,7 +120,7 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             error_message = "A1 for previous month must not work! This must be an A2"
-            test_expected_to_break(the_class=self.e.A1_liquicomun, start=start, end=end, assert_message=error_message)
+            assert test_expected_to_break(the_class=self.e.A1_liquicomun, start=start, end=end, assert_message=error_message)
 
 
     with context('A2 instance'):
@@ -131,7 +132,7 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             expected_versions = ('A2')
-            test_expected_to_work(the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions)
 
 
         with it('can\'t get the related A2 for an invalid date'):
@@ -142,7 +143,7 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             error_message = "A2 for this month must not work! This must be an A1"
-            test_expected_to_break(the_class=self.e.A2_liquicomun, start=start, end=end, assert_message=error_message)
+            assert test_expected_to_break(the_class=self.e.A2_liquicomun, start=start, end=end, assert_message=error_message)
 
 
     with context('C2 instance'):
@@ -154,7 +155,7 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             expected_versions = ('C2')
-            test_expected_to_work(the_class=self.e.C2_liquicomun, start=start, end=end, expected_versions=expected_versions)
+            assert test_expected_to_work(the_class=self.e.C2_liquicomun, start=start, end=end, expected_versions=expected_versions)
 
 
         with it('can\'t get the C2 for an invalid date'):
@@ -165,14 +166,13 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             error_message = "C2 for this month must not work! This must be an A1"
-            test_expected_to_break(the_class=self.e.C2_liquicomun, start=start, end=end, assert_message=error_message)
+            assert test_expected_to_break(the_class=self.e.C2_liquicomun, start=start, end=end, assert_message=error_message)
 
 
     with context('Instance with next'):
         with before.all:
             # Expected C5, C4, C3, C2
             self.expected_version_list = ["C5", "C4", "C3", "C2"]
-
             today = self.today
 
             # A year ago
@@ -182,33 +182,31 @@ with description('Base Liquicomun'):
         with it('can get the n=0 //a C5'):
             next = 0
             expected_versions = self.expected_version_list[next] # "C5"
-            test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
 
         with it('can get the n=1 //a C4'):
             next = 1
             expected_versions = self.expected_version_list[next] # "C4"
-            test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
 
         with it('can get the n=2 //a C3'):
             next = 1
             expected_versions = self.expected_version_list[next] # "C4"
-            test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
 
         with it('can get the n=3 //a C2'):
             next = 3
             expected_versions = self.expected_version_list[next] # "C4"
-            test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
+            assert test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
 
         with it('can\'t get the n=4 //last is n=3 C2!'):
             next = 4
             expected = "irreal"
-
             error_message = "The next 4 version for one year ago must not exist. Available '{}'".format(self.expected_version_list)
-            test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
+            assert test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
 
         with it('can\'t get the n=-1'):
             next = -1
             expected = "irreal"
-
             error_message = "Negative next version must break"
-            test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
+            assert test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
