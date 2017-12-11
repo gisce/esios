@@ -26,13 +26,13 @@ def test_expected_to_work(the_class, start, end, expected_versions, next=0):
 
 
 
-def test_expected_to_break(the_class, start, end, assert_message):
+def test_expected_to_break(the_class, start, end, assert_message, next):
     """
     General assert to break method
     """
     it_works = True
     try:
-        res = the_class().download(start, end)
+        res = the_class().download(start, end, next=next)
     except:
         it_works = False
 
@@ -71,7 +71,7 @@ with description('Base Liquicomun'):
 
             expected_versions = ('A1', 'A2')
             test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
-            
+
         with it('should download C2 or A3 for 3 months ago'):
             today = self.today - timedelta(days=93)
             start = datetime(today.year, today.month, 1)
@@ -188,7 +188,7 @@ with description('Base Liquicomun'):
             next = 1
             expected_versions = self.expected_version_list[next] # "C4"
             test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
-            
+
         with it('can get the n=2 //a C3'):
             next = 1
             expected_versions = self.expected_version_list[next] # "C4"
@@ -198,22 +198,17 @@ with description('Base Liquicomun'):
             next = 3
             expected_versions = self.expected_version_list[next] # "C4"
             test_expected_to_work(the_class=self.e.liquicomun, start=self.start, end=self.end, expected_versions=expected_versions, next=next)
-            
+
         with it('can\'t get the n=4 //last is n=3 C2!'):
             next = 4
             expected = "irreal"
-            
+
             error_message = "The next 4 version for one year ago must not exist. Available '{}'".format(self.expected_version_list)
-            test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message)
+            test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
 
         with it('can\'t get the n=-1'):
             next = -1
             expected = "irreal"
-            
-            it_works = True
-            try:
-                res = self.e.liquicomun().download(self.start, self.end, next=next)
-            except:
-                it_works = False
 
-            assert not it_works, "Negative next version must break"
+            error_message = "Negative next version must break"
+            test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
