@@ -54,3 +54,8 @@ class PricePVPC20DHA(ProfilePVPC):
 
 class PricePVPC20DHS(ProfilePVPC):
     path = 'indicators/1015'
+
+
+class LinkBalanceMorocco(Indicator):
+    path = 'indicators/10209'
+

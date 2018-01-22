@@ -179,3 +179,16 @@ with description('Indicators file'):
             )
 
             expect(len(data['indicator']['values'])).to(equal(743))
+
+    with context('LinkBalanceMorocco'):
+        with it('Returns LinkBalanceMorocco instance'):
+            e = Esios(self.token)
+            profile = LinkBalanceMorocco(e)
+            assert isinstance(profile, LinkBalanceMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Saldo neto Marruecos telemedidas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Saldo horario neto de interconexión con Marruecos telemedidas')
+            )
