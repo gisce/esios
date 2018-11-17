@@ -211,7 +211,7 @@ with description('Indicators file'):
         with it('Returns mhpPBF instance'):
             #806
             e = Esios(self.token)
-            profile = mhpPHF(e)
+            profile = mhpPBF(e)
             assert isinstance(profile, mhpPBF)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(

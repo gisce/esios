@@ -64,7 +64,7 @@ class mhpDailyMarket(Indicator):
     path = 'indicators/805'
 
 
-class mhpPHF(Indicator):
+class mhpPBF(Indicator):
     path = 'indicators/806'
 
 
