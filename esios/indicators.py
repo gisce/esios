@@ -59,3 +59,38 @@ class PricePVPC20DHS(ProfilePVPC):
 class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
 
+
+class mhpDailyMarket(Indicator):
+    path = 'indicators/805'
+
+
+class mhpPBF(Indicator):
+    path = 'indicators/806'
+
+
+class mhpRealTimeRestrictions(Indicator):
+    path = 'indicators/807'
+
+
+class mhpAdditionalPowerReservation(Indicator):
+    path = 'indicators/810'
+
+
+class mhpSecondaryBand(Indicator):
+    path = 'indicators/811'
+
+
+class mhpDesviationsBalance(Indicator):
+    path = 'indicators/813'
+
+
+class mhpPO146Balance(Indicator):
+    path = 'indicators/815'
+
+
+class mhpInterruptibilityService(Indicator):
+    path = 'indicators/1277'
+
+
+class mhpPowerFactorControl(Indicator):
+    path = 'indicators/1286'
