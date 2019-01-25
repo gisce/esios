@@ -104,9 +104,8 @@ with description('Base Liquicomun'):
     with context('A1 instance'):
         with it('can get the A1 for a valid date'):
             today = self.today
-            start = datetime(today.year, today.month, 1)
+            start = datetime(today.year, today.month, 1) + relativedelta.relativedelta(months=1)
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
-
 
             expected_versions = ('A1')
             assert test_expected_to_work(the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions)
@@ -127,10 +126,8 @@ with description('Base Liquicomun'):
         with it('can get the related A2 for a valid date'):
             today = self.today
 
-            # Previous month
-            start = datetime(today.year, today.month, 1) - relativedelta.relativedelta(months=1)
-            end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
-
+            # today
+            start = end = datetime(today.year, today.month, today.day)
             expected_versions = ('A2')
             assert test_expected_to_work(the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions)
 
