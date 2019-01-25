@@ -138,7 +138,7 @@ class A1_liquicomun(Generic_Liquicomun):
     expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
 
     # Last day of current month
-    expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+    expected_range_end = expected_range_start + relativedelta.relativedelta(months=2) - relativedelta.relativedelta(days=1)
 
 
 class A2_liquicomun(Generic_Liquicomun):
@@ -149,7 +149,7 @@ class A2_liquicomun(Generic_Liquicomun):
     expected_range_start = datetime.today().replace(day=1, hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(months=1)
 
     # Last day of -1 month
-    expected_range_end = expected_range_start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
+    expected_range_end = datetime.today()
 
 
 class C2_liquicomun(Generic_Liquicomun):
