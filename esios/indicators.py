@@ -60,6 +60,14 @@ class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
 
 
+class mhpPO146BalanceFree(Indicator):
+    path = 'indicators/802'
+
+
+class mhpFalloNominacionUPGFree(Indicator):
+    path = 'indicators/803'
+
+
 class mhpDailyMarket(Indicator):
     path = 'indicators/805'
 
@@ -88,8 +96,16 @@ class mhpPO146Balance(Indicator):
     path = 'indicators/815'
 
 
+class mhpInterruptibilityServiceFree(Indicator):
+    path = 'indicators/1276'
+
+
 class mhpInterruptibilityService(Indicator):
     path = 'indicators/1277'
+
+
+class mhpPowerFactorControlFree(Indicator):
+    path = 'indicators/1285'
 
 
 class mhpPowerFactorControl(Indicator):
