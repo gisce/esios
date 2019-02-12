@@ -110,3 +110,7 @@ class mhpPowerFactorControlFree(Indicator):
 
 class mhpPowerFactorControl(Indicator):
     path = 'indicators/1286'
+
+
+class mhpEnergyBalance(Indicator):
+    path = 'indicators/1366'
