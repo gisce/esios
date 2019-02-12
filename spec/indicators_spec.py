@@ -353,3 +353,15 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente control factor potencia ')
             )
+        with it('Returns mhpEnergyBalance instance'):
+            #1366
+            e = Esios(self.token)
+            profile = mhpEnergyBalance(e)
+            assert isinstance(profile, mhpEnergyBalance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Incumplimiento energía balance CL')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente incumplimiento energía de balance contratación libre')
+            )
