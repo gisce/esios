@@ -80,3 +80,69 @@ class Esios(base.Resource):
         """Get the liquicomun zip file
         """
         return archives.C2_liquicomun(self)
+
+    @base.resource(indicators.PricePVPC20A)
+    def price_pvpc_20A(self):
+        """Get PVPC price for 2.0A
+        """
+        return indicators.PricePVPC20A(self)
+
+    @base.resource(indicators.PricePVPC20DHA)
+    def price_pvpc_20DHA(self):
+        """Get PVPC price for 2.0DHA
+        """
+        return indicators.PricePVPC20DHA(self)
+
+    @base.resource(indicators.PricePVPC20DHS)
+    def price_pvpc_20DHS(self):
+        """Get PVPC price for 2.0DHS
+        """
+        return indicators.PricePVPC20DHS(self)
+
+    @base.resource(indicators.PriceSPOTDaily)
+    def price_spot_daily(self):
+        """Get price for daily SPOT market
+        """
+        return indicators.PriceSPOTDaily(self)
+
+    @base.resource(indicators.PriceSPOTIntraday1)
+    def price_spot_intraday1(self):
+        """Get price for intraday SPOT market, session 1
+        """
+        return indicators.PriceSPOTIntraday1(self)
+
+    @base.resource(indicators.PriceSPOTIntraday2)
+    def price_spot_intraday2(self):
+        """Get price for intraday SPOT market, session 2
+        """
+        return indicators.PriceSPOTIntraday2(self)
+
+    @base.resource(indicators.PriceSPOTIntraday3)
+    def price_spot_intraday3(self):
+        """Get price for intraday SPOT market, session 3
+        """
+        return indicators.PriceSPOTIntraday3(self)
+
+    @base.resource(indicators.PriceSPOTIntraday4)
+    def price_spot_intraday4(self):
+        """Get price for intraday SPOT market, session 4
+        """
+        return indicators.PriceSPOTIntraday4(self)
+
+    @base.resource(indicators.PriceSPOTIntraday5)
+    def price_spot_intraday5(self):
+        """Get price for intraday SPOT market, session 5
+        """
+        return indicators.PriceSPOTIntraday5(self)
+
+    @base.resource(indicators.PriceSPOTIntraday6)
+    def price_spot_intraday6(self):
+        """Get price for intraday SPOT market, session 6
+        """
+        return indicators.PriceSPOTIntraday6(self)
+
+    @base.resource(indicators.PriceSPOTIntraday7)
+    def price_spot_intraday7(self):
+        """Get price for intraday SPOT market, session 7
+        """
+        return indicators.PriceSPOTIntraday7(self)

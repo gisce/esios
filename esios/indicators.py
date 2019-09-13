@@ -28,6 +28,15 @@ class Indicator(base.RESTResource):
 class ProfilePVPC(Indicator):
     pass
 
+
+class PricePVPC(Indicator):
+    pass
+
+
+class PriceSPOT(Indicator):
+    pass
+
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -114,3 +123,47 @@ class mhpPowerFactorControl(Indicator):
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
+
+
+class PricePVPC20A(PricePVPC):
+    path = 'indicators/1013'
+
+
+class PricePVPC20DHA(PricePVPC):
+    path = 'indicators/1014'
+
+
+class PricePVPC20DHS(PricePVPC):
+    path = 'indicators/1015'
+
+
+class PriceSPOTDaily(PriceSPOT):
+    path = 'indicators/600'
+
+
+class PriceSPOTIntraday1(PriceSPOT):
+    path = 'indicators/612'
+
+
+class PriceSPOTIntraday2(PriceSPOT):
+    path = 'indicators/613'
+
+
+class PriceSPOTIntraday3(PriceSPOT):
+    path = 'indicators/614'
+
+
+class PriceSPOTIntraday4(PriceSPOT):
+    path = 'indicators/615'
+
+
+class PriceSPOTIntraday5(PriceSPOT):
+    path = 'indicators/616'
+
+
+class PriceSPOTIntraday6(PriceSPOT):
+    path = 'indicators/617'
+
+
+class PriceSPOTIntraday7(PriceSPOT):
+    path = 'indicators/618'
