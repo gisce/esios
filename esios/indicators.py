@@ -60,6 +60,10 @@ class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
 
 
+class mhpMeasuredDeviationsFree(Indicator):
+    path = 'indicators/799'
+
+
 class mhpPO146BalanceFree(Indicator):
     path = 'indicators/802'
 

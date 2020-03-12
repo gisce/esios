@@ -195,6 +195,19 @@ with description('Indicators file'):
             )
 
     with context('Medium Hourly Price Components'):
+        with it('Returns mhpMeasuredDeviationsFree'):
+            #799
+            # equivalent to grcosdnc Coste Desvios (9th field)
+            e = Esios(self.token)
+            profile = mhpMeasuredDeviationsFree(e)
+            assert isinstance(profile, mhpMeasuredDeviationsFree)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente desvíos medidos contratación libre')
+            )
         with it('Returns mhpPO146SaldoFree'):
             #802
             e = Esios(self.token)
