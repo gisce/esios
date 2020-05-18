@@ -28,7 +28,7 @@ class Esios(base.Resource):
 
     def accepted_version(self, request):
         request.headers['Accept'] = (
-            'appliaction/json; application/vnd.esios-api-{0}+json'
+            'application/json; application/vnd.esios-api-{0}+json'
         ).format(self.version)
 
     def get_url(self):
