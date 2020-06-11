@@ -147,6 +147,11 @@ with description('Indicators file'):
 
             expect(len(data['indicator']['values'])).to(equal(745))
 
+        with it('Returns PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada instance'):
+            e = Esios(self.token)
+            prices = PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(e)
+            assert isinstance(prices, PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada)
+
         with it('Returns a valid PricePVPC20A Winter-Summer'):
             e = Esios(self.token)
             prices = PricePVPC20A(e)

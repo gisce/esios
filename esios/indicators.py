@@ -118,3 +118,7 @@ class mhpPowerFactorControl(Indicator):
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
+
+
+class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
+    path = 'indicators/1739'
