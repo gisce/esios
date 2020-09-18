@@ -171,3 +171,15 @@ class C2_liquicomun(Generic_Liquicomun):
             return False
 
         return True
+
+
+class P48Cierre(Archive):
+
+    def get_filename(self):
+        return super(P48Cierre, self).get_filename().lower()
+
+    def get(self, start_date, end_date, taxonomy_terms=None):
+        if taxonomy_terms is None:
+            taxonomy_terms = []
+        taxonomy_terms.append('Schedules')
+        return super(P48Cierre, self).get(start_date, end_date, taxonomy_terms)

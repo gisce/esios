@@ -80,3 +80,9 @@ class Esios(base.Resource):
         """Get the liquicomun zip file
         """
         return archives.C2_liquicomun(self)
+
+    @base.resource(archives.P48Cierre)
+    def p48cierre(self):
+        """Get the p48cierre zip file
+        """
+        return archives.P48Cierre(self)
