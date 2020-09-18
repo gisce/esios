@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+PACKAGES_DATA = {'gestionatr': ['data/*.xsd']}
 
 setup(
     name='esios',
@@ -11,4 +12,5 @@ setup(
     author='GISCE-TI, S.L.',
     author_email='devel@gisce.net',
     description='Interact with e.sios API',
+    package_data=PACKAGES_DATA,
 )
