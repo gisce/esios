@@ -257,7 +257,7 @@ with description('P48Cierre'):
             res = P48Cierre(self.e).download(start, end)
 
             assert validate_P48cierre(res)
-            assert not validate_P48cierre('ERROR' + res)
+            assert not validate_P48cierre(res + b'ERROR')
 
         with it('Gets today and yesterday p48'):
             today = self.today
