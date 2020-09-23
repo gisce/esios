@@ -160,5 +160,4 @@ with description('Esios Parsers'):
                 )
 
                 data = json.loads(result)
-                print(data)
                 expect(len(data)).to(equal(23))
