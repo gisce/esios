@@ -11,6 +11,7 @@ import os
 
 from esios import Esios
 from esios.archives import Liquicomun, A1_liquicomun, A2_liquicomun, C2_liquicomun
+from esios.archives import P48Cierre
 
 
 def test_expected_to_work(the_class, start, end, expected_versions, next=0):
@@ -39,6 +40,22 @@ def test_expected_to_break(the_class, start, end, assert_message, next=0):
     assert not it_works, assert_message
     return True
 
+def validate_P48cierre(xml):
+    xsd_path = 'esios/data'
+    xsd_file = 'P48Cierre-esios-MP.xsd'
+
+    from lxml import etree, objectify
+    from lxml.etree import XMLSyntaxError
+
+    xmlschema_doc = etree.parse(xsd_path + '/' + xsd_file)
+    xmlschema = etree.XMLSchema(xmlschema_doc)
+
+    parser = objectify.makeparser(schema=xmlschema)
+    try:
+        objectify.fromstring(xml, parser)
+        return True
+    except XMLSyntaxError as e:
+        return False
 
 
 with description('Base Liquicomun'):
@@ -207,3 +224,79 @@ with description('Base Liquicomun'):
             expected = "irreal"
             error_message = "Negative next version must break"
             assert test_expected_to_break(the_class=self.e.liquicomun, start=self.start, end=self.end, assert_message=error_message, next=next)
+
+
+with description('P48Cierre'):
+    with before.all:
+        ESIOS_TOKEN = os.getenv('ESIOS_TOKEN')
+        self.token = ESIOS_TOKEN
+
+        self.today = datetime.today()
+
+        self.e = Esios(self.token)
+
+    with context('Instance'):
+        with it('Returns P48Cierre instance'):
+            liqui = P48Cierre(self.e)
+            assert isinstance(liqui, P48Cierre)
+
+        with it('Gets list'):
+            today = self.today
+            start = datetime(today.year, today.month, 1)
+            last_month_day = calendar.monthrange(today.year, today.month)[1]
+            end = datetime(today.year, today.month, last_month_day)
+
+            res = self.e.p48cierre().get(start, end)
+            assert len(res) >= 0
+
+        with it('Gets Yesterday p48'):
+            today = self.today
+
+            start = today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(days=1)
+            end = today.replace(hour=23, minute=59, second=59, microsecond=0) - relativedelta.relativedelta(days=1)
+            res = P48Cierre(self.e).download(start, end)
+
+            assert validate_P48cierre(res)
+            assert not validate_P48cierre(res + b'ERROR')
+
+        with it('Gets today and yesterday p48'):
+            today = self.today
+
+            start = today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(days=1)
+            end = today.replace(hour=23, minute=59, second=59, microsecond=0)
+            res = P48Cierre(self.e).download(start, end)
+
+            c = BytesIO(res)
+            zf = zipfile.ZipFile(c)
+            assert zf.testzip() is None
+            expected_filenames = [
+                'p48cierre_{}.xml'.format(start.strftime('%Y%m%d')),
+                'p48cierre_{}.xml'.format(end.strftime('%Y%m%d')),
+                'p48_{}'.format(today.strftime('%Y%m%d'))]
+
+            assert len(zf.namelist()) == 2
+            for filename in zf.namelist():
+                if len(filename) == 22:
+                    assert filename in expected_filenames
+                else:
+                    assert filename[:12] in expected_filenames
+
+        with it('Gets current month p48'):
+            today = self.today
+            start = datetime(today.year, today.month, 1)
+            last_month_day = calendar.monthrange(today.year, today.month)[1]
+            end = datetime(today.year, today.month, today.day > 1 and today.day - 1 or 1)
+
+            res = P48Cierre(self.e).download(start, end)
+
+            c = BytesIO(res)
+            zf = zipfile.ZipFile(c)
+            assert zf.testzip() is None
+            expected_filenames = []
+            for day in range(0, today.day):
+                p48_day = start + relativedelta.relativedelta(days=day)
+                expected_filenames.append('p48cierre_{}.xml'.format(p48_day.strftime('%Y%m%d')))
+
+            assert len(zf.namelist()) == today.day - 1
+            for filename in zf.namelist():
+                    assert filename in expected_filenames

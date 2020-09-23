@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   - Version anterior: n/a
+   - Version siguiente: http://sujetos.esios.ree.es/schemas/2007/06/04/esios-core-cmpts/
+   - Cambios en esta version: n/a
+-->
+<xsd:schema targetNamespace="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-core-cmpts/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecl="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-code-lists/" xmlns:ecc="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-core-cmpts/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-code-lists/" schemaLocation="esios-code-lists.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>
+			<Titulo> Lista de tipos basicos utilizados por el resto de schemas </Titulo>
+		</xsd:documentation>
+	</xsd:annotation>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoAgregacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de agregacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoAgregacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoArea">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Area</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="18"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codificacion" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoArea-CS">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Area</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="18"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codingScheme" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoBloque">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Bloque</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoBloque-10">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero de bloque de 1 a 10</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCadena-10">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 10 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCadena-12">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 12 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="12"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--________________________________________________________-->
+	<xsd:complexType name="TipoCadena-2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define un alfanumerico de 2 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="2"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCadena-35">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 35 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="35"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCadena-8">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define un alfanumerico de 8 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="8"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCalidadPunto">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Informacion de calidad del punto (en liquicierre)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoCalidadPunto" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoClasificacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de clasificacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoClasificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCodigoMotivo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigo de error / informacion / aviso de una respuesta.</Definition>>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoCodigoPrecedencia">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>CodigoPrecedencia</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="3"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoContrato">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define las condiciones bajo la que la capacidad se reparte y mantiene.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoContrato" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-3.2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de 3 numeros con 2 decimales</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:maxInclusive value=".99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-4.3">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de 4 numeros con 3 decimales</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="3"/>
+					<xsd:maxInclusive value=".999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-5.1">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de 5 numeros con 1 decimal</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:maxInclusive value="999.9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-7.1">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de 7 numeros con 1 decimal</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99999.9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-7.2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero con 7 numeros y 2 decimales</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:maxInclusive value="9999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-9.2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero con 9 numeros y 2 decimales</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:maxInclusive value="999999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDecimal-11.2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de 11 caracteres de longitud y 2 decimales</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:maxInclusive value="99999999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDeclaracion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identificacion de los tipos de declaracion.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoDeclaracion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoDesvio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de desvio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoDesvio" use="required"/>
+	</xsd:complexType>
+	<!--________________________________________________________-->
+	<xsd:complexType name="TipoDivisible">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Indivisibilidad de las ofertas</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoDivisible" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEntero-2">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de dos enteros maximo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEntero-4">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de cuatro enteros maximo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="9999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEntero-5">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Precedencia</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEntero-6">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de seis enteros maximo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="999999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoElementTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Element de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoElementTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEnergia-7.1-unidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cantidad con atributo unidadMedida con valor positivo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99999.9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="unidadMedida" type="ecl:ListaTipoUnidadMedida" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEstadoEquipo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identificacion del estado del equipo.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoEstadoEquipo" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEstadoIndisponibilidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Estado de la indisponibilidad</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaEstIndiDesv" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoEtiqueta">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipos de etiquetas (redespachos,mercado intradiario,desvios)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoEtiqueta" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFactorPotencia">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Factor Potencia</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoFactorPotencia" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFecha">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Fecha expresada como YYYY-MM-DD</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:date">
+					<xsd:pattern value="[1-2][0-9][0-9][0-9][\-][0-1][0-9][\-][0-3][0-9]"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFechaHoraMensaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Fecha y hora de creacion del mensaje, expresado en UTC con formato: YYYY-MM-DDTHH:MM:SSZ</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="xsd:dateTime" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFlagSN">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica Si y No con S y N.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoFlagSN" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFlagCT">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica Si (Z02) y No (Z01) con Z02 y Z01.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoFlagCT" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFuncion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identificacion de los roles de los participante.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoFuncion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoFuncionamiento">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Modo de funcionamiento de un generador</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoFuncionamiento" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoHorizonte">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Horizonte de  tiempo con formato: YYYY-MM-DDTHH:MMZ/YYYY-MM-DDTHH:MMZ. Expresado en UTC.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="[1-2][0-9][0-9][0-9][\-][0-1][0-9][\-][0-3][0-9][T][0-2][0-9][:][0-5][0-9][Z][/][1-2][0-9][0-9][0-9][\-][0-1][0-9][\-][0-3][0-9][T][0-2][0-9][:][0-5][0-9][Z]"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoHorizonteCT">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de horizonte</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoHorizonte" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoHorizonteMes">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Horizonte de  tiempo con formato: YYYY-MM/YYYY-MM. </Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="[1-2][0-9][0-9][0-9][\-][0-1][0-9][/][1-2][0-9][0-9][0-9][\-][0-1][0-9]"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoIdentificacionContrato">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>El codigo de identificacion de contrato se expresa mediante 10 digitos.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="9999999999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoIdentificacionMensaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 80 caracteres para identificar un mensaje</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="80"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoIdentificacionSerie">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 35 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="35"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoIdZona">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identificador de la Zona </Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="5"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoInformacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de informacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoInformacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoInfoTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoIntervaloMinuto">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tiempo con formato: MMZ/MMZ</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="[0-6][0-9][Z][/][0-6][0-9][Z]"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoLimitacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de limitacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoLimitacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoMensaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de mensaje</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoMensaje" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoNecesidadRedespacho">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipos de necesidad del redespacho</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoNecesidadRedespacho" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoNegocio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de negocio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoNegocio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoNormElementTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Element de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoNormElementTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoNudo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de nudo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoNudo" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoNumInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoNumInfoTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPeriodoHorario">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica los tipos de periodo horario.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoPeriodoHorario" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPorcentaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Porcentaje expresado con 1 decimal</Definition>.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="100.0"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPosicion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Posicion en un intervalo de tiempo limitado entre 1 y 25</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPotenciaActiva">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Puede tomar los valores: Z01 (compensador sincrono), de Z02 a Z06 (rangos del 20% entre el minimo y maximo tecnico) y Z07 (bomba)
+				</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoPotenciaActiva" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPotenciaLimite">
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:minInclusive value="-99999.9"/>
+					<xsd:maxInclusive value="99999.9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-17.2-unidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define una cantidad con atributo para identificar el precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99999999999999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="unidadPrecio" type="ecl:ListaTipoUnidadPrecio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-7.3">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="3"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="999.999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-8.3">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="3"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="9999.999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-9.2-unidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define una cantidad con atributo para identificar el precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="999999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="unidadPrecio" type="ecl:ListaTipoUnidadPrecio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-8.2-unidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define una cantidad con atributo para identificar el precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="999999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="unidadPrecio" type="ecl:ListaTipoUnidadPrecio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoPrecio-7.2-unidad">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Define una cantidad con atributo para identificar el precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="2"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="9999.99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="unidadPrecio" type="ecl:ListaTipoUnidadPrecio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoProceso">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica la naturaleza del proceso</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoProceso" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoProductoEnergia">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica la naturlaeza de un producto de energia.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoProductoEnergia" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoRedespacho">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cantidad redespacho</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:decimal">
+					<xsd:fractionDigits value="1"/>
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99999.9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoResolucion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Resolucion con formato: PnYnMnDTnHnMnS</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="xsd:duration" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoSentido">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de sentido de la cantidad puede ser a subir o bajar.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoSentido" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoSesion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Sesion de mercado</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:totalDigits value="2"/>
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoSubProceso">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica la naturaleza del subproceso</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoSubProceso" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoSujetoMensaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de remitente / receptor de mensaje (atributo de codifiacion en castellano)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="16"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codificacion" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoSujetoMensaje-CS">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de remitente / receptor de mensaje (atributo de codifiacion en ingles)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="16"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codingScheme" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTextoLibre-150">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 150 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="150"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTextoLibre-80">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Cadena de 80 caracteres</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="80"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTextoMotivo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Descripcion de error / informacion / aviso de una respuesta.</Definition>>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="512"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTotalInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoTotalInfoTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTotalNumInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoTotalNumInfoTA" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoTransaccion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Para definir un numero de diez enteros maximo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="9999999999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUF">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad fisica</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="7"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codificacion" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUnidadMedida">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Identifica la unidad de medida.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoUnidadMedida" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUnidadPrecio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad de precio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoUnidadPrecio" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUOF">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad de Oferta (UOF) (atributo de codifiacion en castellano)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="16"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codificacion" type="ecl:ListaTipoCodificacion" use="optional"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUOF-CS">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad de Oferta (UOF) (atributo de codifiacion en ingles)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="7"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codingScheme" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUP">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad de Programacion (UP) (atributo de codifiacion en castellano)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="7"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codificacion" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoUP-CS">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Unidad de Programacion (UP) (atributo de codifiacion en ingles)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="7"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codingScheme" type="ecl:ListaTipoCodificacion" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoValor">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Tipo de indisponibilidad</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" type="ecl:ListaTipoValor" use="required"/>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoVersion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Version de un mensaje</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="1"/>
+					<xsd:maxInclusive value="999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--_________________________________________________-->
+	<xsd:complexType name="TipoVersionTransaccion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Version de transaccion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="v" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:integer">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="999"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+</xsd:schema>

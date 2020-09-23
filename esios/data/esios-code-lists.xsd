@@ -1,0 +1,3950 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   - Version anterior: -n/a-
+   - Version siguiente: http://sujetos.esios.ree.es/schemas/2007/06/22/esios-code-lists/
+   - Cambios en esta version:
+   * Debido a la implementación con fecha 12/04/2010 del nuevo procedimiento de resolución de
+     restricciones por Garantía de Suministro de acuerdo con el RD 134/2010, se incluye el
+     valor "GS" a la lista "ListaTipoContrato".
+   * Se ha añadido a la lista "ListaTipoContrato" el valor "SD" correspondiente a los nuevos
+     contratos de gas siderúrgico.
+   * Se ha añadido a la lista "ListaTipoClasificacion" el valor "Z21".
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecl="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-code-lists/" targetNamespace="http://sujetos.esios.ree.es/schemas/2007/03/07/esios-code-lists/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoNegocio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista con los codigos de los tipos de negocio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Produccion</Title>
+							<Definition>Informacion referente a produccion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Intercambio interno</Title>
+							<Definition>Informacion referente a intercambios internos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A03 Transacciones individuales</Title>
+							<Definition>Informacion referente a intercambios externos detallados entre areas con capacidad limitada</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A04 Consumo</Title>
+							<Definition>Informacion referente al consumo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A05 Intercambio total externo</Title>
+							<Definition>Informacion referente al total de intercambios externos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A06 Intercambio externo con capacidad ilimitada</Title>
+							<Definition>Informacion referente a intercambios externos entre areas con capacidad ilimitada</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A07 Produccion / Consumo neto</Title>
+							<Definition>Produccion / Consumo neto. Los valores llevan signo: + produccion, - consumo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A08 Intercambio interno neto</Title>
+							<Definition>Intercambio interno neto. El signo indica el sentido: + desde la UP de salida a la de entrada, - a la inversa</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A09">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A09 Productor independiente</Title>
+							<Definition>Programa referente a un generador de energia independiente</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A10">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A10 Regulacion terciaria</Title>
+							<Definition>Regulacion terciaria (ofertas, asignaciones, requerimientos,…)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A11 Regulacion primaria</Title>
+							<Definition>Regulacion primaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A12">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A12 Regulacion secundaria</Title>
+							<Definition>Regulacion secundaria (ofertas, asignaciones, requerimientos,…)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A13 Perfil de carga</Title>
+							<Definition>Perfiles de carga calculados por un agregador de datos de medidas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A14">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A14 Datos de energia agregada</Title>
+							<Definition>Lecturas de medidas recibidas desde un concentrador de datos y agregadas y validadas por un agregador de datos de medidas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A15">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A15 Perdidas</Title>
+							<Definition>Restitucion de perdidas calculadas en una linea de interconexion o area</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A16">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A16 Transitos</Title>
+							<Definition>Flujos de transito entre areas (CBT)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A17">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A17 Desvio facturable</Title>
+							<Definition>Desequilibrio de energia calculado por el operador del mercado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A18">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A18 Desvio por restricciones tecnicas</Title>
+							<Definition>Desequilibrio entre los programas aceptados por el operador del sistema debido a restricciones tecnicas y los programas notificados por los sujetos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A19">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A19 Desvio del balance de energia</Title>
+							<Definition>Desequilibrio entre el programa de un sujeto establecido por el operador del mercado despues de casar las ofertas y el programa establecido por restricciones tecnicas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A20">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A20 Volumen de desequilibrio</Title>
+							<Definition>Desequilibrio entre las lecturas de medidas actuales y el programa del sujeto establecido por el operador del sistema</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A21">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A21 Compensacion de desvios (UCTE)</Title>
+							<Definition>Desvios de regulacion en la interconexion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A22">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A22 Regulacion de frecuencia</Title>
+							<Definition>Reservas primaria y secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A23">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A23 Desvios programados</Title>
+							<Definition>Mercado de desvios (ofertas, asignaciones, requerimientos, ...)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A24">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A24 Intercambio total</Title>
+							<Definition>Total de intercambios internos y externos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A25">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A25 Informacion de Capacidad General</Title>
+							<Definition>Informacion sobre la capacidad total disponible en las fronteras de los TSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A26">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A26 Capacidad transferible disponible</Title>
+							<Definition>Capacidad disponible tal y como se define en el documento ETSO "Definitions of Transfer Capacities in liberalised Electricity Markets"</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A27">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A27 Capacidad de la red</Title>
+							<Definition>Capacidad de la red tal y como se define en el documento ETSO "Definitions of Transfer Capacities in liberalised Electricity Markets"</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A28">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A28 Intercambio total</Title>
+							<Definition>Informacion sobre el total intercambiado entre dos TSOs (incluyendo transacciones comerciales y programa de compensacion de perdidas). </Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A29">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A29 Capacidad asignada (AAC)</Title>
+							<Definition>Capacidad asignada para nominar</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Tipo Unidad Programacion: Generacion</Title>
+							<Definition>Generacion de Regimen Ordinario (Productores participando directamente en el mercado o a traves de un agente vendedor, y ventas de energia por comercializadores mediante contratos de adquisicion de energia con productores de RO) Apartados 2a, 2b, 2c Anexo ii Unidades de Programacion P.O. 3.1 </Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Tipo Unidad Programacion: Autoproductor</Title>
+							<Definition>Venta Generacion Regimen Especial (Distribuidores). Apartado 2f. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Tipo Unidad Programacion: Consumo</Title>
+							<Definition>Consumo de bombeo (Productores). Apartado 1c. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Tipo Unidad Programacion: Contrato Bilateral internacional</Title>
+							<Definition>Contrato bilateral con entrega fisica (Todos los sujetos del mercado de produccion)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Tipo Unidad Programacion: Contrato internacional</Title>
+							<Definition>Contrato internacional gestionado por REE</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z06 Tipo Unidad Programacion: Distribuidor</Title>
+							<Definition>Adquisicion de energia Distribuidor (suministro a tarifa) y Venta de Energia Distribuidor (Ajustes) Apartado 1a. y Apartado 2g del Anexo II Unidades de Programacion P.O. 3.1 </Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z07 Tipo Unidad Programacion: Cliente Cualificado</Title>
+							<Definition>Cliente cualificado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z08 Tipo Unidad Programacion: Comercializador</Title>
+							<Definition>Adquisicion de energia para consumo nacional/Venta de energia mediante contratos de adquisicion de energia con productores RE (comercializadores) Apartados 1d y 2e. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z09">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z09 Tipo Unidad Programacion: Sujeto del mercado externo</Title>
+							<Definition>Exportacion / Importacion de Energia (Todos los sujetos del mercado de produccion autorizados). Apartados 1f y 2h. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z10">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z10 Tipo Unidad Programacion: Regimen Especial</Title>
+							<Definition>Generacion Regimen Especial (Productores, Autoproductores) Apartado 2d. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z11 Tipo Unidad Programacion: Consumo de servicios auxiliares</Title>
+							<Definition>Adquisicion de energia para servicios auxiliares no alimentados directamente desde las unidades de produccion (Productores pertenecientes al RO) Apartado 1e. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z12">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z12 Tipo Unidad Programacion: Unidad generica emisiones primarias</Title>
+							<Definition>Unidad de Programacion Generica asociada a las substas de emisiones primarias y transacciones interancionales Apartado 3a. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z13 Tipo Unidad Programacion: Unidad generica subastas contratos bilaterales distribuidoras</Title>
+							<Definition>Unidad de Programacion Generica asociada a las substas de contratos bilaterales de distribuidoras. Apartado 3b. Anexo II Unidades de Programacion P.O. 3.1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z14">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z14 Reservado</Title>
+							<Definition>Reservado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z15">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z15 Regimen Ordinario</Title>
+							<Definition>Comercializadores (Integración producción de Régimen Ordinario)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z16">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z16 Regimen Especial a Precio Mercado</Title>
+							<Definition>Regimen Especial a Precio de Mercado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z17">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z17 Programación de almacenamiento</Title>
+							<Definition>Programación de almacenamiento</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z21">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z21 Tipo Transaccion: Transacciones de Mercado</Title>
+							<Definition>Tipo Transaccion: Transacciones de Mercado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z22">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z22 Tipo Transaccion: Acumulacion de energia de unidades con derechos transfronterizos</Title>
+							<Definition>Tipo Transaccion: Acumulacion de energia de unidades con derechos transfronterizos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z23">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z23 Tipo Transaccion: Transacciones Mercado a Plazo</Title>
+							<Definition>Tipo Transaccion: Transacciones Mercado a Plazo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z24">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z24 Tipo Transaccion: Contrato bilateral con entrega fisica</Title>
+							<Definition>Tipo Transaccion: Contrato bilateral con entrega fisica</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z81">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z81 ATC</Title>
+							<Definition>Informacion general de capacidad (ATC)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z82">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z82 Programa neto + perdidas + desvios</Title>
+							<Definition>Programa neto + perdidas + desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z83">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z83 Intercambio de apoyo</Title>
+							<Definition>Intercambio de apoyo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- ___________________________________________________________ -->
+	<xsd:simpleType name="ListaTipoProceso">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el proceso</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Dia siguiente</Title>
+							<Definition>Programa para el dia siguiente</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Intradiario</Title>
+							<Definition>Programa intradiario</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A03 Transito entre areas</Title>
+							<Definition>Informacion relativa al transito entre areas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A04 Cierre de la operacion del sistema</Title>
+							<Definition>Informacion relativa al cierre de un periodo tanto para planificacion como regulacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A05 Agregacion de datos de medida</Title>
+							<Definition>Informacion relativa al proceso de agregacion de medidas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A06 Liquidacion de desequilibrios</Title>
+							<Definition>Informacion relativa a desequilibrios de uno o varios sujetos para un periodo determinado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A07 Capacity allocation</Title>
+							<Definition>The information provided concerns the capacity allocation process</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A08 Intradiario Continuo</Title>
+							<Definition>Información relativa al Mercado Intradiario Continuo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Agregado semanal</Title>
+							<Definition>Agregado semanal (PIFSF)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Anual</Title>
+							<Definition>Anual</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Cierres</Title>
+							<Definition>Cierres</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Informacion para mas de un dia</Title>
+							<Definition>Informacion para mas de un dia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z06 Dia anterior</Title>
+							<Definition>Dia anterior</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z07 Mes anterior</Title>
+							<Definition>Mes anterior</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z08 Datos estructurales</Title>
+							<Definition>Datos estructurales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z09">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z09 Informacion para menos de un dia</Title>
+							<Definition>Informacion para menos de un dia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z11 Cantidad limitada mercados diarios</Title>
+							<Definition>Cantidad limitada mercados diarios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z12">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z12 Cantidad limitada mercados intradiarios</Title>
+							<Definition>Cantidad limitada mercados intradiarios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z13 Limitacion Tiempo Real</Title>
+							<Definition>Limitacion Tiempo Real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z14">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z14 Limitaciones de mas de un dia</Title>
+							<Definition>Limitaciones de mas de un dia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z16">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z16 Nominacion de CBF's internacionales</Title>
+							<Definition>Nominacion de CBF's internacionales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z17">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z17 Agregado anual y mensual</Title>
+							<Definition>Agregado anual y mensual</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z20">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z20 Reduccion de capacidad</Title>
+							<Definition>Reduccion de capacidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z21">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z21 Intercambio de apoyo</Title>
+							<Definition>Intercambio de apoyo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z30">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z30 Desasignacion en Tiempo Real</Title>
+							<Definition>Desasignacion en Tiempo Real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z31">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z31 Reasignacion en Tiempo Real</Title>
+							<Definition>Reasignacion en Tiempo Real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z32">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z32 Asignacion por MER</Title>
+							<Definition>Asignacion por MER</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z33">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z33 Sin proceso</Title>
+							<Definition>Sin proceso</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z41">
+				<xsd:annotation>
+					<xsd:documentation>
+
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- ___________________________________________________________ -->
+	<xsd:simpleType name="ListaTipoSubProceso">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el subproceso</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01"/>
+			<xsd:enumeration value="Z02"/>
+			<xsd:enumeration value="Z03"/>
+			<xsd:enumeration value="Z04"/>
+			<xsd:enumeration value="Z05"/>
+			<xsd:enumeration value="Z06"/>
+			<xsd:enumeration value="Z07"/>
+			<xsd:enumeration value="Z08"/>
+			<xsd:enumeration value="Z09"/>
+			<xsd:enumeration value="Z10"/>
+			<xsd:enumeration value="Z11"/>
+			<xsd:enumeration value="Z12"/>
+			<xsd:enumeration value="Z13"/>
+			<xsd:enumeration value="Z14"/>
+			<xsd:enumeration value="Z15"/>
+			<xsd:enumeration value="Z16"/>
+			<xsd:enumeration value="Z17"/>
+			<xsd:enumeration value="Z18"/>
+			<xsd:enumeration value="Z19"/>
+			<xsd:enumeration value="Z20"/>
+			<xsd:enumeration value="Z21"/>
+			<xsd:enumeration value="Z22"/>
+			<xsd:enumeration value="Z23"/>
+			<xsd:enumeration value="Z24"/>
+			<xsd:enumeration value="Z25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoProductoEnergia">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el producto</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="8716867000016">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>8716867000016 Potencia activa</Title>
+							<Definition>Potencia activa</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8716867000030">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>8716867000030 Energia activa</Title>
+							<Definition>Energia activa</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoUnidadMedida">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para las unidades de medida</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Cte"/>
+			<xsd:enumeration value="KW"/>
+			<xsd:enumeration value="MW"/>
+			<xsd:enumeration value="GWH">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> GWH: Gigavatio hora</Title>
+							<Definition>Gigavatio hora</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MWH">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> MWH: Megavatio hora</Title>
+							<Definition>Megavatio hora</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MAW">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> MAW: Megavatio</Title>
+							<Definition>Megavatio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MAH">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> MAH: Megavoltamperio reactivo hora</Title>
+							<Definition>Megavoltamperio reactivo hora</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MAR">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> MAR: Megavoltamperio reactivo</Title>
+							<Definition>Megavoltamperio reactivo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KWT">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> KWT: Kilovatio</Title>
+							<Definition>Kilovatio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KWH">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> KWH: Kilovatio hora</Title>
+							<Definition>Kilovatio hora</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KV">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> kV: Kilovoltio</Title>
+							<Definition>Kilovoltio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KWH:h"/>
+			<xsd:enumeration value="MWH:h"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoUnidadPrecio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista para identificar los precios unitarios</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="cEUR"/>
+			<xsd:enumeration value="cEUR:KWH"/>
+			<xsd:enumeration value="cEUR:KW"/>
+			<xsd:enumeration value="EUR"/>
+			<xsd:enumeration value="EUR:KWH"/>
+			<xsd:enumeration value="EUR:KW"/>
+			<xsd:enumeration value="EUR:MWH"/>
+			<xsd:enumeration value="EUR:MW"/>
+			<xsd:enumeration value="cEUR:H"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoValor">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de indisponibilidad</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Minimo Tecnico</Title>
+							<Definition>Minimo Tecnico</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Indisponibilidad</Title>
+							<Definition>Indisponibilidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Restricciones Fisicas</Title>
+							<Definition>Restricciones Fisicas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoLimitacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de limitacion que se impone</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 LPMI</Title>
+							<Definition>LPMI</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 LPMA</Title>
+							<Definition>LPMA</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoAgregacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista de codigos para distinguir la agregacion.</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Area</Title>
+							<Definition>El objeto descrito es un area.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Punto de medida</Title>
+							<Definition>El objeto descrito es un punto de medida.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A03 Participante</Title>
+							<Definition>El objeto descrito es un participante.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Generacion + Importacion</Title>
+							<Definition>Generacion + Importacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Bombeo</Title>
+							<Definition>Bombeo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Exportacion</Title>
+							<Definition>Exportacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Resto Demanda</Title>
+							<Definition>Resto Demanda</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoClasificacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista con los codigos de tipos de clasificacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Detalle</Title>
+							<Definition>Intercambios individuales entre cada dos entidades</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Resumen</Title>
+							<Definition>Valores agragados de los intercambios entre todas las entidades</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Programa Incremental Detalle</Title>
+							<Definition>Programa Incremental Detalle</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Programa Incremental Sumario</Title>
+							<Definition>Programa Incremental Sumario</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Agregado</Title>
+							<Definition>Agregado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Limites Zonales</Title>
+							<Definition>Limites Zonales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z21"/>
+			<xsd:enumeration value="Z25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoContrato">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista con los codigos de los tipos contrato</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A05 Total de subastas</Title>
+							<Definition>Suma de todos los tipos de contrato de capacidad para el periodo cubierto</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CA">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Contrato Asimilado para distribuidores</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CC">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Contrato entre comercializadores</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Contrato Nacional</Title>
+							<Definition/>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CI">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Contrato internacional</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CD">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Contrato Bilateral de Distribuidoras suministro a Tarifa</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Contrato Bilateral de Distribuidoras suministro a Tarifa</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ME">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Tipo de transaccion asociada a mercado no a un CBF</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GS">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Tipo de contrato de Garantia Suministro</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SD">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Tipo de contrato de Gas Siderúrgico</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IC">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition> Tipo de transaccion asociada al mercado intradiario continuo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoDivisible">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar la Indivisibilidad de las ofertas</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Divisible</Title>
+							<Definition>Oferta divisible</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Tramo horario Indivisible</Title>
+							<Definition>Tramo horario indivisible</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Oferta completa Indivisible</Title>
+							<Definition>Oferta completa Indivisible</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaEstIndiDesv">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el estado de una indisponibilidad</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Nueva Indisponibilidad</Title>
+							<Definition>Nueva Indisponibilidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Cambio de Inicio y Final</Title>
+							<Definition>Cambio de Inicio y Final</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Cambio de Fecha de Inicio</Title>
+							<Definition>Cambio de Fecha de Inicio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Cambio de Fecha de Fin</Title>
+							<Definition>Cambio de Fecha de Fin</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Cancelar la Indisponibilidad</Title>
+							<Definition>Cancelar la indisponibilidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoEtiqueta">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para las etiquetas (redespachos,mercado intradiario,desvios)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="21">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>21 UPOPVPV</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para UPO:Unidad con Programa Obligado.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="22">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>22 UPOTRT</Title>
+							<Definition>UPO en tiempo real resuelto con oferta de terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="23">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>23 UPOTROR</Title>
+							<Definition>UPO en tiempo real resuelto con oferta de restricciones.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="24">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>24 UPOMER</Title>
+							<Definition>UPO en tiempo real resuelto por el mecanismo excepcional de resolucion.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="25">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>25 UPOPVPB</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para incrementar la energia asociada a una transaccion de mercado de una UO de adquisicion de bombeo (reducir consumo de bombeo).</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="26">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>26 UPOPVPCBB</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para incrementar la energia asociada a un CB con entrega fisica de una UO de adquisicion de bombeo (reducir consumo de bombeo).</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="27">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>27 UPOPVPE</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para incrementar la energia asociada a una transaccion de mercado de una UO de adquisicion de exportacion (reducir exportacion).</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="28">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>28 UPOPVCBE</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para incrementar la energia asociada a un CB con entrega fisica de UPO: Unidad con Programa Obligado.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="29">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>29 UPOPVPMER</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para incrementar la energia programada de una UO de venta resuelto UPO:Unidad con Programa Obligado.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="30">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>30 UPLPVPCB</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para reducir la energia asociada a un contrato bilateral con entrega fisica de una unidad de venta.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="31">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>31 UPLPVPV</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad para reducir la energia asociada a una transaccion de mercado de una unidad de venta.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="32">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>32 UPLTRT</Title>
+							<Definition>UPL en tiempo real resuelto con oferta de terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="33">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>33 UPLTROR</Title>
+							<Definition>UPL en tiempo real resuelto con oferta de restricciones.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="34">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>34 UPLMER</Title>
+							<Definition>UPL en tiempo real resuelto por el mecanismo excepcional de resolucion							</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="35">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>35 UPLPVPCBN</Title>
+							<Definition>UPL reducir energia programada cont.bil.nac.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="36">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>36 UPOSB</Title>
+							<Definition>UPL reduccion programa exportacion a un cb por soluccion congestiones.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="37">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>37 UPLSB</Title>
+							<Definition>UPL reduccion programa importacion a un cb por soluccion congestiones.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="40">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>40 ECOPVP</Title>
+							<Definition>Redespacho asignado segun el orden de precedencia economica para la compensacion de los descuadres producidos por la programacion (UPOPVP o UPLPVP) de la resolucion de restricciones.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="41">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>41 ECORRPVP</Title>
+							<Definition>Redespacho asignado segun el orden de precedencia economica por el OM para retirar el exceso de intercambios en las interconexiones internacionales calculado por el OS dentro del proceso de resolucion de restricciones del PBF</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="42">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>42 ECOSCBSO</Title>
+							<Definition>Redespacho aplicado para incrementar la energia de una unidad de adquisicion asociada a un CB con entrega fisica en el proceso de reequilibrio de generacion-demanda ante una situacion de deficit de generacion en el caso de que la unidad, estando obligado a ello, no haya presentado la correspondiente oferta de energia a bajar para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="43">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>43 ECO</Title>
+							<Definition>Redespacho aplicado para incrementar/reducir la energia asociada a una transaccion de mercado en el proceso de reequilibrio de generacion-demanda en caso de que exista deficit/exceso de generacion, resuelto con ofertas de energia para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="44">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>44 ECOCB</Title>
+							<Definition>Redespacho aplicado para incrementar/reducir la energia asociada a un CB con entrega fisica en el proceso de reequilibrio de generacion-demanda en caso de que exista deficit/exceso de generacion, resuelto con ofertas de energia para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="45">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>45 ECOBSO</Title>
+							<Definition>Redespacho aplicado para reducir la energia asociada a una transaccion de mercado en el proceso de reequilibrio de generacion-demanda ante una situacion de exceso de generacion, en el caso de que la unidad, estando obligado a ello, no haya presntado la correspondiente oferta de energia a bajar para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="46">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>46 ECOSSO</Title>
+							<Definition>Redespacho  aplicado para incrementar la energia asociada a una transaccion de mercado en el proceso de reequilibrio de generacion-demanda ante una situacion de deficit de generacion en el caso de que la unidad, estando obligado a ello, no haya presentado la correspondiente oferta de energia a subir para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="47">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>47 ECOBCBSO</Title>
+							<Definition>Redespacho aplicado para reducir la energia de una unidad de venta asociada a un CB con entrega fisica en le proceso de reequilibrio de generacion-demanda ante una situacion de exceso de generacion en el caso de que la unidad, estando obligado a ello, no haya presentado la correspondiente oferta de energia a bajar para el proceso de resolucion de restricciones tecnicas.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="48">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>48 ECOMER</Title>
+							<Definition>Redespacho aplicado para reducir la energia en el proceso de reequilibrio de generacion-demanda ante una situacion de exceso de generacion resuelto por Mecanismo Excepcional de Resolucion.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="49">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>49 ECOCBV</Title>
+							<Definition>Redespacho aplicado en el proceso de reequilibrio de generacion-demanda para reducir la energia asociada a un CB con entrega fisica cuya demanda ha sido reducida en la fase 1.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="50">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>50 ECOSMER</Title>
+							<Definition>proceso de reequilibrio de generacion-demanda si existe deficit de generacion.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="51">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>51 RTOMI</Title>
+							<Definition>Redespacho aplicado por criterios de seguridad (retirada de ofertas de venta y/o adquisicion casadas en MI)..</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="52">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>52 ECOMI</Title>
+							<Definition>Redespacho aplicado en el proceso de reequilibrio generacion-demanda (retirada de ofertas de venta y/o adquisicion casadas en MI.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="61">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>61 DESV</Title>
+							<Definition>Redespacho por asignacion de ofertas para la resolucion de desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="63">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>63 SECROB</Title>
+							<Definition>Redespacho para obtencion de banda de regulacion secundaria gestionado en tiempo real por el OS</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="64">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>64 DESMER</Title>
+							<Definition>Redespacho asignado por el mecanismo excepcional de resolucion de desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="65">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>65 DESCOM1</Title>
+							<Definition>Redespacho por desvio comunicado al CECOEL.Vertido cierto.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="66">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>66 DESCOM2</Title>
+							<Definition>Redespacho por desvio comunicado al CECOEL.Desvio autorizado por el CECOEL</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="67">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>67 DESCOM3</Title>
+							<Definition>Redespacho por desvio comunicado al CECOEL.Desvio no autorizado por el CECOEL</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="68">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>68 DESCOM4</Title>
+							<Definition>Redespacho por desvio comunicado al CECOEL.Infactibilidad tecnica</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="69">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>69 INDIS</Title>
+							<Definition>Redespacho por indisponibilidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="73">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>73 SECMER</Title>
+							<Definition>Asignacion de banda de regulacion de secundaria gestionado por mecanismo excepcional de asignacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="81">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>81 TER</Title>
+							<Definition>Asignacion de terciaria.No aplican en este concepto los redespachos por resolucion de restricciones</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="82">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>82 TERMER</Title>
+							<Definition>Asignacion de terciaria por el mecanismo excepcional de asignacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="90">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>90 INTAPOY</Title>
+							<Definition>Intercambios internacionales de apoyo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="91">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>91 PEND</Title>
+							<Definition>Redespacho pendiente de calificar</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="92">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>92 ACCBAL</Title>
+							<Definition>Redespacho aplicado en accion coordinada de balance</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="93">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>93 NOAPLICMI</Title>
+							<Definition>Modificaciones de programas no gestionados en los M.I. debido a suspension de estas sesiones</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="99">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>99 DESCONOCIDO</Title>
+							<Definition>Redespacho desconocido</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoFuncion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar roles</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Responsable del balance</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Responsable de consumo</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A03 Combined power exchange</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A04 Operador del sistema</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A05 Responsable de liquidacion de desequilibrios</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A06 Responsable de produccion</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A07 Responsable de asignar capacidad de transmision</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A08 Responsable de Balance</Title>
+							<Definition>Referido a las definiciones del modelo de funciones de ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A11 Operador de Mercado</Title>
+							<Definition>Pendiente de definir por ETSO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Sistemas Internos</Title>
+							<Definition>Sistemas Internos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Organismo Regulador</Title>
+							<Definition>Organismo Regulador</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoPotenciaActiva">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Compensador sincrono</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>20% Entre el minimo y maximo tecnico.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>40% Entre el minimo y maximo tecnico.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>60% Entre el minimo y maximo tecnico.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>80% Entre el minimo y maximo tecnico.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>100% Entre el minimo y maximo tecnico.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Definition>Bomba</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoFlagSN">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar SI o NO</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="S">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> S: Indica Si</Title>
+							<Definition>La S indica "Si"</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="N">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> N: Indica No</Title>
+							<Definition>La N indica "No"</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoFlagCT">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar SI (Z02) o NO (Z01)</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> S: Indica Si (Z02)</Title>
+							<Definition>La S indica "Si" (Z02)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> N: Indica No (Z01)</Title>
+							<Definition>La N indica "No" (Z01)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoMensaje">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de mensaje</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 Programa del responsable de balance</Title>
+							<Definition>Programa preparado por un responsable de balance con la informacion del programa planificado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A02 Programa de capacidad asignada</Title>
+							<Definition>Programa preparado por el responsable de asignar capacidad con informacion sobre la capacidad asignada</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A03 Programa de area de balance</Title>
+							<Definition>Programa con la informacion planificada para un area</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A04 Programa de area de control</Title>
+							<Definition>Recopilacion de todos los programas externos entre dos areas de control </Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A05 Programa de area de bloque de control</Title>
+							<Definition>Recopilacion de todos los programas de intercambio de las areas de control de un bloque de control con todas las areas de control de un bloque de control vecino</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A06 Programa de area de centro de coordinacion</Title>
+							<Definition>Recopilacion de todos los programas de intercambio de todos los bloques de intercambio divididos en UCTE norte y sur</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A07 Informe de confirmacion intermedia</Title>
+							<Definition>Informe de confirmacion intermedio que puede ser generado entre cierres</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A08 Informe de confirmacion final</Title>
+							<Definition>Informe de confirmacion final producido al cierre de una ventana de tiempo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A09">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A09 Programa finalizado</Title>
+							<Definition>Recopilacion de los programas que han sido finalizados despues del cierre de una ventana de tiempo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A10">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A10 Informe de datos de regulacion</Title>
+							<Definition>Recopilacion de las series temporales empleadas durante un dia para garantizar el equilibrio del sistema</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A11 Informe de datos de energia agregada</Title>
+							<Definition>Recopilacion de todas las lecturas de medidas para un periodo de tiempo determinado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A13 Capacidad de Interconexion</Title>
+							<Definition>Capacidad de Interconexion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Demanda</Title>
+							<Definition>Demanda</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Prevision</Title>
+							<Definition>Prevision</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Desglose de UP de los Sujetos</Title>
+							<Definition>Desglose de UP de los Sujetos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Ajuste de desglose de UP realizados por el OM</Title>
+							<Definition>Ajuste de desglose de UP realizados por el OM</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Datos estructurales de UP</Title>
+							<Definition>Datos estructurales de UP</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z06 Datos estructurales de UF</Title>
+							<Definition>Datos estructurales de UF</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z10">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z10 Redespachos por restricciones OM</Title>
+							<Definition>Redespachos por restricciones OM</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z11 Redespachos por restricciones OS</Title>
+							<Definition>Redespachos por restricciones OS</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z12">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z12 Redespachos por restricciones con precios</Title>
+							<Definition>Redespachos por restricciones con precios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z13 Asignaciones de desvios</Title>
+							<Definition>Asignaciones de desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z14">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z14 Asignaciones de terciaria</Title>
+							<Definition>Asignaciones de terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z15">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z15 Asignaciones de capacidad de interconexion</Title>
+							<Definition>Asignaciones de capacidad de interconexion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z16">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z16 Redespachos que generan desvios</Title>
+							<Definition>Redespachos que generan desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z17">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z17 Asignaciones Intradiario</Title>
+							<Definition>Asignaciones Intradiario</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z18">
+				<xsd:annotation>
+					<xsd:documentation>
+
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z20">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z20 Limitaciones</Title>
+							<Definition>Limitaciones</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z21">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z21 Restricciones tecnicas</Title>
+							<Definition>Restricciones tecnicas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z22">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z22 Restricciones tecnicas por sujeto</Title>
+							<Definition>Restricciones tecnicas por sujeto</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z23">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z23 Exceso en los intercambios</Title>
+							<Definition>Exceso en los intercambios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z24">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z24 Energia total de regulacion secundaria utilizada</Title>
+							<Definition>Energia total de regulacion secundaria utilizada</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z25">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z25 Asignacion Banda Secundaria</Title>
+							<Definition>Asignacion Banda Secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z26">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z26 Desasignacion Banda Secundaria en TR</Title>
+							<Definition>Desasignacion de Banda Secundaria en Tiempo Real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z27">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z27 Restitucion Banda Secundaria en TR</Title>
+							<Definition>Restitucion de Banda Secundaria en Tiempo Real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z28">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z28 Asignacion Banda Secundaria por MER</Title>
+							<Definition>Asignacion de Banda Secundaria por aplicacion del mecanismo excepcional de resolucion (MER)</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z30">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z30 Precios Secundaria</Title>
+							<Definition>Precios Secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z31">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z31 Precios Desvios</Title>
+							<Definition>Precios Desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z32">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z32 Precios Terciaria</Title>
+							<Definition>Precios Terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z33">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z33 Precios Energia</Title>
+							<Definition>Precios Energia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z40">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z40 Anulacion horas desvios</Title>
+							<Definition>Anulacion horas desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z41">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z41 Anulacion horas intradiario OM</Title>
+							<Definition> Anulacion horas intradiario OM</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z42">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z42 Anulacion horas intradiario OS</Title>
+							<Definition> Anulacion horas intradiario OS</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z43">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z43 Datos de embalse</Title>
+							<Definition>Datos de embalse</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z44">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z44 Datos de produccion mensual</Title>
+							<Definition>Datos de produccion mensual</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z45">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z45 Contratos Bilaterales</Title>
+							<Definition>Contratos Bilaterales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z46">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z46 Anulacion horas Secundaria</Title>
+							<Definition>Anulacion del Mercado de Secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z50">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z50 Contraparte internacional</Title>
+							<Definition>Contraparte internacional</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z60">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z60 PDBC</Title>
+							<Definition>Programa Basico de casacion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z61">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z61 PDBF</Title>
+							<Definition>Programa Basico Final</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z62">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z62 PIBCA</Title>
+							<Definition>Asignacion agregada del intradiario</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z63">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z63 PDVD</Title>
+							<Definition>Programa Diario Viable Definitivo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z64">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z64 PDVP</Title>
+							<Definition>Programa Diario Viable Provisional</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z65">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z65 PHF</Title>
+							<Definition>Programa Horario Final</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z66">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z66 P48CIERRE</Title>
+							<Definition>Programa horario al cierre</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z67">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z67 PHO(P48)</Title>
+							<Definition>Programa horario</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z68">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z68 PROGRAFRONTCIERRE</Title>
+							<Definition>Programa en las fronteras al cierre</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z70">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z70 Requerimiento banda secundaria</Title>
+							<Definition>Requerimiento banda secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z71">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z71 Requerimiento terciaria</Title>
+							<Definition>Requerimiento terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z72">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z72 Requerimiento desvios</Title>
+							<Definition>Requerimiento desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z73">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z73 Mensaje sin procesamiento</Title>
+							<Definition>Mensaje sin procesamiento</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z90">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z90 Ofertas de secundaria</Title>
+							<Definition>Ofertas de secundaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z91">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z91 Ofertas de terciaria</Title>
+							<Definition>Ofertas de terciaria</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z92">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z92 Ofertas de desvios</Title>
+							<Definition>Ofertas de desvios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z93">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z93 Cabecera de ofertas de energia</Title>
+							<Definition>Cabecera de ofertas de energia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z94">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z94 Detalle de ofertas de energia</Title>
+							<Definition>Detalle de ofertas de energia</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z95">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z95 Orden de Merito</Title>
+							<Definition>Orden de merito</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z96">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z96 Ofertas de bilaterales de capacidad</Title>
+							<Definition>Ofertas de bilaterales de capacidad</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z97">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z97 Ofertas de restricciones</Title>
+							<Definition>Ofertas de restricciones</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z98">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z98 Ofertas de bilaterales</Title>
+							<Definition>Ofertas de bilaterales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z99">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z99 Saldo de bilaterales</Title>
+							<Definition>Saldo de Bilaterales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoNecesidadRedespacho">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar tipos de necesidad del redespacho</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Restr. Nacionales e Internacionales</Title>
+							<Definition>Restricciones Nacionales e Internacionales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Restr. Internacionales</Title>
+							<Definition>Restricciones Internacionales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Restr. Nacionales</Title>
+							<Definition>Restricciones Nacionales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Indisponibilidades</Title>
+							<Definition>Indisponibilidades</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoFuncionamiento">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el modo de funcionamiento de un generador</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> B: Bomba</Title>
+							<Definition>Bomba</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> C: Compensador sincrono</Title>
+							<Definition>Compensador sincrono</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> G: Generador</Title>
+							<Definition>Generador</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoInformacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de informacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Declaracion de capacidad de los sujetos</Title>
+							<Definition>Declaracion de capacidad de los sujetos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Declaracion compensador sincrono</Title>
+							<Definition>Declaracion compensador sincrono</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Asignaciones para los sujetos</Title>
+							<Definition>Asignaciones para los sujetos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Consignas para los sujetos</Title>
+							<Definition>Consignas para los sujetos</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Medidas SCE</Title>
+							<Definition>Medidas SCE</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z06 Control y medida del servicio</Title>
+							<Definition>Control y medida del servicio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z07 Retribucion del servicio</Title>
+							<Definition>Retribucion del servicio</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z08 Instrucciones MER</Title>
+							<Definition>Instrucciones MER</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z09">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z09 Declaracion de capacidad para el ARO</Title>
+							<Definition>Declaracion de capacidad para el ARO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z10">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z10 Asignaciones que hace el ARO</Title>
+							<Definition>Asignaciones que hace el ARO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z11">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z11 Consignas calculadas por el ARO</Title>
+							<Definition>Consignas calculadas por el ARO</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z12">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z12 Datos estructurales UPS</Title>
+							<Definition>Datos estructurales UPS</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z13">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z13 Datos estructurales Generador</Title>
+							<Definition>Datos estructurales Generador</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z14">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z14 Medidas SIMEL</Title>
+							<Definition>Medidas SIMEL</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoNudo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de nudo</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Nudos tipo N1</Title>
+							<Definition>Nudos tipo N1</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Nudos tipo N3</Title>
+							<Definition>Nudos tipo N3</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Nudos tipo N4</Title>
+							<Definition>Nudos tipo N4</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoPeriodoHorario">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para las tipos de periodo horario</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="P">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> P: Punta</Title>
+							<Definition>Horario punta</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> V: Valle</Title>
+							<Definition>Horario valle</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="L">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> L: Llano</Title>
+							<Definition>Horario llano</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoEstadoEquipo">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el estado del equipo de medida</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> 0: Desacoplado</Title>
+							<Definition>Desacoplado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> 1: Acoplado</Title>
+							<Definition>Acoplado</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoDeclaracion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de declaracion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> A: Adicional</Title>
+							<Definition>Declaracion adicional</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="R">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> R: Relajados</Title>
+							<Definition>Declaracion relajada</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoCalidadPunto">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista de valores posibles para la calidad del punto (en Liquicierre).</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Calcul">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> Calcul: Para contadores</Title>
+							<Definition>Para contadores</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Schedule">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> Schedule: Para las reservas</Title>
+							<Definition>Para las reservas</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Substi">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title> Substi: Para sustitucion manual</Title>
+							<Definition>Sustitucion manual</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoHorizonte">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar el tipo de horizonte</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Periodo normal</Title>
+							<Definition>Mensaje enviado en periodo normal de recepcion</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z03">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z03 Resultado provisional</Title>
+							<Definition>Resultado provisional</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z04">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z04 Resultado definitivo</Title>
+							<Definition>Resultado definitivo</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z05">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z05 Datos en tiempo real</Title>
+							<Definition>Datos en tiempo real</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z06">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z06 Datos anuales</Title>
+							<Definition>Datos anuales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z07">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z07 Datos diarios</Title>
+							<Definition>Datos diarios</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z08">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z08 Datos muestrales</Title>
+							<Definition>Datos muestrales</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoCodificacion">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Atributo Codificacion</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>A01 ETSO (Preferred)</Title>
+							<Definition/>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NES">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>NES Codigo local nacional</Title>
+							<Definition/>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoFactorPotencia">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Factor Potencia</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="A1"/>
+			<xsd:enumeration value="A2"/>
+			<xsd:enumeration value="B1"/>
+			<xsd:enumeration value="B2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoDesvio">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Lista para identificar los tipos de desvio</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="65"/>
+			<xsd:enumeration value="66"/>
+			<xsd:enumeration value="67"/>
+			<xsd:enumeration value="68"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoSentido">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Codigos para identificar si una cantidad oferta a subir o a bajar</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="Z01">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z01 Sentido subir</Title>
+							<Definition>Sentido subir</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z02">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>Z02 Sentido bajar</Title>
+							<Definition>Sentido bajar</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoElementTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Element de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Area   V"/>
+			<xsd:enumeration value="ZonCRM2V"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="COEFPAR">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>COEFPAR</Title>
+							<Definition>Coeficiente de participacion de la zona.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCACTV">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCACTV</Title>
+							<Definition>Numero de ciclos en que la zona ha estado ACTIV.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCEMER">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCEMER</Title>
+							<Definition>Numero de ciclos en que la zona ha estado EMER.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCINAC">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCINAC</Title>
+							<Definition>Numero de ciclos en que la zona ha estado INAC.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCOFF">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCOFF</Title>
+							<Definition>Numero de ciclos en que la zona ha estado OFF.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCOFFR">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCOFFR</Title>
+							<Definition>Numero de ciclos en que la zona ha estado OFF por orden de REE.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NGDSUM">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>NGDSUM</Title>
+							<Definition>Integral del desvio de generacion. Ciclos que la zona ha estado ACTIV o EMER en el sentido que pedia la regulacion.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NGDSIN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>NGDSIN</Title>
+							<Definition>Integral del desvio de generacion. Ciclos que la zona ha estado INAC por un periodo de tiempo inferior a 1 minuto.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RESNDW">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RESNDW</Title>
+							<Definition>Reserva nominal a bajar (solo para REE). En MW.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RESNUP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RESNUP</Title>
+							<Definition>Reserva nominal a subir (solo para REE). En MW.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TCALON">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>TCALON</Title>
+							<Definition>Numero de ciclos que la regulacion ha estado activa en esa hora (en general 900 ciclos de 4s).</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRSP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRSP</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRSN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRSN</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRBP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRBP</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRBN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRBN</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoNormElementTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Element</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="40"/>
+			<xsd:enumeration value="42"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoNumInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Info</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="41">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>41</Title>
+							<Definition>Coeficiente de participacion de la zona.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="64">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>64</Title>
+							<Definition>Numero de ciclos en que la zona ha estado ACTIV.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="65">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>65</Title>
+							<Definition>Numero de ciclos en que la zona ha estado EMER.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="66">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>66</Title>
+							<Definition>Numero de ciclos en que la zona ha estado INAC.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="67">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>67</Title>
+							<Definition>Numero de ciclos en que la zona ha estado OFF.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="68">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>68</Title>
+							<Definition>Numero de ciclos en que la zona ha estado OFF por orden de REE.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="116">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>116</Title>
+							<Definition>Integral del desvio de generacion. Ciclos que la zona ha estado ACTIV o EMER en el sentido que pedia la regulacion.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="118">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>118</Title>
+							<Definition>Integral del desvio de generacion. Ciclos que la zona ha estado INAC por un periodo de tiempo inferior a 1 minuto.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="511">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>511</Title>
+							<Definition>Reserva nominal a bajar (solo para REE). En MW.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="509">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>509</Title>
+							<Definition>Reserva nominal a subir (solo para REE). En MW.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="522">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>522</Title>
+							<Definition>Numero de ciclos que la regulacion ha estado activa en esa hora (en general 900 ciclos de 4s).</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="142">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>142</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="143">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>143</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="144">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>144</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="145">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>145</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoTotalInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Campo Info de la TA</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="RMRSP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRSP</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRSN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRSN</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRBP">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRBP</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RMRBN">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>RMRBN</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VCFO">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>VCFO</Title>
+							<Definition>Penalizacion de la zona agregada debida a ciclos en OFF.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--_________________________________________________-->
+	<xsd:simpleType name="ListaTipoTotalNumInfoTA">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Definition>Numero asociado al campo Info</Definition>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="142">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>142</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="143">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>143</Title>
+							<Definition>Reserva residual a subir de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="144">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>144</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido superior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="145">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>145</Title>
+							<Definition>Reserva residual a bajar de la zona en los ciclos en que esta haya sido inferior a su reserva asignada.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="146">
+				<xsd:annotation>
+					<xsd:documentation>
+						<CodeDescription>
+							<Title>146</Title>
+							<Definition>Penalizacion de la zona agregada debida a ciclos en OFF.</Definition>
+						</CodeDescription>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
