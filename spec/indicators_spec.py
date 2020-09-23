@@ -332,7 +332,7 @@ with description('Indicators file'):
                 equal(u'Com. Libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente servicio interrumpibilidad contratación libre')
+                contain(u'Precio medio horario componente servicio de interrumpibilidad contratación libre')
             )
 
         with it('Returns mhpInterruptibilityService instance'):
@@ -342,10 +342,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpInterruptibilityService)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Servicio interrumpibilidad')
+                equal(u'Servicio de interrumpibilidad')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente servicio interrumpibilidad ')
+                contain(u'Precio medio horario componente servicio de interrumpibilidad ')
             )
         with it('Returns mhpPowerFactorControlFree instance'):
             #1286
