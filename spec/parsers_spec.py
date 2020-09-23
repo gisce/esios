@@ -2,7 +2,7 @@
 from expects.testing import failure
 from expects import *
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 import json
@@ -22,14 +22,16 @@ def validate_json(result):
     data = json.loads(result)
 
     expect(data).to(be_a(list))
-    expect(len(data)).to(be_above(23))
+    expect(len(data)).to(be_above(22))
     expect(data[0]).to(be_a(dict))
     expect(data[0]).to(
         have_keys('hour', 'up', 'value', 'cierre', 'utc_timestamp', 'local_timestamp')
     )
     for register in data:
         # validate timestamps
-        local_ts = LOCAL_TZ.localize(datetime.strptime(register['local_timestamp'].split('+')[0], '%Y-%m-%d %H:%M:%S'))
+        local_datetime, local_offset = register['local_timestamp'].split('+')
+        is_dst = local_offset != '01:00'
+        local_ts = LOCAL_TZ.localize(datetime.strptime(local_datetime, '%Y-%m-%d %H:%M:%S'), is_dst=is_dst)
         utc_ts = UTC_TZ.localize(datetime.strptime(register['utc_timestamp'], '%Y-%m-%d %H:%M:%S+00:00'))
         expect(register['local_timestamp']).to_not(equal(register['utc_timestamp']))
         expected_local_ts = LOCAL_TZ.normalize(utc_ts.astimezone(LOCAL_TZ))
@@ -45,8 +47,8 @@ def validate_data(result, start, end, cierre=None):
     max_date = max([d['local_timestamp'] for d in data])
     min_date = min([d['local_timestamp'] for d in data])
 
-    expect(min_date).to(equal(str(LOCAL_TZ.localize(start))))
-    expect(max_date).to(equal(str(LOCAL_TZ.localize(end))))
+    expect(min_date).to(equal(str(start)))
+    expect(max_date).to(equal(str(end)))
 
     if cierre is not None:
         for c in data:
@@ -73,8 +75,12 @@ with description('Esios Parsers'):
                 parser = P48CierreParser(self.e)
 
                 today = datetime.now()
-                start = today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(days=1)
-                end = today.replace(hour=23, minute=59, second=59, microsecond=0)
+                start = LOCAL_TZ.localize(
+                    today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(days=1)
+                )
+                end = LOCAL_TZ.localize(
+                    today.replace(hour=23, minute=59, second=59, microsecond=0)
+                )
 
                 result = parser.get_data_json('SOMEC01', start, end)
 
@@ -119,7 +125,9 @@ with description('Esios Parsers'):
                 result = parser.get_data_json_from_file('SOMEC01', 'spec/data/p48cierre_20200915.xml')
 
                 validate_json(result)
-                validate_data(result, datetime(2020, 9, 15, 1, 0), datetime(2020, 9, 16, 0, 0), True)
+                validate_data(
+                    result, LOCAL_TZ.localize(datetime(2020, 9, 15, 1, 0)), LOCAL_TZ.localize(datetime(2020, 9, 16, 0, 0), True)
+                )
 
 
             with it('gets a p48 xml file and may be parsed as json'):
@@ -127,4 +135,30 @@ with description('Esios Parsers'):
                 result = parser.get_data_json_from_file('SOMEC01', 'spec/data/p48_2020091618.xml')
 
                 validate_json(result)
-                validate_data(result, datetime(2020, 9, 17, 1, 0), datetime(2020, 9, 18, 0, 0), False)
+                validate_data(
+                    result, LOCAL_TZ.localize(datetime(2020, 9, 17, 1, 0)), LOCAL_TZ.localize(datetime(2020, 9, 18, 0, 0), False)
+                )
+
+            with it('gets 25 registers for a p48cierre xml file from October saving time day'):
+                parser = P48CierreParser(self.e)
+                result = parser.get_data_json_from_file('SOMEC01', 'spec/data/p48cierre_20191027.xml')
+
+                validate_json(result)
+                validate_data(
+                    result, LOCAL_TZ.localize(datetime(2019, 10, 27, 1, 0)), LOCAL_TZ.localize(datetime(2019, 10, 28, 0, 0)), True
+                )
+                data = json.loads(result)
+                expect(len(data)).to(equal(25))
+
+            with it('gets 23 registers for a p48cierre xml file from March saving time day'):
+                parser = P48CierreParser(self.e)
+                result = parser.get_data_json_from_file('SOMEC01', 'spec/data/p48cierre_20200329.xml')
+
+                validate_json(result)
+                validate_data(
+                    result, LOCAL_TZ.localize(datetime(2020, 3, 29, 1, 0)), LOCAL_TZ.localize(datetime(2020, 3, 30, 0, 0)), True
+                )
+
+                data = json.loads(result)
+                print(data)
+                expect(len(data)).to(equal(23))
