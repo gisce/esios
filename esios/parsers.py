@@ -13,7 +13,9 @@ from pytz import timezone
 
 from .archives import P48Cierre
 
-XSD_PATH = os.path.join('esios', 'data')
+_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+XSD_PATH = os.path.join(_ROOT, 'data')
 CIERRE_XSD = 'P48Cierre-esios-MP.xsd'
 PROVISIONAL_XSD = 'P48-esios-MP.xsd'
 
