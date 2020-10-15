@@ -40,6 +40,10 @@ class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
 
 
+class ProfilePVPC30A(ProfilePVPC):
+    path = 'indicators/531'
+
+
 class PricePVPC(Indicator):
     pass
 

@@ -52,6 +52,12 @@ class Esios(base.Resource):
         """
         return indicators.ProfilePVPC20DHS(self)
 
+    @base.resource(indicators.ProfilePVPC30A)
+    def get_pvpc_30A(self):
+        """Get the profiles to invoice PVPC for 3.0A
+        """
+        return indicators.ProfilePVPC30A(self)
+
     @base.resource(indicators.LinkBalanceMorocco)
     def link_balance_morocco(self):
         """Morocco interconnection balance real time measurements."""
