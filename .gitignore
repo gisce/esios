@@ -35,4 +35,7 @@ nosetests.xml
 .project
 .pydevproject
 
+# pycharm
+.idea
+
 docs/_build
