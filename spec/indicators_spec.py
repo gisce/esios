@@ -322,6 +322,18 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente saldo P.O.14.6 ')
             )
+        with it('Returns PriceMedioAnualMercadoDiario'):
+            #961
+            e = Esios(self.token)
+            profile = PriceMedioAnualMercadoDiario(e)
+            assert isinstance(profile, PriceMedioAnualMercadoDiario)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'mercado diario')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio anual componente mercado diario')
+            )
         with it('Returns mhpInterruptibilityServiceFree instance'):
             #1276
             e = Esios(self.token)

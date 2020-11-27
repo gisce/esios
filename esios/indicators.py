@@ -100,6 +100,10 @@ class mhpPO146Balance(Indicator):
     path = 'indicators/815'
 
 
+class PriceMedioAnualMercadoDiario(Indicator):
+    path = 'indicators/961'
+
+
 class mhpInterruptibilityServiceFree(Indicator):
     path = 'indicators/1276'
 
