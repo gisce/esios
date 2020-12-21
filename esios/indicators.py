@@ -84,6 +84,14 @@ class mhpRealTimeRestrictions(Indicator):
     path = 'indicators/807'
 
 
+class mhpIntraDailyMarket(Indicator):
+    path = 'indicators/808'
+
+
+class mhpIntradailyMarketRestrictions(Indicator):
+    path = 'indicators/809'
+
+
 class mhpAdditionalPowerReservation(Indicator):
     path = 'indicators/810'
 
@@ -92,12 +100,24 @@ class mhpSecondaryBand(Indicator):
     path = 'indicators/811'
 
 
+class mhpMeasuredDsv(Indicator):
+    path = 'indicators/812'
+
+
 class mhpDesviationsBalance(Indicator):
     path = 'indicators/813'
 
 
+class mhpCapPayments(Indicator):
+    path = 'indicators/814'
+
+
 class mhpPO146Balance(Indicator):
     path = 'indicators/815'
+
+
+class mhpUpgNomination(Indicator):
+    path = 'indicators/816'
 
 
 class PriceMedioAnualMercadoDiario(Indicator):
@@ -122,6 +142,10 @@ class mhpPowerFactorControl(Indicator):
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
+
+
+class mhpEnergyBalanceInc(Indicator):
+    path = 'indicators/1368'
 
 
 class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
