@@ -207,6 +207,27 @@ with description('Indicators file'):
         # Commented till a month is complete
         # expect(len(data['indicator']['values'])).to(equal(721))
 
+    with it('Returns a valid ProfilePVPC20TD'):
+        e = Esios(self.token)
+        profiles = ProfilePVPC20TD(e)
+        assert isinstance(profiles, ProfilePVPC20TD)
+        data = profiles.get(
+            self.tz.localize(datetime(2021, 6, 1, 0, 0)),
+            self.tz.localize(datetime(2021, 6, 30, 23, 59)),
+        )
+        expect(data['indicator']['short_name']).to(
+            equal(u'Tarifa 2.0TD')
+        )
+        expect(data['indicator']['name']).to(
+            contain(u'Perfiles de consumo a efectos de facturación del PVPC Tarifa 2.0TD')
+        )
+        expect(dateutil.parser.parse(
+            data['indicator']['values'][0]['datetime']
+        ).hour).to(equal(0))
+
+        # Commented till a month is complete
+        # expect(len(data['indicator']['values'])).to(equal(721))
+
     with context('LinkBalanceMorocco'):
         with it('Returns LinkBalanceMorocco instance'):
             e = Esios(self.token)
