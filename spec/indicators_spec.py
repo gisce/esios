@@ -205,7 +205,7 @@ with description('Indicators file'):
         ).hour).to(equal(0))
 
         # Commented till a month is complete
-        # expect(len(data['indicator']['values'])).to(equal(721))
+        expect(len(data['indicator']['values']) / 5).to(equal(721))  # there are 5 different subsystems for each hour
 
     with it('Returns a valid ProfilePVPC20TD'):
         e = Esios(self.token)
@@ -226,7 +226,7 @@ with description('Indicators file'):
         ).hour).to(equal(0))
 
         # Commented till a month is complete
-        # expect(len(data['indicator']['values'])).to(equal(721))
+        expect(len(data['indicator']['values']) / 5).to(equal(721))  # there are 5 different subsystems for each hour
 
     with context('LinkBalanceMorocco'):
         with it('Returns LinkBalanceMorocco instance'):
