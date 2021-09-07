@@ -68,8 +68,32 @@ class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
 
 
+class pmh_pbf_free_RT3(Indicator):
+    path = 'indicators/793'
+
+
+class pmh_tiempo_real_free_RT4(Indicator):
+    path = 'indicators/794'
+
+
+class pmh_intradiario_free_RT6(Indicator):
+    path = 'indicators/796'
+
+
+class pmh_res_pot_sub_free_PS3(Indicator):
+    path = 'indicators/797'
+
+
+class pmh_bs_free_BS3(Indicator):
+    path = 'indicators/798'
+
+
 class mhpMeasuredDeviationsFree(Indicator):
     path = 'indicators/799'
+
+
+class pmh_saldo_desv_free_EXD(Indicator):
+    path = 'indicators/800'
 
 
 class mhpPO146BalanceFree(Indicator):
