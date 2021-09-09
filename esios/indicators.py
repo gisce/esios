@@ -72,11 +72,11 @@ class pmh_pbf_free_RT3(Indicator):
     path = 'indicators/793'
 
 
-class pmh_tiempo_real_free_RT4(Indicator):
+class pmh_tiempo_real_free_RT6(Indicator):
     path = 'indicators/794'
 
 
-class pmh_intradiario_free_RT6(Indicator):
+class pmh_intradiario_free_RT4(Indicator):
     path = 'indicators/796'
 
 

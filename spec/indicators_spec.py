@@ -255,12 +255,12 @@ with description('Indicators file'):
                 contain(u'Precio medio horario componente restricciones PBF contrataci\xf3n libre')
             )
 
-    with context('RT4 Free'):
-        with it('Returns pmh_tiempo_real_free_RT4 instance'):
+    with context('RT6 Free'):
+        with it('Returns pmh_tiempo_real_free_RT6 instance'):
             # 794
             e = Esios(self.token)
-            profile = pmh_tiempo_real_free_RT4(e)
-            assert isinstance(profile, pmh_tiempo_real_free_RT4)
+            profile = pmh_tiempo_real_free_RT6(e)
+            assert isinstance(profile, pmh_tiempo_real_free_RT6)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
                 equal(u'Com. Libre')
@@ -269,12 +269,12 @@ with description('Indicators file'):
                 contain(u'Precio medio horario componente restricciones tiempo real contrataci\xf3n libre')
             )
 
-    with context('RT6 Free'):
-        with it('Returns pmh_intradiario_free_RT6 instance'):
+    with context('RT4 Free'):
+        with it('Returns pmh_intradiario_free_RT4 instance'):
             # 796
             e = Esios(self.token)
-            profile = pmh_intradiario_free_RT6(e)
-            assert isinstance(profile, pmh_intradiario_free_RT6)
+            profile = pmh_intradiario_free_RT4(e)
+            assert isinstance(profile, pmh_intradiario_free_RT4)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
                 equal(u'Com. Libre')
