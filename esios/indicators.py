@@ -68,6 +68,10 @@ class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
 
 
+class pmd_snp(Indicator):
+    path = 'indicators/573'
+
+
 class pmh_pbf_free_RT3(Indicator):
     path = 'indicators/793'
 

@@ -241,6 +241,20 @@ with description('Indicators file'):
                 contain(u'Saldo horario neto de interconexión con Marruecos telemedidas')
             )
 
+    with context('PMDSNP'):
+        with it('Returns pmd_snp instance'):
+            # 573
+            e = Esios(self.token)
+            profile = pmd_snp(e)
+            assert isinstance(profile, pmd_snp)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Precio medio demanda sistema')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio de la demanda en los SNP por sistema')
+            )
+
     with context('RT3 Free'):
         with it('Returns pmh_pbf_free_RT3 instance'):
             # 793
