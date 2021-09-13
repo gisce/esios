@@ -147,6 +147,11 @@ with description('Indicators file'):
 
             expect(len(data['indicator']['values'])).to(equal(745))
 
+        with it('Returns PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada instance'):
+            e = Esios(self.token)
+            prices = PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(e)
+            assert isinstance(prices, PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada)
+
         with it('Returns a valid PricePVPC20A Winter-Summer'):
             e = Esios(self.token)
             prices = PricePVPC20A(e)
@@ -181,6 +186,48 @@ with description('Indicators file'):
 
             expect(len(data['indicator']['values'])).to(equal(743))
 
+    with it('Returns a valid PricePVPC20TD'):
+        e = Esios(self.token)
+        prices = PricePVPC20TD(e)
+        assert isinstance(prices, PricePVPC20TD)
+        data = prices.get(
+            self.tz.localize(datetime(2021, 6, 1, 0, 0)),
+            self.tz.localize(datetime(2021, 6, 30, 23, 59)),
+        )
+        expect(data['indicator']['short_name']).to(
+            equal(u'PVPC T. 2.0TD')
+        )
+        expect(data['indicator']['name']).to(
+            contain(u'Término de facturación')
+        )
+        expect(dateutil.parser.parse(
+            data['indicator']['values'][0]['datetime']
+        ).hour).to(equal(0))
+
+        # Commented till a month is complete
+        expect(len(data['indicator']['values']) / 5).to(equal(720))  # there are 5 different subsystems for each hour
+
+    with it('Returns a valid ProfilePVPC20TD'):
+        e = Esios(self.token)
+        profiles = ProfilePVPC20TD(e)
+        assert isinstance(profiles, ProfilePVPC20TD)
+        data = profiles.get(
+            self.tz.localize(datetime(2021, 6, 1, 0, 0)),
+            self.tz.localize(datetime(2021, 6, 30, 23, 59)),
+        )
+        expect(data['indicator']['short_name']).to(
+            equal(u'Tarifa 2.0TD')
+        )
+        expect(data['indicator']['name']).to(
+            contain(u'Perfiles de consumo a efectos de facturación del PVPC Tarifa 2.0TD')
+        )
+        expect(dateutil.parser.parse(
+            data['indicator']['values'][0]['datetime']
+        ).hour).to(equal(0))
+
+        # Commented till a month is complete
+        expect(len(data['indicator']['values']) / 5).to(equal(720))  # there are 5 different subsystems for each hour
+
     with context('LinkBalanceMorocco'):
         with it('Returns LinkBalanceMorocco instance'):
             e = Esios(self.token)
@@ -194,7 +241,116 @@ with description('Indicators file'):
                 contain(u'Saldo horario neto de interconexión con Marruecos telemedidas')
             )
 
+    with context('PMDSNP'):
+        with it('Returns pmd_snp instance'):
+            # 573
+            e = Esios(self.token)
+            profile = pmd_snp(e)
+            assert isinstance(profile, pmd_snp)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Precio medio demanda sistema')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio de la demanda en los SNP por sistema')
+            )
+
+    with context('RT3 Free'):
+        with it('Returns pmh_pbf_free_RT3 instance'):
+            # 793
+            e = Esios(self.token)
+            profile = pmh_pbf_free_RT3(e)
+            assert isinstance(profile, pmh_pbf_free_RT3)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente restricciones PBF contrataci\xf3n libre')
+            )
+
+    with context('RT6 Free'):
+        with it('Returns pmh_tiempo_real_free_RT6 instance'):
+            # 794
+            e = Esios(self.token)
+            profile = pmh_tiempo_real_free_RT6(e)
+            assert isinstance(profile, pmh_tiempo_real_free_RT6)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente restricciones tiempo real contrataci\xf3n libre')
+            )
+
+    with context('RT4 Free'):
+        with it('Returns pmh_intradiario_free_RT4 instance'):
+            # 796
+            e = Esios(self.token)
+            profile = pmh_intradiario_free_RT4(e)
+            assert isinstance(profile, pmh_intradiario_free_RT4)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente restricciones intradiario contrataci\xf3n libre')
+            )
+
+    with context('PS3 Free'):
+        with it('Returns pmh_res_pot_sub_free_PS3 instance'):
+            # 797
+            e = Esios(self.token)
+            profile = pmh_res_pot_sub_free_PS3(e)
+            assert isinstance(profile, pmh_res_pot_sub_free_PS3)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente reserva de potencia adicional a subir contrataci\xf3n libre')
+            )
+
+    with context('BS3 Free'):
+        with it('Returns pmh_bs_free_BS3 instance'):
+            # 798
+            e = Esios(self.token)
+            profile = pmh_bs_free_BS3(e)
+            assert isinstance(profile, pmh_bs_free_BS3)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente banda secundaria contrataci\xf3n libre')
+            )
+
     with context('Medium Hourly Price Components'):
+        with it('Returns mhpMeasuredDeviationsFree'):
+            #799
+            # equivalent to grcosdnc Coste Desvios (9th field)
+            e = Esios(self.token)
+            profile = mhpMeasuredDeviationsFree(e)
+            assert isinstance(profile, mhpMeasuredDeviationsFree)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente desvíos medidos contratación libre')
+            )
+        with it('Returns pmh_saldo_desv_free_EXD'):
+            #800
+            e = Esios(self.token)
+            profile = pmh_saldo_desv_free_EXD(e)
+            assert isinstance(profile, pmh_saldo_desv_free_EXD)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente saldo de desv\xedos contrataci\xf3n libre')
+            )
         with it('Returns mhpPO146SaldoFree'):
             #802
             e = Esios(self.token)
@@ -256,6 +412,30 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente restricciones tiempo real ')
             )
+        with it('Returns mhpIntraDailyMarket instance'):
+            #808
+            e = Esios(self.token)
+            profile = mhpIntraDailyMarket(e)
+            assert isinstance(profile, mhpIntraDailyMarket)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mercado intradiario (subastas MIBEL y continuo)')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente mercado intradiario ')
+            )
+        with it('Returns mhpIntradailyMarketRestrictions instance'):
+            #809
+            e = Esios(self.token)
+            profile = mhpIntradailyMarketRestrictions(e)
+            assert isinstance(profile, mhpIntradailyMarketRestrictions)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Restricciones Intradiario')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente restricciones intradiario ')
+            )
         with it('Returns mhpAdditionalPowerReservation instance'):
             #810
             e = Esios(self.token)
@@ -280,6 +460,18 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente banda secundaria ')
             )
+        with it('Returns mhpMeasuredDsv instance'):
+            #812
+            e = Esios(self.token)
+            profile = mhpMeasuredDsv(e)
+            assert isinstance(profile, mhpMeasuredDsv)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desv\xedos Medidos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente desv\xedos medidos ')
+            )
         with it('Returns mhpDesviationsBalance instance'):
             #813
             e = Esios(self.token)
@@ -291,6 +483,18 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente saldo de desvíos ')
+            )
+        with it('Returns mhpCapPayments instance'):
+            #814
+            e = Esios(self.token)
+            profile = mhpCapPayments(e)
+            assert isinstance(profile, mhpCapPayments)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Pagos por capacidad')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente pago de capacidad ')
             )
         with it('Returns mhpPO146Balance'):
             #815
@@ -304,6 +508,30 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente saldo P.O.14.6 ')
             )
+        with it('Returns mhpUpgNomination'):
+            #816
+            e = Esios(self.token)
+            profile = mhpUpgNomination(e)
+            assert isinstance(profile, mhpUpgNomination)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Fallo nominaci\xf3n UPG')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente fallo nominaci\xf3n UPG ')
+            )
+        with it('Returns PriceMedioAnualMercadoDiario'):
+            #961
+            e = Esios(self.token)
+            profile = PriceMedioAnualMercadoDiario(e)
+            assert isinstance(profile, PriceMedioAnualMercadoDiario)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'mercado diario')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio anual componente mercado diario')
+            )
         with it('Returns mhpInterruptibilityServiceFree instance'):
             #1276
             e = Esios(self.token)
@@ -314,7 +542,7 @@ with description('Indicators file'):
                 equal(u'Com. Libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente servicio interrumpibilidad contratación libre')
+                contain(u'Precio medio horario componente servicio de interrumpibilidad contratación libre')
             )
 
         with it('Returns mhpInterruptibilityService instance'):
@@ -324,13 +552,13 @@ with description('Indicators file'):
             assert isinstance(profile, mhpInterruptibilityService)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Servicio interrumpibilidad')
+                equal(u'Servicio de interrumpibilidad')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente servicio interrumpibilidad ')
+                contain(u'Precio medio horario componente servicio de interrumpibilidad ')
             )
         with it('Returns mhpPowerFactorControlFree instance'):
-            #1286
+            #1285
             e = Esios(self.token)
             profile = mhpPowerFactorControlFree(e)
             assert isinstance(profile, mhpPowerFactorControlFree)
@@ -364,4 +592,16 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente incumplimiento energía de balance contratación libre')
+            )
+        with it('Returns mhpEnergyBalanceInc instance'):
+            #1368
+            e = Esios(self.token)
+            profile = mhpEnergyBalanceInc(e)
+            assert isinstance(profile, mhpEnergyBalanceInc)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Incumplimiento energ\xeda balance')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente incumplimiento energ\xeda de balance ')
             )

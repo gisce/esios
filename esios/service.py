@@ -28,7 +28,7 @@ class Esios(base.Resource):
 
     def accepted_version(self, request):
         request.headers['Accept'] = (
-            'appliaction/json; application/vnd.esios-api-{0}+json'
+            'application/json; application/vnd.esios-api-{0}+json'
         ).format(self.version)
 
     def get_url(self):
@@ -51,6 +51,12 @@ class Esios(base.Resource):
         """Get the profiles to invoice PVPC for 2.0DHS
         """
         return indicators.ProfilePVPC20DHS(self)
+
+    @base.resource(indicators.ProfilePVPC20TD)
+    def profile_pvpc_20TD(self):
+        """Get the profiles to invoice PVPC for 2.0TD
+        """
+        return indicators.ProfilePVPC20TD(self)
 
     @base.resource(indicators.LinkBalanceMorocco)
     def link_balance_morocco(self):
@@ -146,3 +152,9 @@ class Esios(base.Resource):
         """Get price for intraday SPOT market, session 7
         """
         return indicators.PriceSPOTIntraday7(self)
+
+    @base.resource(archives.P48Cierre)
+    def p48cierre(self):
+        """Get the p48cierre zip file
+        """
+        return archives.P48Cierre(self)

@@ -49,8 +49,9 @@ class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
 
 
-class PricePVPC(Indicator):
-    pass
+class ProfilePVPC20TD(ProfilePVPC):
+    path = 'indicators/1006'
+
 
 
 class PricePVPC20A(ProfilePVPC):
@@ -65,8 +66,44 @@ class PricePVPC20DHS(ProfilePVPC):
     path = 'indicators/1015'
 
 
+class PricePVPC20TD(ProfilePVPC):
+    path = 'indicators/1001'
+
+
 class LinkBalanceMorocco(Indicator):
     path = 'indicators/10209'
+
+
+class pmd_snp(Indicator):
+    path = 'indicators/573'
+
+
+class pmh_pbf_free_RT3(Indicator):
+    path = 'indicators/793'
+
+
+class pmh_tiempo_real_free_RT6(Indicator):
+    path = 'indicators/794'
+
+
+class pmh_intradiario_free_RT4(Indicator):
+    path = 'indicators/796'
+
+
+class pmh_res_pot_sub_free_PS3(Indicator):
+    path = 'indicators/797'
+
+
+class pmh_bs_free_BS3(Indicator):
+    path = 'indicators/798'
+
+
+class mhpMeasuredDeviationsFree(Indicator):
+    path = 'indicators/799'
+
+
+class pmh_saldo_desv_free_EXD(Indicator):
+    path = 'indicators/800'
 
 
 class mhpPO146BalanceFree(Indicator):
@@ -89,6 +126,14 @@ class mhpRealTimeRestrictions(Indicator):
     path = 'indicators/807'
 
 
+class mhpIntraDailyMarket(Indicator):
+    path = 'indicators/808'
+
+
+class mhpIntradailyMarketRestrictions(Indicator):
+    path = 'indicators/809'
+
+
 class mhpAdditionalPowerReservation(Indicator):
     path = 'indicators/810'
 
@@ -97,12 +142,28 @@ class mhpSecondaryBand(Indicator):
     path = 'indicators/811'
 
 
+class mhpMeasuredDsv(Indicator):
+    path = 'indicators/812'
+
+
 class mhpDesviationsBalance(Indicator):
     path = 'indicators/813'
 
 
+class mhpCapPayments(Indicator):
+    path = 'indicators/814'
+
+
 class mhpPO146Balance(Indicator):
     path = 'indicators/815'
+
+
+class mhpUpgNomination(Indicator):
+    path = 'indicators/816'
+
+
+class PriceMedioAnualMercadoDiario(Indicator):
+    path = 'indicators/961'
 
 
 class mhpInterruptibilityServiceFree(Indicator):
@@ -123,18 +184,6 @@ class mhpPowerFactorControl(Indicator):
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
-
-
-class PricePVPC20A(PricePVPC):
-    path = 'indicators/1013'
-
-
-class PricePVPC20DHA(PricePVPC):
-    path = 'indicators/1014'
-
-
-class PricePVPC20DHS(PricePVPC):
-    path = 'indicators/1015'
 
 
 class PriceSPOTDaily(PriceSPOT):
@@ -167,3 +216,11 @@ class PriceSPOTIntraday6(PriceSPOT):
 
 class PriceSPOTIntraday7(PriceSPOT):
     path = 'indicators/618'
+
+
+class mhpEnergyBalanceInc(Indicator):
+    path = 'indicators/1368'
+
+
+class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
+    path = 'indicators/1739'

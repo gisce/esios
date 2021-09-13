@@ -1,4 +1,5 @@
-mamba
+mamba<0.11.0
 expects
 python-dateutil
 pytz
+lxml
