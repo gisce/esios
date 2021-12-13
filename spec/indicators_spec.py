@@ -255,6 +255,118 @@ with description('Indicators file'):
                 contain(u'Precio medio de la demanda en los SNP por sistema')
             )
 
+    with context('PriceSpotIntradaily1'):
+        with it('Returns PriceSpotIntradaily1 instance'):
+            # 612
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily1(e)
+            assert isinstance(profile, PriceSpotIntradaily1)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 1')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 1')
+            )
+
+    with context('PriceSpotIntradaily2'):
+        with it('Returns PriceSpotIntradaily2 instance'):
+            # 613
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily2(e)
+            assert isinstance(profile, PriceSpotIntradaily2)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 2')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 2')
+            )
+
+    with context('PriceSpotIntradaily3'):
+        with it('Returns PriceSpotIntradaily3 instance'):
+            # 614
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily3(e)
+            assert isinstance(profile, PriceSpotIntradaily3)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 3')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 3')
+            )
+
+    with context('PriceSpotIntradaily4'):
+        with it('Returns PriceSpotIntradaily4 instance'):
+            # 615
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily4(e)
+            assert isinstance(profile, PriceSpotIntradaily4)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 4')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 4')
+            )
+
+    with context('PriceSpotIntradaily5'):
+        with it('Returns PriceSpotIntradaily5 instance'):
+            # 616
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily5(e)
+            assert isinstance(profile, PriceSpotIntradaily5)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 5')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 5')
+            )
+
+    with context('PriceSpotIntradaily6'):
+        with it('Returns PriceSpotIntradaily6 instance'):
+            # 617
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily6(e)
+            assert isinstance(profile, PriceSpotIntradaily6)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 6')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 6')
+            )
+
+    with context('PriceSpotIntradaily7'):
+        with it('Returns PriceSpotIntradaily7 instance'):
+            # 618
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily7(e)
+            assert isinstance(profile, PriceSpotIntradaily7)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 7')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 7')
+            )
+
     with context('RT3 Free'):
         with it('Returns pmh_pbf_free_RT3 instance'):
             # 793
