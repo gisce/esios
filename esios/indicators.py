@@ -28,6 +28,7 @@ class Indicator(base.RESTResource):
 class ProfilePVPC(Indicator):
     pass
 
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -38,6 +39,34 @@ class ProfilePVPC20DHA(ProfilePVPC):
 
 class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
+
+
+class PriceSpotIntradaily1(Indicator):
+    path = 'indicators/612'
+
+
+class PriceSpotIntradaily2(Indicator):
+    path = 'indicators/613'
+
+
+class PriceSpotIntradaily3(Indicator):
+    path = 'indicators/614'
+
+
+class PriceSpotIntradaily4(Indicator):
+    path = 'indicators/615'
+
+
+class PriceSpotIntradaily5(Indicator):
+    path = 'indicators/616'
+
+
+class PriceSpotIntradaily6(Indicator):
+    path = 'indicators/617'
+
+
+class PriceSpotIntradaily7(Indicator):
+    path = 'indicators/618'
 
 
 class ProfilePVPC20TD(ProfilePVPC):
