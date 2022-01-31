@@ -28,5 +28,8 @@ jobs:
         pip install coveralls
         pip install -e .
     - name: Test with mamba
+      env:
+        ESIOS_TOKEN: ${{secrets.ESIOS_TOKEN}}
       run: |
+        export ESIOS_TOKEN="$ESIOS_TOKEN"
         mamba --enable-coverage
