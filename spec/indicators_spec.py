@@ -226,7 +226,7 @@ with description('Indicators file'):
         ).hour).to(equal(0))
 
         # Commented till a month is complete
-        expect(len(data['indicator']['values']) / 5).to(equal(720))  # there are 5 different subsystems for each hour
+        expect(len(data['indicator']['values'])).to(equal(720))
 
     with context('LinkBalanceMorocco'):
         with it('Returns LinkBalanceMorocco instance'):
