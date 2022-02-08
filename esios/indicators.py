@@ -69,6 +69,22 @@ class PriceSpotIntradaily7(Indicator):
     path = 'indicators/618'
 
 
+class PriceChargeBiasToUp(Indicator):
+    path = 'indicators/686'
+
+
+class PriceChargeBiasToDown(Indicator):
+    path = 'indicators/687'
+
+
+class ChargeBiasHigherProduction(Indicator):
+    path = 'indicators/726'
+
+
+class ChargeBiasLowerProduction(Indicator):
+    path = 'indicators/727'
+
+
 class ProfilePVPC20TD(ProfilePVPC):
     path = 'indicators/1006'
 
