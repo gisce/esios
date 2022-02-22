@@ -367,6 +367,70 @@ with description('Indicators file'):
                 equal(u'Precio mercado SPOT Intradiario Sesión 7')
             )
 
+    with context('PriceChargeBiasToUp'):
+        with it('Returns PriceChargeBiasToUp instance'):
+            # 686
+            e = Esios(self.token)
+            profile = PriceChargeBiasToUp(e)
+            assert isinstance(profile, PriceChargeBiasToUp)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desv\xedos a subir')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio de cobro desv\xedos a subir')
+            )
+
+    with context('PriceChargeBiasToDown'):
+        with it('Returns PriceChargeBiasToDown instance'):
+            # 687
+            e = Esios(self.token)
+            profile = PriceChargeBiasToDown(e)
+            assert isinstance(profile, PriceChargeBiasToDown)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desv\xedos a bajar')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio de pago desv\xedos a bajar')
+            )
+
+    with context('ChargeBiasHigherProduction'):
+        with it('Returns ChargeBiasHigherProduction instance'):
+            # 726
+            e = Esios(self.token)
+            profile = ChargeBiasHigherProduction(e)
+            assert isinstance(profile, ChargeBiasHigherProduction)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mayor producci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Coste de los desv\xedos medidos de mayor producci\xf3n')
+            )
+
+    with context('ChargeBiasLowerProduction'):
+        with it('Returns ChargeBiasLowerProduction instance'):
+            # 727
+            e = Esios(self.token)
+            profile = ChargeBiasLowerProduction(e)
+            assert isinstance(profile, ChargeBiasLowerProduction)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Menor producci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Coste de los desv\xedos medidos de menor producci\xf3n')
+            )
+
     with context('RT3 Free'):
         with it('Returns pmh_pbf_free_RT3 instance'):
             # 793
