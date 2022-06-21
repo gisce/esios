@@ -431,6 +431,20 @@ with description('Indicators file'):
                 equal(u'Coste de los desv\xedos medidos de menor producci\xf3n')
             )
 
+    with context('PMM Free'):
+        with it('Returns pmh_pmm_free instance'):
+            # 792
+            e = Esios(self.token)
+            profile = pmh_pmm_free(e)
+            assert isinstance(profile, pmh_pmm_free)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente mercado diario contrataci\xf3n libre')
+            )
+
     with context('RT3 Free'):
         with it('Returns pmh_pbf_free_RT3 instance'):
             # 793
