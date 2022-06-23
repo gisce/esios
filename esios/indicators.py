@@ -117,6 +117,10 @@ class pmd_snp(Indicator):
     path = 'indicators/573'
 
 
+class pmh_pmm_free(Indicator):
+    path = 'indicators/792'
+
+
 class pmh_pbf_free_RT3(Indicator):
     path = 'indicators/793'
 
