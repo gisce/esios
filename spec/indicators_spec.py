@@ -795,3 +795,15 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente incumplimiento energ\xeda de balance ')
             )
+        with it('Returns PriceMedioHorarioComponenteRDL102022Cur instance'):
+            #1901
+            e = Esios(self.token)
+            profile = PriceMedioHorarioComponenteRDL102022Cur(e)
+            assert isinstance(profile, PriceMedioHorarioComponenteRDL102022Cur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste TOT_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas ')
+            )
