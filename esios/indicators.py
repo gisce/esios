@@ -235,3 +235,7 @@ class mhpEnergyBalanceInc(Indicator):
 
 class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
     path = 'indicators/1739'
+
+
+class PriceMedioHorarioComponenteRDL102022Cur(Indicator):
+    path = 'indicators/1901'
