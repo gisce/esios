@@ -237,5 +237,25 @@ class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
     path = 'indicators/1739'
 
 
-class PriceMedioHorarioComponenteRDL102022Cur(Indicator):
+class PriceMedioHorarioMAJ3total(Indicator):
     path = 'indicators/1901'
+
+
+class PriceMedioHorarioMAJ3nocur(Indicator):
+    path = 'indicators/1902'
+
+
+class PriceMedioHorarioMAJ3cur(Indicator):
+    path = 'indicators/1903'
+
+
+class PriceMedioHorarioAJOStotal(Indicator):
+    path = 'indicators/1904'
+
+
+class PriceMedioHorarioAJOSnocur(Indicator):
+    path = 'indicators/1905'
+
+
+class PriceMedioHorarioAJOScur(Indicator):
+    path = 'indicators/1906'

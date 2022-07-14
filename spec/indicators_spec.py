@@ -784,7 +784,7 @@ with description('Indicators file'):
                 contain(u'Precio medio horario componente incumplimiento energía de balance contratación libre')
             )
         with it('Returns mhpEnergyBalanceInc instance'):
-            #1368
+            # 1368
             e = Esios(self.token)
             profile = mhpEnergyBalanceInc(e)
             assert isinstance(profile, mhpEnergyBalanceInc)
@@ -795,15 +795,75 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente incumplimiento energ\xeda de balance ')
             )
-        with it('Returns PriceMedioHorarioComponenteRDL102022Cur instance'):
-            #1901
+        with it('Returns PriceMedioHorarioMAJ3total instance'):
+            # 1901
             e = Esios(self.token)
-            profile = PriceMedioHorarioComponenteRDL102022Cur(e)
-            assert isinstance(profile, PriceMedioHorarioComponenteRDL102022Cur)
+            profile = PriceMedioHorarioMAJ3total(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3total)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
                 equal(u'Mecanismo de ajuste TOT_MAJ3')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas ')
+            )
+        with it('Returns PriceMedioHorarioMAJ3nocur instance'):
+            # 1902
+            e = Esios(self.token)
+            profile = PriceMedioHorarioMAJ3nocur(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3nocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componenSte RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioMAJ3cur instance'):
+            # 1903
+            e = Esios(self.token)
+            profile = PriceMedioHorarioMAJ3cur(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3cur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas comercializadores de referencia')
+            )
+        with it('Returns PriceMedioHorarioAJOStotal instance'):
+            # 1904
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOStotal(e)
+            assert isinstance(profile, PriceMedioHorarioAJOStotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_AJOS')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioAJOSnocur instance'):
+            # 1905
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOSnocur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOSnocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Mecanismo de ajuste contratacion libre')
+            )
+        with it('Returns PriceMedioHorarioAJOScur instance'):
+            # 1906
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOScur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOScur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_AJOS')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance comercializadores de referencia')
             )
