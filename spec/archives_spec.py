@@ -40,22 +40,25 @@ def test_expected_to_break(the_class, start, end, assert_message, next=0):
     assert not it_works, assert_message
     return True
 
+
 def validate_P48cierre(xml):
     xsd_path = 'esios/data'
-    xsd_file = 'P48Cierre-esios-MP.xsd'
+    xsd_files = ['urn-sios-ree-es-p48cierre-1-0.xsd', 'P48Cierre-esios-MP.xsd']
 
     from lxml import etree, objectify
     from lxml.etree import XMLSyntaxError
 
-    xmlschema_doc = etree.parse(xsd_path + '/' + xsd_file)
-    xmlschema = etree.XMLSchema(xmlschema_doc)
+    for xsd_file in xsd_files:
+        xmlschema_doc = etree.parse(xsd_path + '/' + xsd_file)
+        xmlschema = etree.XMLSchema(xmlschema_doc)
 
-    parser = objectify.makeparser(schema=xmlschema)
-    try:
-        objectify.fromstring(xml, parser)
-        return True
-    except XMLSyntaxError as e:
-        return False
+        parser = objectify.makeparser(schema=xmlschema)
+        try:
+            objectify.fromstring(xml, parser)
+            return True
+        except XMLSyntaxError as e:
+            continue
+    return False
 
 
 with description('Base Liquicomun'):
