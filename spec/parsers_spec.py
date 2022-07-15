@@ -37,15 +37,19 @@ def validate_json(result):
         expected_local_ts = LOCAL_TZ.normalize(utc_ts.astimezone(LOCAL_TZ))
         expect(local_ts).to(equal(expected_local_ts))
 
+
 def validate_data(result, start, end, cierre=None):
     data = json.loads(result)
 
+    target_data = [x for x in data
+                   if start <= LOCAL_TZ.normalize(LOCAL_TZ.localize(
+            datetime.strptime(x['local_timestamp'][:18], '%Y-%m-%d %H:%M:%S'))) <= end]
+
+    max_date = max([d['local_timestamp'] for d in target_data])
+    min_date = min([d['local_timestamp'] for d in target_data])
+
     hours = int(((end - start).total_seconds() / 3600) + 1)
-
-    expect(len(data)).to(be(hours))
-
-    max_date = max([d['local_timestamp'] for d in data])
-    min_date = min([d['local_timestamp'] for d in data])
+    expect(len(target_data)).to(be_above_or_equal(hours))  # can include True and False values for "cierre" field
 
     expect(min_date).to(equal(str(start)))
     expect(max_date).to(equal(str(end)))
