@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ecc="urn:sios.ree.es:core-cmpts" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sm="urn:sios.ree.es:p48cierre:1:0" targetNamespace="urn:sios.ree.es:p48cierre:1:0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:sios.ree.es:core-cmpts" schemaLocation="urn-sios-ree-es-core-cmpts.xsd"/>
+	<!--______________________________________-->
+	<xsd:element name="P48Cierre" type="sm:MensajePrograma">
+		<xsd:annotation>
+			<xsd:documentation>
+				<Titulo>Cierre. Programa Base</Titulo>
+				<Definicion>Documento con las ofertas asignadas por unidades de programacion y por hora para cada una de las horas.</Definicion>
+				<VersionDocumento>2.0</VersionDocumento>
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!--______________________________________-->
+	<xsd:complexType name="MensajePrograma">
+		<xsd:sequence>
+			<xsd:group ref="sm:CabeceraMensajes"/>
+			<xsd:element name="SeriesTemporales" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IdentificacionSeriesTemporales" type="ecc:TipoIdentificacionSerie"/>
+						<xsd:element name="TipoNegocio" type="ecc:TipoNegocio"/>
+						<xsd:choice>
+							<xsd:element name="UPEntrada" type="ecc:TipoUP"/>
+							<xsd:element name="UPSalida" type="ecc:TipoUP"/>
+						</xsd:choice>
+						<xsd:element name="UnidadMedida" type="ecc:TipoUnidadMedida"/>
+						<xsd:element name="Periodo">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:group ref="sm:Periodo"/>
+									<xsd:element ref="sm:Intervalo" maxOccurs="unbounded"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--______________________________________-->
+	<xsd:group name="CabeceraMensajes">
+		<xsd:sequence>
+			<xsd:element name="IdentificacionMensaje" type="ecc:TipoIdentificacionMensaje"/>
+			<xsd:element name="VersionMensaje" type="ecc:TipoVersion"/>
+			<xsd:element name="TipoMensaje" type="ecc:TipoMensaje"/>
+			<xsd:element name="TipoProceso" type="ecc:TipoProceso"/>
+			<xsd:element name="TipoClasificacion" type="ecc:TipoClasificacion"/>
+			<xsd:element name="IdentificacionRemitente" type="ecc:TipoSujetoMensaje"/>
+			<xsd:element name="FuncionRemitente" type="ecc:TipoFuncion"/>
+			<xsd:element name="IdentificacionDestinatario" type="ecc:TipoSujetoMensaje"/>
+			<xsd:element name="FuncionDestinatario" type="ecc:TipoFuncion"/>
+			<xsd:element name="FechaHoraMensaje" type="ecc:TipoFechaHoraMensaje"/>
+			<xsd:element name="Horizonte" type="ecc:TipoHorizonte"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!--______________________________________-->
+	<xsd:group name="Periodo">
+		<xsd:sequence>
+			<xsd:element name="IntervaloTiempo" type="ecc:TipoHorizonte"/>
+			<xsd:element name="Resolucion" type="ecc:TipoResolucion"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!--______________________________________-->
+	<xsd:element name="Intervalo">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Pos" type="ecc:TipoPosicion"/>
+				<xsd:element name="Ctd" type="ecc:TipoDecimal-9.3"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

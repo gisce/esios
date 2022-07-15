@@ -16,8 +16,8 @@ from .archives import P48Cierre
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 
 XSD_PATH = os.path.join(_ROOT, 'data')
-CIERRE_XSD = 'P48Cierre-esios-MP.xsd'
-PROVISIONAL_XSD = 'P48-esios-MP.xsd'
+CIERRE_XSD = ['urn-sios-ree-es-p48cierre-1-0.xsd', 'P48Cierre-esios-MP.xsd']
+PROVISIONAL_XSD = ['urn-sios-ree-es-p48-1-0.xsd', 'P48-esios-MP.xsd']
 
 LOCAL_TZ = timezone('Europe/Madrid')
 UTC_TZ = timezone('UTC')
@@ -28,14 +28,14 @@ class P48CierreParser(P48Cierre):
     def get_filename(self):
         return 'p48cierre'
 
-    def config_validators(self):
+    def config_validators(self, pos):
 
-        xmlschema_doc = etree.parse(os.path.join(XSD_PATH, CIERRE_XSD))
+        xmlschema_doc = etree.parse(os.path.join(XSD_PATH, CIERRE_XSD[pos]))
         xmlschema = etree.XMLSchema(xmlschema_doc)
 
         self.cierre_parser = objectify.makeparser(schema=xmlschema)
 
-        xmlschema_doc = etree.parse(os.path.join(XSD_PATH, PROVISIONAL_XSD))
+        xmlschema_doc = etree.parse(os.path.join(XSD_PATH, PROVISIONAL_XSD[pos]))
         xmlschema = etree.XMLSchema(xmlschema_doc)
 
         self.provisional_parser = objectify.makeparser(schema=xmlschema)
@@ -56,25 +56,30 @@ class P48CierreParser(P48Cierre):
         :param program_unit: The Program Unit to parse
         :return: a json list of dicts
         """
-        self.config_validators()
+        for pos in [0, 1]:
+            try:
+                self.config_validators(pos)
 
-        content = BytesIO(file_content)
+                content = BytesIO(file_content)
 
-        try:
-            zf = zipfile.ZipFile(content)
-            if zf.testzip() is None:
-                # Multiple files in one zip
-                zip_filenames = zf.namelist()
-        except zipfile.BadZipfile as e:
-            # single file XML
-            result = self.parse_cierre(file_content, program_unit)
-            return json.dumps(result, default=str)
+                try:
+                    zf = zipfile.ZipFile(content)
+                    if zf.testzip() is None:
+                        # Multiple files in one zip
+                        zip_filenames = zf.namelist()
+                except zipfile.BadZipfile as e:
+                    # single file XML
+                    result = self.parse_cierre(file_content, program_unit)
+                    return json.dumps(result, default=str)
 
-        data = []
-        for filename in zip_filenames:
-            content = zf.read(filename)
-            data.extend(self.parse_cierre(content, program_unit))
-        return json.dumps(data, default=str)
+                data = []
+                for filename in zip_filenames:
+                    content = zf.read(filename)
+                    data.extend(self.parse_cierre(content, program_unit))
+                return json.dumps(data, default=str)
+            except:
+                # try old format if new fails
+                continue
 
     def parse_cierre(self, content, program_unit):
         """

@@ -40,22 +40,25 @@ def test_expected_to_break(the_class, start, end, assert_message, next=0):
     assert not it_works, assert_message
     return True
 
+
 def validate_P48cierre(xml):
     xsd_path = 'esios/data'
-    xsd_file = 'P48Cierre-esios-MP.xsd'
+    xsd_files = ['urn-sios-ree-es-p48cierre-1-0.xsd', 'P48Cierre-esios-MP.xsd']
 
     from lxml import etree, objectify
     from lxml.etree import XMLSyntaxError
 
-    xmlschema_doc = etree.parse(xsd_path + '/' + xsd_file)
-    xmlschema = etree.XMLSchema(xmlschema_doc)
+    for xsd_file in xsd_files:
+        xmlschema_doc = etree.parse(xsd_path + '/' + xsd_file)
+        xmlschema = etree.XMLSchema(xmlschema_doc)
 
-    parser = objectify.makeparser(schema=xmlschema)
-    try:
-        objectify.fromstring(xml, parser)
-        return True
-    except XMLSyntaxError as e:
-        return False
+        parser = objectify.makeparser(schema=xmlschema)
+        try:
+            objectify.fromstring(xml, parser)
+            return True
+        except XMLSyntaxError as e:
+            continue
+    return False
 
 
 with description('Base Liquicomun'):
@@ -125,7 +128,11 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             expected_versions = ('A1')
-            assert test_expected_to_work(the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions)
+
+            if today.day <= 15:
+                assert test_expected_to_work(
+                    the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions
+                )
 
 
         with it('can\'t get the A1 for an invalid date'):
@@ -146,7 +153,10 @@ with description('Base Liquicomun'):
             # today
             start = end = datetime(today.year, today.month, today.day)
             expected_versions = ('A2')
-            assert test_expected_to_work(the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions)
+            if today.day > 15:
+                assert test_expected_to_work(
+                    the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions
+                )
 
 
         with it('can\'t get the related A2 for an invalid date'):
