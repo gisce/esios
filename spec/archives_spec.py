@@ -128,7 +128,11 @@ with description('Base Liquicomun'):
             end = start + relativedelta.relativedelta(months=1) - relativedelta.relativedelta(days=1)
 
             expected_versions = ('A1')
-            assert test_expected_to_work(the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions)
+
+            if today.day <= 15:
+                assert test_expected_to_work(
+                    the_class=self.e.A1_liquicomun, start=start, end=end, expected_versions=expected_versions
+                )
 
 
         with it('can\'t get the A1 for an invalid date'):
@@ -149,7 +153,10 @@ with description('Base Liquicomun'):
             # today
             start = end = datetime(today.year, today.month, today.day)
             expected_versions = ('A2')
-            assert test_expected_to_work(the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions)
+            if today.day > 15:
+                assert test_expected_to_work(
+                    the_class=self.e.A2_liquicomun, start=start, end=end, expected_versions=expected_versions
+                )
 
 
         with it('can\'t get the related A2 for an invalid date'):
