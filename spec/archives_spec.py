@@ -293,20 +293,21 @@ with description('P48Cierre'):
 
         with it('Gets current month p48'):
             today = self.today
-            start = datetime(today.year, today.month, 1)
-            last_month_day = calendar.monthrange(today.year, today.month)[1]
-            end = datetime(today.year, today.month, today.day > 1 and today.day - 1 or 1)
+            if today.day not in (1, 2):
+                start = datetime(today.year, today.month, 1)
+                last_month_day = calendar.monthrange(today.year, today.month)[1]
+                end = datetime(today.year, today.month, today.day > 1 and today.day - 1 or 1)
 
-            res = P48Cierre(self.e).download(start, end)
+                res = P48Cierre(self.e).download(start, end)
 
-            c = BytesIO(res)
-            zf = zipfile.ZipFile(c)
-            assert zf.testzip() is None
-            expected_filenames = []
-            for day in range(0, today.day):
-                p48_day = start + relativedelta.relativedelta(days=day)
-                expected_filenames.append('p48cierre_{}.xml'.format(p48_day.strftime('%Y%m%d')))
+                c = BytesIO(res)
+                zf = zipfile.ZipFile(c)
+                assert zf.testzip() is None
+                expected_filenames = []
+                for day in range(0, today.day):
+                    p48_day = start + relativedelta.relativedelta(days=day)
+                    expected_filenames.append('p48cierre_{}.xml'.format(p48_day.strftime('%Y%m%d')))
 
-            assert len(zf.namelist()) == today.day - 1
-            for filename in zf.namelist():
+                assert len(zf.namelist()) == today.day - 1
+                for filename in zf.namelist():
                     assert filename in expected_filenames

@@ -805,7 +805,7 @@ with description('Indicators file'):
                 equal(u'Mecanismo de ajuste TOT_MAJ3')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas ')
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance ')
             )
         with it('Returns PriceMedioHorarioMAJ3nocur instance'):
             # 1902
@@ -817,7 +817,7 @@ with description('Indicators file'):
                 equal(u'Mecanismo de ajuste CLI_MAJ3')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componenSte RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas contrataci\xf3n libre')
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance contrataci\xf3n libre')
             )
         with it('Returns PriceMedioHorarioMAJ3cur instance'):
             # 1903
@@ -829,7 +829,7 @@ with description('Indicators file'):
                 equal(u'Mecanismo de ajuste CUR_MAJ3')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas comercializadores de referencia')
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance comercializadores de referencia')
             )
         with it('Returns PriceMedioHorarioAJOStotal instance'):
             # 1904
@@ -838,10 +838,10 @@ with description('Indicators file'):
             assert isinstance(profile, PriceMedioHorarioAJOStotal)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Mecanismo de ajuste CLI_AJOS')
+                equal(u'Mecanismo de ajuste TOT_AJOS')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance contrataci\xf3n libre')
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas')
             )
         with it('Returns PriceMedioHorarioAJOSnocur instance'):
             # 1905
@@ -850,10 +850,10 @@ with description('Indicators file'):
             assert isinstance(profile, PriceMedioHorarioAJOSnocur)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Mecanismo de ajuste')
+                equal(u'Mecanismo de ajuste CLI_AJOS')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Mecanismo de ajuste contratacion libre')
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - dif. por liq. con medidas contrataci\xf3n libre')
             )
         with it('Returns PriceMedioHorarioAJOScur instance'):
             # 1906
@@ -865,5 +865,5 @@ with description('Indicators file'):
                 equal(u'Mecanismo de ajuste CUR_AJOS')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance comercializadores de referencia')
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - dif. por liq. con med. comerc. referencia')
             )
