@@ -259,3 +259,15 @@ class PriceMedioHorarioAJOSnocur(Indicator):
 
 class PriceMedioHorarioAJOScur(Indicator):
     path = 'indicators/1906'
+
+
+class PriceMedioHorarioAJOMtotal(Indicator):
+    path = 'indicators/1907'
+
+
+class PriceMedioHorarioAJOMnocur(Indicator):
+    path = 'indicators/1908'
+
+
+class PriceMedioHorarioAJOMcur(Indicator):
+    path = 'indicators/1909'
