@@ -867,3 +867,39 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - dif. por liq. con med. comerc. referencia')
             )
+        with it('Returns PriceMedioHorarioAJOMtotal instance'):
+            # 1907
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMtotal(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMtotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste TOT_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario ')
+            )
+        with it('Returns PriceMedioHorarioAJOMnocur instance'):
+            # 1908
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMnocur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMnocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioAJOMcur instance'):
+            # 1909
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMcur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMcur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario comercializadores de referencia')
+            )
