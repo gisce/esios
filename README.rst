@@ -5,11 +5,27 @@ E.Sios API
 Interact with e.sios API
 http://esios.readthedocs.org/
 
-.. image:: https://github.com/gisce/esios/actions/workflows/python2-app.yml/badge.svg
-    :target: https://github.com/gisce/esios/actions/workflows/python2-app.yml
+.. image:: https://github.com/gisce/esios/actions/workflows/python2.7-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python2.7-app.yml
 
-.. image:: https://github.com/gisce/esios/actions/workflows/python3-app.yml/badge.svg
-    :target: https://github.com/gisce/esios/actions/workflows/python3-app.yml
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.6-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.6-app.yml
+
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.7-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.7-app.yml
+
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.8-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.8-app.yml
+
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.9-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.9-app.yml
+
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.10-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.10-app.yml
+
+.. image:: https://github.com/gisce/esios/actions/workflows/python3.11-app.yml/badge.svg
+    :target: https://github.com/gisce/esios/actions/workflows/python3.11-app.yml
+
 
 .. image:: https://coveralls.io/repos/github/gisce/esios/badge.svg?branch=master
     :target: https://coveralls.io/github/gisce/esios?branch=master
