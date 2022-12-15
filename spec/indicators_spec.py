@@ -226,7 +226,7 @@ with description('Indicators file'):
         ).hour).to(equal(0))
 
         # Commented till a month is complete
-        expect(len(data['indicator']['values']) / 5).to(equal(720))  # there are 5 different subsystems for each hour
+        expect(len(data['indicator']['values'])).to(equal(720))
 
     with context('LinkBalanceMorocco'):
         with it('Returns LinkBalanceMorocco instance'):
@@ -253,6 +253,196 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio de la demanda en los SNP por sistema')
+            )
+
+    with context('PriceSpotIntradaily1'):
+        with it('Returns PriceSpotIntradaily1 instance'):
+            # 612
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily1(e)
+            assert isinstance(profile, PriceSpotIntradaily1)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 1')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 1')
+            )
+
+    with context('PriceSpotIntradaily2'):
+        with it('Returns PriceSpotIntradaily2 instance'):
+            # 613
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily2(e)
+            assert isinstance(profile, PriceSpotIntradaily2)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 2')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 2')
+            )
+
+    with context('PriceSpotIntradaily3'):
+        with it('Returns PriceSpotIntradaily3 instance'):
+            # 614
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily3(e)
+            assert isinstance(profile, PriceSpotIntradaily3)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 3')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 3')
+            )
+
+    with context('PriceSpotIntradaily4'):
+        with it('Returns PriceSpotIntradaily4 instance'):
+            # 615
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily4(e)
+            assert isinstance(profile, PriceSpotIntradaily4)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 4')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 4')
+            )
+
+    with context('PriceSpotIntradaily5'):
+        with it('Returns PriceSpotIntradaily5 instance'):
+            # 616
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily5(e)
+            assert isinstance(profile, PriceSpotIntradaily5)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 5')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 5')
+            )
+
+    with context('PriceSpotIntradaily6'):
+        with it('Returns PriceSpotIntradaily6 instance'):
+            # 617
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily6(e)
+            assert isinstance(profile, PriceSpotIntradaily6)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 6')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 6')
+            )
+
+    with context('PriceSpotIntradaily7'):
+        with it('Returns PriceSpotIntradaily7 instance'):
+            # 618
+            e = Esios(self.token)
+            profile = PriceSpotIntradaily7(e)
+            assert isinstance(profile, PriceSpotIntradaily7)
+            start_date = self.tz.localize(datetime(2021, 11, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2021, 12, 1, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intradiario Sesión 7')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Intradiario Sesión 7')
+            )
+
+    with context('PriceChargeBiasToUp'):
+        with it('Returns PriceChargeBiasToUp instance'):
+            # 686
+            e = Esios(self.token)
+            profile = PriceChargeBiasToUp(e)
+            assert isinstance(profile, PriceChargeBiasToUp)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desv\xedos a subir')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio de cobro desv\xedos a subir')
+            )
+
+    with context('PriceChargeBiasToDown'):
+        with it('Returns PriceChargeBiasToDown instance'):
+            # 687
+            e = Esios(self.token)
+            profile = PriceChargeBiasToDown(e)
+            assert isinstance(profile, PriceChargeBiasToDown)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desv\xedos a bajar')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio de pago desv\xedos a bajar')
+            )
+
+    with context('ChargeBiasHigherProduction'):
+        with it('Returns ChargeBiasHigherProduction instance'):
+            # 726
+            e = Esios(self.token)
+            profile = ChargeBiasHigherProduction(e)
+            assert isinstance(profile, ChargeBiasHigherProduction)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mayor producci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Coste de los desv\xedos medidos de mayor producci\xf3n')
+            )
+
+    with context('ChargeBiasLowerProduction'):
+        with it('Returns ChargeBiasLowerProduction instance'):
+            # 727
+            e = Esios(self.token)
+            profile = ChargeBiasLowerProduction(e)
+            assert isinstance(profile, ChargeBiasLowerProduction)
+            start_date = self.tz.localize(datetime(2022, 1, 1, 1, 0))
+            end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Menor producci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Coste de los desv\xedos medidos de menor producci\xf3n')
+            )
+
+    with context('PMM Free'):
+        with it('Returns pmh_pmm_free instance'):
+            # 792
+            e = Esios(self.token)
+            profile = pmh_pmm_free(e)
+            assert isinstance(profile, pmh_pmm_free)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente mercado diario contrataci\xf3n libre')
             )
 
     with context('RT3 Free'):
@@ -594,7 +784,7 @@ with description('Indicators file'):
                 contain(u'Precio medio horario componente incumplimiento energía de balance contratación libre')
             )
         with it('Returns mhpEnergyBalanceInc instance'):
-            #1368
+            # 1368
             e = Esios(self.token)
             profile = mhpEnergyBalanceInc(e)
             assert isinstance(profile, mhpEnergyBalanceInc)
@@ -604,4 +794,112 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente incumplimiento energ\xeda de balance ')
+            )
+        with it('Returns PriceMedioHorarioMAJ3total instance'):
+            # 1901
+            e = Esios(self.token)
+            profile = PriceMedioHorarioMAJ3total(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3total)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste TOT_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance ')
+            )
+        with it('Returns PriceMedioHorarioMAJ3nocur instance'):
+            # 1902
+            e = Esios(self.token)
+            profile = PriceMedioHorarioMAJ3nocur(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3nocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioMAJ3cur instance'):
+            # 1903
+            e = Esios(self.token)
+            profile = PriceMedioHorarioMAJ3cur(e)
+            assert isinstance(profile, PriceMedioHorarioMAJ3cur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_MAJ3')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 restricciones t\xe9cnicas y mercados de balance comercializadores de referencia')
+            )
+        with it('Returns PriceMedioHorarioAJOStotal instance'):
+            # 1904
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOStotal(e)
+            assert isinstance(profile, PriceMedioHorarioAJOStotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste TOT_AJOS')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - diferencia por liquidaci\xf3n con medidas')
+            )
+        with it('Returns PriceMedioHorarioAJOSnocur instance'):
+            # 1905
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOSnocur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOSnocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_AJOS')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - dif. por liq. con medidas contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioAJOScur instance'):
+            # 1906
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOScur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOScur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_AJOS')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario - dif. por liq. con med. comerc. referencia')
+            )
+        with it('Returns PriceMedioHorarioAJOMtotal instance'):
+            # 1907
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMtotal(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMtotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste TOT_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario ')
+            )
+        with it('Returns PriceMedioHorarioAJOMnocur instance'):
+            # 1908
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMnocur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMnocur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CLI_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario contrataci\xf3n libre')
+            )
+        with it('Returns PriceMedioHorarioAJOMcur instance'):
+            # 1909
+            e = Esios(self.token)
+            profile = PriceMedioHorarioAJOMcur(e)
+            assert isinstance(profile, PriceMedioHorarioAJOMcur)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mecanismo de ajuste CUR_AJOM')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario comercializadores de referencia')
             )

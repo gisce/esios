@@ -49,6 +49,50 @@ class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
 
 
+class PriceSpotIntradaily1(Indicator):
+    path = 'indicators/612'
+
+
+class PriceSpotIntradaily2(Indicator):
+    path = 'indicators/613'
+
+
+class PriceSpotIntradaily3(Indicator):
+    path = 'indicators/614'
+
+
+class PriceSpotIntradaily4(Indicator):
+    path = 'indicators/615'
+
+
+class PriceSpotIntradaily5(Indicator):
+    path = 'indicators/616'
+
+
+class PriceSpotIntradaily6(Indicator):
+    path = 'indicators/617'
+
+
+class PriceSpotIntradaily7(Indicator):
+    path = 'indicators/618'
+
+
+class PriceChargeBiasToUp(Indicator):
+    path = 'indicators/686'
+
+
+class PriceChargeBiasToDown(Indicator):
+    path = 'indicators/687'
+
+
+class ChargeBiasHigherProduction(Indicator):
+    path = 'indicators/726'
+
+
+class ChargeBiasLowerProduction(Indicator):
+    path = 'indicators/727'
+
+
 class ProfilePVPC20TD(ProfilePVPC):
     path = 'indicators/1006'
 
@@ -76,6 +120,10 @@ class LinkBalanceMorocco(Indicator):
 
 class pmd_snp(Indicator):
     path = 'indicators/573'
+
+
+class pmh_pmm_free(Indicator):
+    path = 'indicators/792'
 
 
 class pmh_pbf_free_RT3(Indicator):
@@ -224,3 +272,39 @@ class mhpEnergyBalanceInc(Indicator):
 
 class PriceEnergiaExcedentariaAutoconsumCompensacioSimplificada(Indicator):
     path = 'indicators/1739'
+
+
+class PriceMedioHorarioMAJ3total(Indicator):
+    path = 'indicators/1901'
+
+
+class PriceMedioHorarioMAJ3nocur(Indicator):
+    path = 'indicators/1902'
+
+
+class PriceMedioHorarioMAJ3cur(Indicator):
+    path = 'indicators/1903'
+
+
+class PriceMedioHorarioAJOStotal(Indicator):
+    path = 'indicators/1904'
+
+
+class PriceMedioHorarioAJOSnocur(Indicator):
+    path = 'indicators/1905'
+
+
+class PriceMedioHorarioAJOScur(Indicator):
+    path = 'indicators/1906'
+
+
+class PriceMedioHorarioAJOMtotal(Indicator):
+    path = 'indicators/1907'
+
+
+class PriceMedioHorarioAJOMnocur(Indicator):
+    path = 'indicators/1908'
+
+
+class PriceMedioHorarioAJOMcur(Indicator):
+    path = 'indicators/1909'
