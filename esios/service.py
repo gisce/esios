@@ -25,6 +25,7 @@ class Esios(base.Resource):
 
     def add_token(self, request):
         request.headers['Authorization'] = 'Token token="{0}"'.format(self.token)
+        request.headers['x-api-key'] = self.token
 
     def accepted_version(self, request):
         request.headers['Accept'] = (
