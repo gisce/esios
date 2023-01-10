@@ -271,3 +271,7 @@ class PriceMedioHorarioAJOMnocur(Indicator):
 
 class PriceMedioHorarioAJOMcur(Indicator):
     path = 'indicators/1909'
+
+
+class PriceSRAD(Indicator):
+    path = 'indicators/1930'

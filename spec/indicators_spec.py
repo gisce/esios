@@ -903,3 +903,16 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente RD-L 10/2022 mercado diario e intradiario comercializadores de referencia')
             )
+
+        with it('Returns PriceMedioHorarioAJOMcur instance'):
+            # 1930
+            e = Esios(self.token)
+            profile = PriceSRAD(e)
+            assert isinstance(profile, PriceSRAD)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Precio marginal en el servicio de respuesta activa de la demanda')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio marginal en el servicio de respuesta activa de la demanda')
+            )
