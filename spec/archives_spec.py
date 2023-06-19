@@ -93,13 +93,13 @@ with description('Base Liquicomun'):
             expected_versions = ('A1', 'A2')
             assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
-        with it('should download C2 or A3 for 3 months ago'):
+        with it('should download C2, C3 or A3 for 3 months ago'):
             today = self.today - timedelta(days=93)
             start = datetime(today.year, today.month, 1)
             last_month_day = calendar.monthrange(start.year, start.month)[1]
             end = datetime(start.year, start.month, last_month_day)
 
-            expected_versions = ('A3', 'C2')
+            expected_versions = ('A3', 'C2', 'C3')
             assert test_expected_to_work(the_class=self.e.liquicomun, start=start, end=end, expected_versions=expected_versions)
 
         with it('should download C6 o C5 for a year ago'):
