@@ -29,6 +29,14 @@ class ProfilePVPC(Indicator):
     pass
 
 
+class PricePVPC(Indicator):
+    pass
+
+
+class PriceSPOT(Indicator):
+    pass
+
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -88,9 +96,6 @@ class ChargeBiasLowerProduction(Indicator):
 class ProfilePVPC20TD(ProfilePVPC):
     path = 'indicators/1006'
 
-
-class PricePVPC(Indicator):
-    pass
 
 
 class PricePVPC20A(ProfilePVPC):
@@ -230,6 +235,38 @@ class mhpEnergyBalanceFree(Indicator):
 
 class mhpEnergyBalanceCUR(Indicator):
     path = 'indicators/1367'
+
+class PriceSPOTDaily(PriceSPOT):
+    path = 'indicators/600'
+
+
+class PriceSPOTIntraday1(PriceSPOT):
+    path = 'indicators/612'
+
+
+class PriceSPOTIntraday2(PriceSPOT):
+    path = 'indicators/613'
+
+
+class PriceSPOTIntraday3(PriceSPOT):
+    path = 'indicators/614'
+
+
+class PriceSPOTIntraday4(PriceSPOT):
+    path = 'indicators/615'
+
+
+class PriceSPOTIntraday5(PriceSPOT):
+    path = 'indicators/616'
+
+
+class PriceSPOTIntraday6(PriceSPOT):
+    path = 'indicators/617'
+
+
+class PriceSPOTIntraday7(PriceSPOT):
+    path = 'indicators/618'
+
 
 class mhpEnergyBalanceInc(Indicator):
     path = 'indicators/1368'
