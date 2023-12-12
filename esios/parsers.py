@@ -41,7 +41,7 @@ class P48CierreParser(P48Cierre):
         self.provisional_parser = objectify.makeparser(schema=xmlschema)
 
     def get_data_json(self, program_unit, start, end):
-        res = self.download(start, end)
+        res, headers = self.download(start, end)
         return self.parse_to_json(res, program_unit)
 
     def get_data_json_from_file(self, program_unit, filepath):
