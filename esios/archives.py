@@ -15,7 +15,7 @@ LIQUICOMUN_PRIORITY = [
 
 
 def parser_none(body, code, headers):
-    return body
+    return body, headers
 
 
 class Archive(base.RESTResource):

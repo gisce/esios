@@ -18,7 +18,7 @@ def test_expected_to_work(the_class, start, end, expected_versions, next=0):
     """
     General expected to work method
     """
-    res = the_class().download(start, end, next=next)
+    res, headers = the_class().download(start, end, next=next)
 
     c = BytesIO(res)
     zf = zipfile.ZipFile(c)
@@ -33,7 +33,7 @@ def test_expected_to_break(the_class, start, end, assert_message, next=0):
     """
     it_works = True
     try:
-        res = the_class().download(start, end, next=next)
+        res, headers = the_class().download(start, end, next=next)
     except:
         it_works = False
 
@@ -264,7 +264,7 @@ with description('P48Cierre'):
 
             start = today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(days=1)
             end = today.replace(hour=23, minute=59, second=59, microsecond=0) - relativedelta.relativedelta(days=1)
-            res = P48Cierre(self.e).download(start, end)
+            res, headers = P48Cierre(self.e).download(start, end)
 
             assert validate_P48cierre(res)
             assert not validate_P48cierre(res + b'ERROR')
@@ -274,7 +274,7 @@ with description('P48Cierre'):
 
             start = today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta.relativedelta(days=1)
             end = today.replace(hour=23, minute=59, second=59, microsecond=0)
-            res = P48Cierre(self.e).download(start, end)
+            res, headers = P48Cierre(self.e).download(start, end)
 
             c = BytesIO(res)
             zf = zipfile.ZipFile(c)
@@ -298,7 +298,7 @@ with description('P48Cierre'):
                 last_month_day = calendar.monthrange(today.year, today.month)[1]
                 end = datetime(today.year, today.month, today.day > 1 and today.day - 1 or 1)
 
-                res = P48Cierre(self.e).download(start, end)
+                res, headers = P48Cierre(self.e).download(start, end)
 
                 c = BytesIO(res)
                 zf = zipfile.ZipFile(c)
