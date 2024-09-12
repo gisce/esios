@@ -6,4 +6,6 @@ try:
 except Exception as e:
     VERSION = 'unknown'
 
+from libsaas.executors import requests_executor
+requests_executor.use()
 from .service import Esios
