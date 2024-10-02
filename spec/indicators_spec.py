@@ -938,7 +938,7 @@ with description('Indicators file'):
                 equal(u'Mercado SPOT')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Mercado SPOT')
+                contain(u'Precio mercado SPOT Diario')
             )
 
         with it('Returns PrecioDesviosSubir instance'):
@@ -950,7 +950,7 @@ with description('Indicators file'):
                 equal(u'Desvíos a subir')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Desvíos a subir')
+                contain(u'Precio de cobro desvíos a subir')
             )
 
         with it('Returns PrecioDesviosBajar instance'):
@@ -962,5 +962,5 @@ with description('Indicators file'):
                 equal(u'Desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Desvíos a bajar')
+                contain(u'Precio de cobro desvíos a subir')
             )
