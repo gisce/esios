@@ -928,3 +928,39 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio marginal en el servicio de respuesta activa de la demanda')
             )
+
+        with it('Returns PrecioMercadoDiario instance'):
+            e = Esios(self.token)
+            profile = PrecioMercadoDiario(e)
+            assert isinstance(profile, PrecioMercadoDiario)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mercado SPOT')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio mercado SPOT Diario')
+            )
+
+        with it('Returns PrecioDesviosSubir instance'):
+            e = Esios(self.token)
+            profile = PrecioDesviosSubir(e)
+            assert isinstance(profile, PrecioDesviosSubir)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desvíos a subir')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio de cobro desvíos a subir')
+            )
+
+        with it('Returns PrecioDesviosBajar instance'):
+            e = Esios(self.token)
+            profile = PrecioDesviosBajar(e)
+            assert isinstance(profile, PrecioDesviosBajar)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Desvíos a bajar')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio de pago desvíos a bajar')
+            )
