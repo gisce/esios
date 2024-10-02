@@ -962,5 +962,5 @@ with description('Indicators file'):
                 equal(u'Desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio de cobro desvíos a bajar')
+                contain(u'Precio de pago desvíos a bajar')
             )
