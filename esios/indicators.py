@@ -277,3 +277,12 @@ class PriceMedioHorarioAJOMcur(Indicator):
 
 class PriceSRAD(Indicator):
     path = 'indicators/1930'
+
+class PrecioMercadoDiario(Indicator):
+    path = 'indicators/600'
+
+class PrecioDesviosSubir(Indicator):
+    path = 'indicators/686'
+
+class PrecioDesviosBajar(Indicator):
+    path = 'indicators/687'
