@@ -6,6 +6,7 @@ from libsaas.services import base
 
 class Indicator(base.RESTResource):
     path = 'indicators'
+    time_trunc = 'hour'
     time_agg = 'sum'
 
     @base.apimethod
@@ -16,7 +17,7 @@ class Indicator(base.RESTResource):
             raise Exception('Start date must have time zone')
         if end_date.tzinfo is None:
             raise Exception('End date must have time zone')
-        time_trunc = 'hour'
+        time_trunc = self.time_trunc
         time_agg = self.time_agg
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
