@@ -28,6 +28,8 @@ class Indicator(base.RESTResource):
 class ProfilePVPC(Indicator):
     pass
 
+class DemandaDiariaElectricaPeninsularPrevista(Indicator):
+    path = 'indicators/460'
 
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
@@ -224,6 +226,8 @@ class mhpPowerFactorControlFree(Indicator):
 class mhpPowerFactorControl(Indicator):
     path = 'indicators/1286'
 
+class DemandaDiariaElectricaPeninsularReal(Indicator):
+    path = 'indicators/1293'
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
