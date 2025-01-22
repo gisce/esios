@@ -34,6 +34,9 @@ class DemandaDiariaElectricaPeninsularPrevista(Indicator):
     path = 'indicators/460'
     time_agg = 'average'
 
+class DemandaDiariaElectricaPeninsularPrevistaQH(DemandaDiariaElectricaPeninsularPrevista):
+    time_trunc = 'fifteen_minutes'
+
 class ProfilePVPC20A(ProfilePVPC):
     path = 'indicators/526'
 
@@ -232,6 +235,9 @@ class mhpPowerFactorControl(Indicator):
 class DemandaDiariaElectricaPeninsularReal(Indicator):
     path = 'indicators/1293'
     time_agg = 'average'
+
+class DemandaDiariaElectricaPeninsularRealQH(DemandaDiariaElectricaPeninsularReal):
+    time_trunc = 'fifteen_minutes'
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
