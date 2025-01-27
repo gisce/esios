@@ -6,6 +6,8 @@ from libsaas.services import base
 
 class Indicator(base.RESTResource):
     path = 'indicators'
+    time_trunc = 'hour'
+    time_agg = 'sum'
 
     @base.apimethod
     def get(self, start_date, end_date):
@@ -15,11 +17,12 @@ class Indicator(base.RESTResource):
             raise Exception('Start date must have time zone')
         if end_date.tzinfo is None:
             raise Exception('End date must have time zone')
-        time_trunc = 'hour'
+        time_trunc = self.time_trunc
+        time_agg = self.time_agg
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
         params = base.get_params(
-            ('start_date', 'end_date', 'time_trunc'), locals()
+            ('start_date', 'end_date', 'time_trunc', 'time_agg'), locals()
         )
         request = http.Request('GET', self.get_url(), params)
         return request, parsers.parse_json
@@ -27,6 +30,10 @@ class Indicator(base.RESTResource):
 
 class ProfilePVPC(Indicator):
     pass
+
+class DemandaDiariaElectricaPeninsularPrevista(Indicator):
+    path = 'indicators/460'
+    time_agg = 'average'
 
 
 class ProfilePVPC20A(ProfilePVPC):
@@ -224,6 +231,9 @@ class mhpPowerFactorControlFree(Indicator):
 class mhpPowerFactorControl(Indicator):
     path = 'indicators/1286'
 
+class DemandaDiariaElectricaPeninsularReal(Indicator):
+    path = 'indicators/1293'
+    time_agg = 'average'
 
 class mhpEnergyBalanceFree(Indicator):
     path = 'indicators/1366'
