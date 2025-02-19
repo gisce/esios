@@ -58,7 +58,7 @@ class Archive(base.RESTResource):
 
 
     @base.apimethod
-    def download(self, start_date, end_date, taxonomy_terms=None, next=0):
+    def download(self, start_date, end_date, taxonomy_terms=None, next=0, maturity=None):
         """
         Download the best available version for a range of dates and the desired taxonomy terms.A1_liquicomun
 
@@ -80,7 +80,15 @@ class Archive(base.RESTResource):
         # Assert that desired next exists, and fetch it
         assert type(next) == int and next >= 0, "Desired next value is not correct."
         assert (len(sorted_list) >= next + 1), "The desired version (next +{}) is not available. Available versions '{}'".format(next, ", ".join ([name['name'][:2] for name in sorted_list]))
-        url = sorted_list[next]['download']['url']
+        # In case we need an especific maturity
+        if maturity:
+            desired_filename = maturity + filename
+            desired_file = [x for x in sorted_list if x['name'] == desired_filename]
+            # Asser that the desired maturity is available
+            assert (len(desired_file) == 1), "The desired version {} is not available. Available versions '{}'".format(maturity,  ", ".join ([name['name'][:2] for name in sorted_list]))
+            url = desired_file[0]['download']['url']
+        else:
+            url = sorted_list[next]['download']['url']
 
         request = http.Request('GET', self.parent.get_url() + url)
         return request, parser_none
