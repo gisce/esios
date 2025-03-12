@@ -82,7 +82,7 @@ class Archive(base.RESTResource):
         assert (len(sorted_list) >= next + 1), "The desired version (next +{}) is not available. Available versions '{}'".format(next, ", ".join ([name['name'][:2] for name in sorted_list]))
         # In case we need an especific maturity
         if maturity:
-            desired_filename = maturity + filename
+            desired_filename = '_'.join([maturity,filename])
             desired_file = [x for x in sorted_list if x['name'] == desired_filename]
             # Asser that the desired maturity is available
             assert (len(desired_file) == 1), "The desired version {} is not available. Available versions '{}'".format(maturity,  ", ".join ([name['name'][:2] for name in sorted_list]))
