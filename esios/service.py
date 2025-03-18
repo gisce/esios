@@ -17,6 +17,10 @@ class Esios(base.Resource):
         self.add_filter(self.use_json)
         self.add_filter(self.accepted_version)
         self.add_filter(self.add_token)
+        self.add_filter(self.add_agent)
+
+    def add_agent(self, request):
+        request.headers['User-Agent'] = 'esios'
 
     def use_json(self, request):
         if request.method.upper() not in http.URLENCODE_METHODS:
