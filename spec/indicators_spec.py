@@ -241,6 +241,21 @@ with description('Indicators file'):
                 contain(u'Saldo horario neto de interconexión con Marruecos telemedidas')
             )
 
+    with context('DemandaDiariaElectricaPeninsularPrevista'):
+        with it('Returns DemandaDiariaElectricaPeninsularPrevista instance'):
+            # 460
+            e = Esios(self.token)
+            # Hourly case
+            profile = DemandaDiariaElectricaPeninsularPrevista(e)
+            assert isinstance(profile, DemandaDiariaElectricaPeninsularPrevista)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsión diaria')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsión diaria de la demanda eléctrica peninsular')
+            )
+
     with context('PMDSNP'):
         with it('Returns pmd_snp instance'):
             # 573
@@ -770,6 +785,19 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio medio horario componente control factor potencia ')
+            )
+        with it('Returns DemandaDiariaElectricaPeninsularReal instance'):
+            # 1293
+            e = Esios(self.token)
+            # Hourly case
+            profile = DemandaDiariaElectricaPeninsularReal(e)
+            assert isinstance(profile, DemandaDiariaElectricaPeninsularReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real')
             )
         with it('Returns mhpEnergyBalanceFree instance'):
             #1366
