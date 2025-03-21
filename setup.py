@@ -4,7 +4,7 @@ PACKAGES_DATA = {'esios': ['data/*.xsd']}
 
 setup(
     name='esios',
-    version='0.23.0',
+    version='0.24.0',
     packages=find_packages(),
     url='https://github.com/gisce/esios',
     license='MIT',
