@@ -9,16 +9,40 @@ class Indicator(base.RESTResource):
     time_trunc = 'hour'
     time_agg = 'sum'
 
-    @base.apimethod
-    def get(self, start_date, end_date):
-        assert isinstance(start_date, datetime)
-        assert isinstance(end_date, datetime)
+    @staticmethod
+    def validate_parameters(start_date, end_date, time_trunc, time_agg):
+        assert isinstance(start_date, datetime), "Start date is not a datetime"
+        assert isinstance(end_date, datetime), "End date is not a datetime"
         if start_date.tzinfo is None:
             raise Exception('Start date must have time zone')
         if end_date.tzinfo is None:
             raise Exception('End date must have time zone')
-        time_trunc = self.time_trunc
-        time_agg = self.time_agg
+        assert time_trunc in [
+            'five_minutes', 'ten_minutes', 'fifteen_minutes', 'hour', 'day',
+            'month', 'year'
+        ], "{} is not a valid parameter".format(time_trunc)
+        assert time_agg in [
+            'sum', 'average',
+        ], "{} is not a valid parameter".format(time_agg)
+
+
+    @base.apimethod
+    def get(self, start_date, end_date, time_trunc=None, time_agg=None):
+        """
+        :param start_date: Start of the date range (ISO 8601 format).
+        :param end_date: End of the date range (ISO 8601 format).
+        :param time_trunc: Time granularity. Accepted values:
+            'five_minutes', 'ten_minutes', 'fifteen_minutes', 'hour', 'day',
+            'month', 'year'. Default is 'hour'.
+        :param time_agg: Aggregation method. Accepted values: 'sum', 'average'.
+            Default is 'sum'.
+        :return: Parsed indicator values for the specified range and parameters.
+        """
+        if time_trunc is None:
+            time_trunc = self.time_trunc
+        if time_agg is None:
+            time_agg = self.time_agg
+        self.validate_parameters(start_date, end_date, time_trunc, time_agg)
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
         params = base.get_params(
@@ -296,3 +320,430 @@ class PrecioDesviosSubir(Indicator):
 
 class PrecioDesviosBajar(Indicator):
     path = 'indicators/687'
+
+
+# Net volume of generation-demand deviations
+class GenerationDemandDeviation(Indicator):
+    """
+    Sum of the deviations to adjust upwards and downwards in respect to the demand
+    in one hour, each one in with a sign.
+    Publication: every hour with the information of the day D calculated until
+    the moment.
+    In kWh
+    """
+    path = 'indicators/1338'
+
+
+# Demand of electricity (in kW)
+class DemandNationalReal(Indicator):
+    path = 'indicators/2037'
+
+
+class DemandNationalForecasted(Indicator):
+    path = 'indicators/2052'
+
+
+class DemandNationalScheduled(Indicator):
+    path = 'indicators/2053'
+
+
+class DemandNationalForecastedForSNP(Indicator):
+    """
+    Demand forecasted at natinal level for non peninsular systems.
+    """
+    path = 'indicators/2084'
+
+
+class DemandPeninsularReal(Indicator):
+    path = 'indicators/1293'
+
+
+class DemandPeninsularRealSumGeneration(Indicator):
+    path = 'indicators/10004'
+
+
+class DemandPeninsularForecasted(Indicator):
+    path = 'indicators/544'
+
+
+class DemandPeninsularScheduled(Indicator):
+    path = 'indicators/545'
+
+
+class DemandPeninsularForecastDaily(Indicator):
+    """
+    Forecast of the next 7 days.
+    """
+    path = 'indicators/460'
+
+
+class DemandPeninsularForecastWeekly(Indicator):
+    """
+    Forecast of the next week.
+    """
+    path = 'indicators/603'
+
+
+# kWh
+class DemandPeninsularForecastMonthly(Indicator):
+    """
+    Forecast of the next 12 Months. In kWh.
+    """
+    path = 'indicators/461'
+
+
+class DemandPeninsularForecastYearly(Indicator):
+    """
+    From december to december next year. In kWh.
+    """
+    path = 'indicators/1774'
+
+
+class DemandNonPeninsularSystemReal(Indicator):
+    path = 'indicators/1740'
+
+
+class DemandNonPeninsularSystemRealSumGeneration(Indicator):
+    path = 'indicators/10350'
+
+
+class DemandNonPeninsularSystemForecasted(Indicator):
+    path = 'indicators/1742'
+
+
+class DemandNonPeninsularSystemScheduled(Indicator):
+    path = 'indicators/1741'
+
+
+# national generation of electricity (in kW)
+class GenerationNationalWind(Indicator):
+    path = 'indicators/2038'
+
+
+class GenerationNationalNuclear(Indicator):
+    path = 'indicators/2039'
+
+
+class GenerationNationalCoal(Indicator):
+    path = 'indicators/2040'
+
+
+class GenerationNationalCombinedCycle(Indicator):
+    path = 'indicators/2041'
+
+
+class GenerationNationalExchanges(Indicator):
+    path = 'indicators/553'
+
+
+class GenerationNationalSolarPhotovoltaic(Indicator):
+    path = 'indicators/2044'
+
+
+class GenerationNationalSolarThermal(Indicator):
+    path = 'indicators/2045'
+
+
+class GenerationNationalRenewableThermal(Indicator):
+    path = 'indicators/2046'
+
+
+class GenerationNationalDiesel(Indicator):
+    path = 'indicators/2047'
+
+
+class GenerationNationalGasTrubine(Indicator):
+    path = 'indicators/2048'
+
+
+class GenerationNationalSteamTurbine(Indicator):
+    path = 'indicators/2049'
+
+
+class GenerationNationalAuxiliary(Indicator):
+    path = 'indicators/2050'
+
+
+class GenerationNationalCogenerationAndWaste(Indicator):
+    path = 'indicators/2051'
+
+
+class GenerationNationalHydraulic(Indicator):
+    path = 'indicators/2067'
+
+
+class GenerationNationalHydraulicAggregated(Indicator):
+    """
+    Represents national-level hydraulic energy indicators, including:
+    - Pumping turbine output
+    - Pumping energy consumption
+    - Hydraulic generation
+    Plus or minus some error.
+    """
+    path = 'indicators/2042'
+
+
+class GenerationNationalStoragePumpingTurbine(Indicator):
+    path = 'indicators/2066'
+
+
+class GenerationNationalStoragePumpingConsumption(Indicator):
+    path = 'indicators/2065'
+
+
+class GenerationNationalStorageBatteryDelivery(Indicator):
+    path = 'indicators/2198'
+
+
+class GenerationNationalStorageBatteryCharging(Indicator):
+    path = 'indicators/2199'
+
+
+class GenerationNationalExportAndorra(Indicator):
+    path = 'indicators/2068'
+
+
+class GenerationNationalExportMorocco(Indicator):
+    path = 'indicators/2069'
+
+
+class GenerationNationalExportPortugal(Indicator):
+    path = 'indicators/2070'
+
+
+class GenerationNationalExportFrance(Indicator):
+    path = 'indicators/2071'
+
+
+class GenerationNationalExportTotal(Indicator):
+    path = 'indicators/2072'
+
+
+class GenerationNationalImportAndorra(Indicator):
+    path = 'indicators/2073'
+
+
+class GenerationNationalImportMorocco(Indicator):
+    path = 'indicators/2074'
+
+
+class GenerationNationalImportPortugal(Indicator):
+    path = 'indicators/2075'
+
+
+class GenerationNationalImportFrance(Indicator):
+    path = 'indicators/2076'
+
+
+class GenerationNationalImportTotal(Indicator):
+    path = 'indicators/2077'
+
+
+# peninsular generation of electricity (in kW)
+class GenerationPeninsularWind(Indicator):
+    path = 'indicators/551'
+
+
+class GenerationPeninsularNuclear(Indicator):
+    path = 'indicators/549'
+
+
+class GenerationPeninsularFuelGas(Indicator):
+    path = 'indicators/548'
+
+
+class GenerationPeninsularCoal(Indicator):
+    path = 'indicators/547'
+
+
+class GenerationPeninsularCombinedCycle(Indicator):
+    path = 'indicators/550'
+
+
+class GenerationPeninsularExchanges(Indicator):
+    path = 'indicators/553'
+
+
+class GenerationPeninsularBalearicLink(Indicator):
+    path = 'indicators/554'
+
+
+class GenerationPeninsularSolarPhotovoltaic(Indicator):
+    """
+    Contains data since 02/06/2015 21:00 (spain tz).
+    """
+    path = 'indicators/1295'
+
+
+class GenerationPeninsularSolarThermal(Indicator):
+    """
+    Contains data since 02/06/2015 21:00 (spain tz).
+    """
+    path = 'indicators/1294'
+
+
+class GenerationPeninsularRenewableThermal(Indicator):
+    path = 'indicators/1296'
+
+
+class GenerationPeninsularCogenerationAndWaste(Indicator):
+    path = 'indicators/1297'
+
+
+class GenerationPeninsularHydraulic(Indicator):
+    path = 'indicators/2080'
+
+
+class GenerationPeninsularHydraulicAggregated(Indicator):
+    """
+    Represents peninsular-level hydraulic energy indicators, including:
+    - Pumping turbine output
+    - Pumping energy consumption
+    - Hydraulic generation
+    Plus or minus some error.
+    """
+    path = 'indicators/546'
+
+
+class GenerationPeninsularStoragePumpingTurbine(Indicator):
+    path = 'indicators/2079'
+
+
+class GenerationPeninsularStoragePumpingConsumption(Indicator):
+    path = 'indicators/2078'
+
+
+class GenerationPeninsularStorageBatteryDelivery(Indicator):
+    path = 'indicators/2167'
+
+
+class GenerationPeninsularStorageBatteryCharging(Indicator):
+    path = 'indicators/2166'
+
+
+class GenerationPeninsularExportAndorra(Indicator):
+    path = 'indicators/2068'
+
+
+class GenerationPeninsularExportMorocco(Indicator):
+    path = 'indicators/2069'
+
+
+class GenerationPeninsularExportPortugal(Indicator):
+    path = 'indicators/2070'
+
+
+class GenerationPeninsularExportFrance(Indicator):
+    path = 'indicators/2071'
+
+
+class GenerationPeninsularExportTotal(Indicator):
+    path = 'indicators/2072'
+
+
+class GenerationPeninsularImportAndorra(Indicator):
+    path = 'indicators/2073'
+
+
+class GenerationPeninsularImportMorocco(Indicator):
+    path = 'indicators/2074'
+
+
+class GenerationPeninsularImportPortugal(Indicator):
+    path = 'indicators/2075'
+
+
+class GenerationPeninsularImportFrance(Indicator):
+    path = 'indicators/2076'
+
+
+class GenerationPeninsularImportTotal(Indicator):
+    path = 'indicators/2077'
+
+
+class GenerationPeninsularSolarAggregatedOutdated(Indicator):
+    """
+    Contains data until 02/06/2015 20:50 (spain tz).
+    Solar thermal + solar photovoltaic
+    """
+    path = 'indicators/552'
+
+
+class GenerationPeninsularSolarAggregated(Indicator):
+    """
+    Contains data since 02/06/2015 21:00 (spain tz).
+    Solar thermal + solar photovoltaic
+    """
+    path = 'indicators/10206'
+
+
+# non peninsular systems (SNP) (separated by region) (in kW)
+class GenerationNonPeninsularSystemWind(Indicator):
+    path = 'indicators/1745'
+
+
+class GenerationNonPeninsularSystemCoal(Indicator):
+    path = 'indicators/1750'
+
+
+class GenerationNonPeninsularSystemCombinedCycle(Indicator):
+    path = 'indicators/1746'
+
+
+class GenerationNonPeninsularSystemBalearicLink(Indicator):
+    path = 'indicators/1751'
+
+
+class GenerationNonPeninsularSystemSolarPhotovoltaic(Indicator):
+    path = 'indicators/1748'
+
+
+class GenerationNonPeninsularSystemDiesel(Indicator):
+    path = 'indicators/1743'
+
+
+class GenerationNonPeninsularSystemGasTrubine(Indicator):
+    path = 'indicators/1744'
+
+
+class GenerationNonPeninsularSystemSteamTurbine(Indicator):
+    path = 'indicators/1747'
+
+
+class GenerationNonPeninsularSystemAuxiliary(Indicator):
+    path = 'indicators/1754'
+
+
+class GenerationNonPeninsularSystemCogenerationAndWaste(Indicator):
+    path = 'indicators/1755'
+
+
+class GenerationNonPeninsularSystemHydraulic(Indicator):
+    path = 'indicators/2083'
+
+
+class GenerationNonPeninsularSystemHydraulicAggregated(Indicator):
+    """
+    Represents peninsular-level hydraulic energy indicators, including:
+    - Pumping turbine output
+    - Pumping energy consumption
+    - Hydraulic generation
+    Plus or minus some error.
+    """
+    path = 'indicators/1749'
+
+
+class GenerationNonPeninsularSystemStoragePumpingTurbine(Indicator):
+    path = 'indicators/2082'
+
+
+class GenerationNonPeninsularSystemStoragePumpingConsumption(Indicator):
+    path = 'indicators/2081'
+
+
+class GenerationNonPeninsularSystemStorageBatteryDelivery(Indicator):
+    path = 'indicators/2169'
+
+
+class GenerationNonPeninsularSystemStorageBatteryCharging(Indicator):
+    path = 'indicators/2168'
