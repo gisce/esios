@@ -452,7 +452,7 @@ class GenerationNationalDiesel(Indicator):
     path = 'indicators/2047'
 
 
-class GenerationNationalGasTrubine(Indicator):
+class GenerationNationalGasTurbine(Indicator):
     path = 'indicators/2048'
 
 
@@ -702,7 +702,7 @@ class GenerationNonPeninsularSystemDiesel(Indicator):
     path = 'indicators/1743'
 
 
-class GenerationNonPeninsularSystemGasTrubine(Indicator):
+class GenerationNonPeninsularSystemGasTurbine(Indicator):
     path = 'indicators/1744'
 
 
