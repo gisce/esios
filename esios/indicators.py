@@ -55,6 +55,7 @@ class Indicator(base.RESTResource):
 class ProfilePVPC(Indicator):
     pass
 
+
 class DemandaDiariaElectricaPeninsularPrevista(Indicator):
     path = 'indicators/460'
     time_agg = 'average'
@@ -747,3 +748,19 @@ class GenerationNonPeninsularSystemStorageBatteryDelivery(Indicator):
 
 class GenerationNonPeninsularSystemStorageBatteryCharging(Indicator):
     path = 'indicators/2168'
+
+
+class GenerationWindForecast(Indicator):
+    path = 'indicators/541'
+
+
+class GenerationSolarPhotovoltaicForecast(Indicator):
+    path = 'indicators/542'
+
+
+class GenerationSolarThermalForecast(Indicator):
+    path = 'indicators/543'
+
+
+class GenerationSolarAggregatedForecast(Indicator):
+    path = 'indicators/10034'
