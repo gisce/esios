@@ -270,6 +270,30 @@ with description('Indicators file'):
                 contain(u'Precio medio de la demanda en los SNP por sistema')
             )
 
+    with context('mqhpDailyMarket'):
+        with it('Returns mqhpDailyMarket instance'):
+            # 600
+            e = Esios(self.token)
+            profile = mqhpDailyMarket(e)
+            assert isinstance(profile, mqhpDailyMarket)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 45))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mercado SPOT')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Diario')
+            )
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(values[0]['value']).to(
+                equal(105.1)
+            )
+            expect(values[-1]['value']).to(
+                equal(101.52)
+            )
+
     with context('PriceSpotIntradaily1'):
         with it('Returns PriceSpotIntradaily1 instance'):
             # 612

@@ -72,6 +72,9 @@ class ProfilePVPC20DHA(ProfilePVPC):
 class ProfilePVPC20DHS(ProfilePVPC):
     path = 'indicators/528'
 
+class mqhpDailyMarket(Indicator):
+    path = 'indicators/600'
+    time_trunc = 'fifteen_minutes'
 
 class PriceSpotIntradaily1(Indicator):
     path = 'indicators/612'
