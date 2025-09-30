@@ -78,14 +78,17 @@ class mqhpDailyMarket(Indicator):
 
 class PriceSpotIntradaily1(Indicator):
     path = 'indicators/612'
+    time_trunc = 'fifteen_minutes'
 
 
 class PriceSpotIntradaily2(Indicator):
     path = 'indicators/613'
+    time_trunc = 'fifteen_minutes'
 
 
 class PriceSpotIntradaily3(Indicator):
     path = 'indicators/614'
+    time_trunc = 'fifteen_minutes'
 
 
 class PriceSpotIntradaily4(Indicator):

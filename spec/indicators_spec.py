@@ -287,6 +287,9 @@ with description('Indicators file'):
             )
             values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
             values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
             expect(values[0]['value']).to(
                 equal(105.1)
             )
@@ -309,6 +312,15 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 1')
             )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
 
     with context('PriceSpotIntradaily2'):
         with it('Returns PriceSpotIntradaily2 instance'):
@@ -325,6 +337,15 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 2')
             )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
 
     with context('PriceSpotIntradaily3'):
         with it('Returns PriceSpotIntradaily3 instance'):
@@ -340,6 +361,15 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 3')
+            )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
             )
 
     with context('PriceSpotIntradaily4'):
