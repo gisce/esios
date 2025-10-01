@@ -1068,7 +1068,7 @@ with description('Indicators file'):
                 contain(u'Precio de pago desvíos a bajar')
             )
 
-    with fcontext('Generation-Demand Components'):
+    with context('Generation-Demand Components'):
         with it('Returns GenerationDemandDeviation'):
             # 1338
             # equivalent to grcosdnc Coste Desvios (9th field)
