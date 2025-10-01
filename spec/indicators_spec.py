@@ -314,7 +314,7 @@ with description('Indicators file'):
             )
             # QH tests (since October 2025)
             start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
-            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
             data = profile.get(start_date, end_date)
             values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
             values = sorted(values, key=lambda d: d['datetime_utc'])
@@ -345,7 +345,7 @@ with description('Indicators file'):
             )
             # QH tests (since October 2025)
             start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
-            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
             data = profile.get(start_date, end_date)
             values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
             values = sorted(values, key=lambda d: d['datetime_utc'])
@@ -376,7 +376,7 @@ with description('Indicators file'):
             )
             # QH tests (since October 2025)
             start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
-            end_date = self.tz.localize(datetime(2025, 10, 2, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
             data = profile.get(start_date, end_date)
             values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
             values = sorted(values, key=lambda d: d['datetime_utc'])
@@ -480,7 +480,7 @@ with description('Indicators file'):
             end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
             data = profile.get(start_date, end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Desv\xedos a bajar')
+                equal(u'Precio de pago desv\xedos a bajar')
             )
             expect(data['indicator']['name']).to(
                 equal(u'Precio de pago desv\xedos a bajar')
@@ -1062,7 +1062,7 @@ with description('Indicators file'):
             assert isinstance(profile, PrecioDesviosBajar)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Desvíos a bajar')
+                equal(u'Precio de pago desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
