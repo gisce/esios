@@ -321,6 +321,12 @@ with description('Indicators file'):
             expect(len(values)).to(
                 equal(96)
             )
+            expect(values[0]['value']).to(
+                equal(106.1)
+            )
+            expect(values[-1]['value']).to(
+                equal(105.01)
+            )
 
     with context('PriceSpotIntradaily2'):
         with it('Returns PriceSpotIntradaily2 instance'):
@@ -345,6 +351,12 @@ with description('Indicators file'):
             values = sorted(values, key=lambda d: d['datetime_utc'])
             expect(len(values)).to(
                 equal(96)
+            )
+            expect(values[0]['value']).to(
+                equal(102.75)
+            )
+            expect(values[-1]['value']).to(
+                equal(115.15)
             )
 
     with context('PriceSpotIntradaily3'):
