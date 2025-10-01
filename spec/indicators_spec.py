@@ -381,7 +381,13 @@ with description('Indicators file'):
             values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
             values = sorted(values, key=lambda d: d['datetime_utc'])
             expect(len(values)).to(
-                equal(96)
+                equal(48)
+            )
+            expect(values[0]['value']).to(
+                equal(-9.34)
+            )
+            expect(values[-1]['value']).to(
+                equal(106.52)
             )
 
     with context('PriceSpotIntradaily4'):
