@@ -270,6 +270,33 @@ with description('Indicators file'):
                 contain(u'Precio medio de la demanda en los SNP por sistema')
             )
 
+    with context('mqhpDailyMarket'):
+        with it('Returns mqhpDailyMarket instance'):
+            # 600
+            e = Esios(self.token)
+            profile = mqhpDailyMarket(e)
+            assert isinstance(profile, mqhpDailyMarket)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 45))
+            data = profile.get(start_date, end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Mercado SPOT')
+            )
+            expect(data['indicator']['name']).to(
+                equal(u'Precio mercado SPOT Diario')
+            )
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
+            expect(values[0]['value']).to(
+                equal(105.1)
+            )
+            expect(values[-1]['value']).to(
+                equal(101.52)
+            )
+
     with context('PriceSpotIntradaily1'):
         with it('Returns PriceSpotIntradaily1 instance'):
             # 612
@@ -284,6 +311,21 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 1')
+            )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
+            expect(values[0]['value']).to(
+                equal(106.1)
+            )
+            expect(values[-1]['value']).to(
+                equal(105.01)
             )
 
     with context('PriceSpotIntradaily2'):
@@ -301,6 +343,21 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 2')
             )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(96)
+            )
+            expect(values[0]['value']).to(
+                equal(102.75)
+            )
+            expect(values[-1]['value']).to(
+                equal(115.15)
+            )
 
     with context('PriceSpotIntradaily3'):
         with it('Returns PriceSpotIntradaily3 instance'):
@@ -316,6 +373,21 @@ with description('Indicators file'):
             )
             expect(data['indicator']['name']).to(
                 equal(u'Precio mercado SPOT Intradiario Sesión 3')
+            )
+            # QH tests (since October 2025)
+            start_date = self.tz.localize(datetime(2025, 10, 1, 0, 0))
+            end_date = self.tz.localize(datetime(2025, 10, 1, 23, 59))
+            data = profile.get(start_date, end_date)
+            values = [x for x in data['indicator']['values'] if 'Esp' in x['geo_name']]
+            values = sorted(values, key=lambda d: d['datetime_utc'])
+            expect(len(values)).to(
+                equal(48)
+            )
+            expect(values[0]['value']).to(
+                equal(-9.34)
+            )
+            expect(values[-1]['value']).to(
+                equal(106.52)
             )
 
     with context('PriceSpotIntradaily4'):
@@ -408,7 +480,7 @@ with description('Indicators file'):
             end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
             data = profile.get(start_date, end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Desv\xedos a bajar')
+                equal(u'Precio de pago desv\xedos a bajar')
             )
             expect(data['indicator']['name']).to(
                 equal(u'Precio de pago desv\xedos a bajar')
@@ -958,6 +1030,7 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioMercadoDiario instance'):
+            # 600
             e = Esios(self.token)
             profile = PrecioMercadoDiario(e)
             assert isinstance(profile, PrecioMercadoDiario)
@@ -970,6 +1043,7 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioDesviosSubir instance'):
+            # 686
             e = Esios(self.token)
             profile = PrecioDesviosSubir(e)
             assert isinstance(profile, PrecioDesviosSubir)
@@ -982,12 +1056,13 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioDesviosBajar instance'):
+            # 687
             e = Esios(self.token)
             profile = PrecioDesviosBajar(e)
             assert isinstance(profile, PrecioDesviosBajar)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Desvíos a bajar')
+                equal(u'Precio de pago desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
