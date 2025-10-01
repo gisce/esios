@@ -1486,46 +1486,137 @@ with description('Indicators file'):
                 contain(u'Generaci\xf3n T.Real hidra\xfalica nacional')
             )
 
-# class GenerationNationalStoragePumpingTurbine(Indicator):
-#     path = 'indicators/2066'
-#
-#
-# class GenerationNationalStoragePumpingConsumption(Indicator):
-#     path = 'indicators/2065'
-#
-#
-# class GenerationNationalStorageBatteryDelivery(Indicator):
-#     path = 'indicators/2198'
-#
-#
-# class GenerationNationalStorageBatteryCharging(Indicator):
-#     path = 'indicators/2199'
-#
-#
-# class GenerationNationalExportAndorra(Indicator):
-#     path = 'indicators/2068'
-#
-#
-# class GenerationNationalExportMorocco(Indicator):
-#     path = 'indicators/2069'
-#
-#
-# class GenerationNationalExportPortugal(Indicator):
-#     path = 'indicators/2070'
-#
-#
-# class GenerationNationalExportFrance(Indicator):
-#     path = 'indicators/2071'
-#
-#
-# class GenerationNationalExportTotal(Indicator):
-#     path = 'indicators/2072'
-#
-#
-# class GenerationNationalImportAndorra(Indicator):
-#     path = 'indicators/2073'
-#
-#
+        with it('Returns GenerationNationalStoragePumpingTurbine'):
+            # 2066
+            e = Esios(self.token)
+            profile = GenerationNationalStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationNationalStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo Nacional')
+            )
+
+        with it('Returns GenerationNationalStoragePumpingConsumption'):
+            # 2065
+            e = Esios(self.token)
+            profile = GenerationNationalStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationNationalStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo Nacional')
+            )
+
+        with it('Returns GenerationNationalStorageBatteryDelivery'):
+            # 2198
+            e = Esios(self.token)
+            profile = GenerationNationalStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationNationalStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas Nacional')
+            )
+
+        with it('Returns GenerationNationalStorageBatteryCharging'):
+            # 2199
+            e = Esios(self.token)
+            profile = GenerationNationalStorageBatteryCharging(e)
+            assert isinstance(profile, GenerationNationalStorageBatteryCharging)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carga Bater\xedas Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Carga Bater\xedas Nacional')
+            )
+
+        with it('Returns GenerationNationalExportAndorra'):
+            # 2068
+            e = Esios(self.token)
+            profile = GenerationNationalExportAndorra(e)
+            assert isinstance(profile, GenerationNationalExportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+
+        with it('Returns GenerationNationalExportMorocco'):
+            # 2069
+            e = Esios(self.token)
+            profile = GenerationNationalExportMorocco(e)
+            assert isinstance(profile, GenerationNationalExportMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+
+        with it('Returns GenerationNationalExportPortugal'):
+            # 2070
+            e = Esios(self.token)
+            profile = GenerationNationalExportPortugal(e)
+            assert isinstance(profile, GenerationNationalExportPortugal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+
+        with it('Returns GenerationNationalExportFrance'):
+            # 2071
+            e = Esios(self.token)
+            profile = GenerationNationalExportFrance(e)
+            assert isinstance(profile, GenerationNationalExportFrance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+
+        with it('Returns GenerationNationalExportTotal'):
+            # 2072
+            e = Esios(self.token)
+            profile = GenerationNationalExportTotal(e)
+            assert isinstance(profile, GenerationNationalExportTotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+
+        with it('Returns GenerationNationalImportAndorra'):
+            # 2073
+            e = Esios(self.token)
+            profile = GenerationNationalImportAndorra(e)
+            assert isinstance(profile, GenerationNationalImportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+
+
 # class GenerationNationalImportMorocco(Indicator):
 #     path = 'indicators/2074'
 #
