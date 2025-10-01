@@ -1030,6 +1030,7 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioMercadoDiario instance'):
+            # 600
             e = Esios(self.token)
             profile = PrecioMercadoDiario(e)
             assert isinstance(profile, PrecioMercadoDiario)
@@ -1042,6 +1043,7 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioDesviosSubir instance'):
+            # 686
             e = Esios(self.token)
             profile = PrecioDesviosSubir(e)
             assert isinstance(profile, PrecioDesviosSubir)
@@ -1054,6 +1056,7 @@ with description('Indicators file'):
             )
 
         with it('Returns PrecioDesviosBajar instance'):
+            # 687
             e = Esios(self.token)
             profile = PrecioDesviosBajar(e)
             assert isinstance(profile, PrecioDesviosBajar)
