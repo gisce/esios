@@ -1067,3 +1067,534 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
             )
+
+    with fcontext('Generation-Demand Components'):
+        with it('Returns GenerationDemandDeviation'):
+            # 1338
+            # equivalent to grcosdnc Coste Desvios (9th field)
+            e = Esios(self.token)
+            profile = GenerationDemandDeviation(e)
+            assert isinstance(profile, GenerationDemandDeviation)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Volumen desvíos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Volumen neto de los desv\xedos generaci\xf3n-demanda')
+            )
+
+        with it('Returns DemandNationalReal'):
+            # 2037
+            e = Esios(self.token)
+            profile = DemandNationalReal(e)
+            assert isinstance(profile, DemandNationalReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real nacional')
+            )
+
+        with it('Returns DemandNationalForecasted'):
+            # 2052
+            e = Esios(self.token)
+            profile = DemandNationalForecasted(e)
+            assert isinstance(profile, DemandNationalForecasted)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real prevista nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real prevista nacional')
+            )
+
+        with it('Returns DemandNationalScheduled'):
+            # 2053
+            e = Esios(self.token)
+            profile = DemandNationalScheduled(e)
+            assert isinstance(profile, DemandNationalScheduled)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real programada nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real programada nacional')
+            )
+
+        with it('Returns DemandNationalForecastedForSNP'):
+            # 2084
+            e = Esios(self.token)
+            profile = DemandNationalForecastedForSNP(e)
+            assert isinstance(profile, DemandNationalForecastedForSNP)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda prevista nacional para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda prevista nacional para sistemas no peninsulares')
+            )
+
+        with it('Returns DemandPeninsularReal'):
+            # 1293
+            e = Esios(self.token)
+            profile = DemandPeninsularReal(e)
+            assert isinstance(profile, DemandPeninsularReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real')
+            )
+
+        with it('Returns DemandPeninsularRealSumGeneration'):
+            # 10004
+            e = Esios(self.token)
+            profile = DemandPeninsularRealSumGeneration(e)
+            assert isinstance(profile, DemandPeninsularRealSumGeneration)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real suma generaci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real suma de generaci\xf3n')
+            )
+
+        with it('Returns DemandPeninsularForecasted'):
+            # 544
+            e = Esios(self.token)
+            profile = DemandPeninsularForecasted(e)
+            assert isinstance(profile, DemandPeninsularForecasted)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda prevista')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda prevista')
+            )
+
+        with it('Returns DemandPeninsularScheduled'):
+            # 545
+            e = Esios(self.token)
+            profile = DemandPeninsularScheduled(e)
+            assert isinstance(profile, DemandPeninsularScheduled)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda programada')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda programada')
+            )
+
+        with it('Returns DemandPeninsularForecastDaily'):
+            # 460
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastDaily(e)
+            assert isinstance(profile, DemandPeninsularForecastDaily)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n diaria')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n diaria')
+            )
+
+        with it('Returns DemandPeninsularForecastWeekly'):
+            # 603
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastWeekly(e)
+            assert isinstance(profile, DemandPeninsularForecastWeekly)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n semanal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n semanal')
+            )
+
+        with it('Returns DemandPeninsularForecastMonthly'):
+            # 461
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastMonthly(e)
+            assert isinstance(profile, DemandPeninsularForecastMonthly)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n mensual')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n mensual')
+            )
+
+
+# class DemandPeninsularForecastYearly(Indicator):
+#     """
+#     From december to december next year. In kWh.
+#     """
+#     path = 'indicators/1774'
+#
+#
+# class DemandNonPeninsularSystemReal(Indicator):
+#     path = 'indicators/1740'
+#
+#
+# class DemandNonPeninsularSystemRealSumGeneration(Indicator):
+#     path = 'indicators/10350'
+#
+#
+# class DemandNonPeninsularSystemForecasted(Indicator):
+#     path = 'indicators/1742'
+#
+#
+# class DemandNonPeninsularSystemScheduled(Indicator):
+#     path = 'indicators/1741'
+#
+#
+# # national generation of electricity (in kW)
+# class GenerationNationalWind(Indicator):
+#     path = 'indicators/2038'
+#
+#
+# class GenerationNationalNuclear(Indicator):
+#     path = 'indicators/2039'
+#
+#
+# class GenerationNationalCoal(Indicator):
+#     path = 'indicators/2040'
+#
+#
+# class GenerationNationalCombinedCycle(Indicator):
+#     path = 'indicators/2041'
+#
+#
+# class GenerationNationalExchanges(Indicator):
+#     path = 'indicators/553'
+#
+#
+# class GenerationNationalSolarPhotovoltaic(Indicator):
+#     path = 'indicators/2044'
+#
+#
+# class GenerationNationalSolarThermal(Indicator):
+#     path = 'indicators/2045'
+#
+#
+# class GenerationNationalRenewableThermal(Indicator):
+#     path = 'indicators/2046'
+#
+#
+# class GenerationNationalDiesel(Indicator):
+#     path = 'indicators/2047'
+#
+#
+# class GenerationNationalGasTurbine(Indicator):
+#     path = 'indicators/2048'
+#
+#
+# class GenerationNationalSteamTurbine(Indicator):
+#     path = 'indicators/2049'
+#
+#
+# class GenerationNationalAuxiliary(Indicator):
+#     path = 'indicators/2050'
+#
+#
+# class GenerationNationalCogenerationAndWaste(Indicator):
+#     path = 'indicators/2051'
+#
+#
+# class GenerationNationalHydraulic(Indicator):
+#     path = 'indicators/2067'
+#
+#
+# class GenerationNationalHydraulicAggregated(Indicator):
+#     """
+#     Represents national-level hydraulic energy indicators, including:
+#     - Pumping turbine output
+#     - Pumping energy consumption
+#     - Hydraulic generation
+#     Plus or minus some error.
+#     """
+#     path = 'indicators/2042'
+#
+#
+# class GenerationNationalStoragePumpingTurbine(Indicator):
+#     path = 'indicators/2066'
+#
+#
+# class GenerationNationalStoragePumpingConsumption(Indicator):
+#     path = 'indicators/2065'
+#
+#
+# class GenerationNationalStorageBatteryDelivery(Indicator):
+#     path = 'indicators/2198'
+#
+#
+# class GenerationNationalStorageBatteryCharging(Indicator):
+#     path = 'indicators/2199'
+#
+#
+# class GenerationNationalExportAndorra(Indicator):
+#     path = 'indicators/2068'
+#
+#
+# class GenerationNationalExportMorocco(Indicator):
+#     path = 'indicators/2069'
+#
+#
+# class GenerationNationalExportPortugal(Indicator):
+#     path = 'indicators/2070'
+#
+#
+# class GenerationNationalExportFrance(Indicator):
+#     path = 'indicators/2071'
+#
+#
+# class GenerationNationalExportTotal(Indicator):
+#     path = 'indicators/2072'
+#
+#
+# class GenerationNationalImportAndorra(Indicator):
+#     path = 'indicators/2073'
+#
+#
+# class GenerationNationalImportMorocco(Indicator):
+#     path = 'indicators/2074'
+#
+#
+# class GenerationNationalImportPortugal(Indicator):
+#     path = 'indicators/2075'
+#
+#
+# class GenerationNationalImportFrance(Indicator):
+#     path = 'indicators/2076'
+#
+#
+# class GenerationNationalImportTotal(Indicator):
+#     path = 'indicators/2077'
+#
+#
+# # peninsular generation of electricity (in kW)
+# class GenerationPeninsularWind(Indicator):
+#     path = 'indicators/551'
+#
+#
+# class GenerationPeninsularNuclear(Indicator):
+#     path = 'indicators/549'
+#
+#
+# class GenerationPeninsularFuelGas(Indicator):
+#     path = 'indicators/548'
+#
+#
+# class GenerationPeninsularCoal(Indicator):
+#     path = 'indicators/547'
+#
+#
+# class GenerationPeninsularCombinedCycle(Indicator):
+#     path = 'indicators/550'
+#
+#
+# class GenerationPeninsularExchanges(Indicator):
+#     path = 'indicators/553'
+#
+#
+# class GenerationPeninsularBalearicLink(Indicator):
+#     path = 'indicators/554'
+#
+#
+# class GenerationPeninsularSolarPhotovoltaic(Indicator):
+#     """
+#     Contains data since 02/06/2015 21:00 (spain tz).
+#     """
+#     path = 'indicators/1295'
+#
+#
+# class GenerationPeninsularSolarThermal(Indicator):
+#     """
+#     Contains data since 02/06/2015 21:00 (spain tz).
+#     """
+#     path = 'indicators/1294'
+#
+#
+# class GenerationPeninsularRenewableThermal(Indicator):
+#     path = 'indicators/1296'
+#
+#
+# class GenerationPeninsularCogenerationAndWaste(Indicator):
+#     path = 'indicators/1297'
+#
+#
+# class GenerationPeninsularHydraulic(Indicator):
+#     path = 'indicators/2080'
+#
+#
+# class GenerationPeninsularHydraulicAggregated(Indicator):
+#     """
+#     Represents peninsular-level hydraulic energy indicators, including:
+#     - Pumping turbine output
+#     - Pumping energy consumption
+#     - Hydraulic generation
+#     Plus or minus some error.
+#     """
+#     path = 'indicators/546'
+#
+#
+# class GenerationPeninsularStoragePumpingTurbine(Indicator):
+#     path = 'indicators/2079'
+#
+#
+# class GenerationPeninsularStoragePumpingConsumption(Indicator):
+#     path = 'indicators/2078'
+#
+#
+# class GenerationPeninsularStorageBatteryDelivery(Indicator):
+#     path = 'indicators/2167'
+#
+#
+# class GenerationPeninsularStorageBatteryCharging(Indicator):
+#     path = 'indicators/2166'
+#
+#
+# class GenerationPeninsularExportAndorra(Indicator):
+#     path = 'indicators/2068'
+#
+#
+# class GenerationPeninsularExportMorocco(Indicator):
+#     path = 'indicators/2069'
+#
+#
+# class GenerationPeninsularExportPortugal(Indicator):
+#     path = 'indicators/2070'
+#
+#
+# class GenerationPeninsularExportFrance(Indicator):
+#     path = 'indicators/2071'
+#
+#
+# class GenerationPeninsularExportTotal(Indicator):
+#     path = 'indicators/2072'
+#
+#
+# class GenerationPeninsularImportAndorra(Indicator):
+#     path = 'indicators/2073'
+#
+#
+# class GenerationPeninsularImportMorocco(Indicator):
+#     path = 'indicators/2074'
+#
+#
+# class GenerationPeninsularImportPortugal(Indicator):
+#     path = 'indicators/2075'
+#
+#
+# class GenerationPeninsularImportFrance(Indicator):
+#     path = 'indicators/2076'
+#
+#
+# class GenerationPeninsularImportTotal(Indicator):
+#     path = 'indicators/2077'
+#
+#
+# class GenerationPeninsularSolarAggregatedOutdated(Indicator):
+#     """
+#     Contains data until 02/06/2015 20:50 (spain tz).
+#     Solar thermal + solar photovoltaic
+#     """
+#     path = 'indicators/552'
+#
+#
+# class GenerationPeninsularSolarAggregated(Indicator):
+#     """
+#     Contains data since 02/06/2015 21:00 (spain tz).
+#     Solar thermal + solar photovoltaic
+#     """
+#     path = 'indicators/10206'
+#
+#
+# # non peninsular systems (SNP) (separated by region) (in kW)
+# class GenerationNonPeninsularSystemWind(Indicator):
+#     path = 'indicators/1745'
+#
+#
+# class GenerationNonPeninsularSystemCoal(Indicator):
+#     path = 'indicators/1750'
+#
+#
+# class GenerationNonPeninsularSystemCombinedCycle(Indicator):
+#     path = 'indicators/1746'
+#
+#
+# class GenerationNonPeninsularSystemBalearicLink(Indicator):
+#     path = 'indicators/1751'
+#
+#
+# class GenerationNonPeninsularSystemSolarPhotovoltaic(Indicator):
+#     path = 'indicators/1748'
+#
+#
+# class GenerationNonPeninsularSystemDiesel(Indicator):
+#     path = 'indicators/1743'
+#
+#
+# class GenerationNonPeninsularSystemGasTurbine(Indicator):
+#     path = 'indicators/1744'
+#
+#
+# class GenerationNonPeninsularSystemSteamTurbine(Indicator):
+#     path = 'indicators/1747'
+#
+#
+# class GenerationNonPeninsularSystemAuxiliary(Indicator):
+#     path = 'indicators/1754'
+#
+#
+# class GenerationNonPeninsularSystemCogenerationAndWaste(Indicator):
+#     path = 'indicators/1755'
+#
+#
+# class GenerationNonPeninsularSystemHydraulic(Indicator):
+#     path = 'indicators/2083'
+#
+#
+# class GenerationNonPeninsularSystemHydraulicAggregated(Indicator):
+#     """
+#     Represents peninsular-level hydraulic energy indicators, including:
+#     - Pumping turbine output
+#     - Pumping energy consumption
+#     - Hydraulic generation
+#     Plus or minus some error.
+#     """
+#     path = 'indicators/1749'
+#
+#
+# class GenerationNonPeninsularSystemStoragePumpingTurbine(Indicator):
+#     path = 'indicators/2082'
+#
+#
+# class GenerationNonPeninsularSystemStoragePumpingConsumption(Indicator):
+#     path = 'indicators/2081'
+#
+#
+# class GenerationNonPeninsularSystemStorageBatteryDelivery(Indicator):
+#     path = 'indicators/2169'
+#
+#
+# class GenerationNonPeninsularSystemStorageBatteryCharging(Indicator):
+#     path = 'indicators/2168'
+#
+#
+# class GenerationWindForecast(Indicator):
+#     path = 'indicators/541'
+#
+#
+# class GenerationSolarPhotovoltaicForecast(Indicator):
+#     path = 'indicators/542'
+#
+#
+# class GenerationSolarThermalForecast(Indicator):
+#     path = 'indicators/543'
+#
+#
+# class GenerationSolarAggregatedForecast(Indicator):
+#     path = 'indicators/10034'
