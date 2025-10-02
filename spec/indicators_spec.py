@@ -1746,59 +1746,136 @@ with description('Indicators file'):
                 contain(u'Generaci\xf3n T.Real intercambios')
             )
 
-# class GenerationPeninsularBalearicLink(Indicator):
-#     path = 'indicators/554'
-#
-#
-# class GenerationPeninsularSolarPhotovoltaic(Indicator):
-#     """
-#     Contains data since 02/06/2015 21:00 (spain tz).
-#     """
-#     path = 'indicators/1295'
-#
-#
-# class GenerationPeninsularSolarThermal(Indicator):
-#     """
-#     Contains data since 02/06/2015 21:00 (spain tz).
-#     """
-#     path = 'indicators/1294'
-#
-#
-# class GenerationPeninsularRenewableThermal(Indicator):
-#     path = 'indicators/1296'
-#
-#
-# class GenerationPeninsularCogenerationAndWaste(Indicator):
-#     path = 'indicators/1297'
-#
-#
-# class GenerationPeninsularHydraulic(Indicator):
-#     path = 'indicators/2080'
-#
-#
-# class GenerationPeninsularHydraulicAggregated(Indicator):
-#     """
-#     Represents peninsular-level hydraulic energy indicators, including:
-#     - Pumping turbine output
-#     - Pumping energy consumption
-#     - Hydraulic generation
-#     Plus or minus some error.
-#     """
-#     path = 'indicators/546'
-#
-#
-# class GenerationPeninsularStoragePumpingTurbine(Indicator):
-#     path = 'indicators/2079'
-#
-#
-# class GenerationPeninsularStoragePumpingConsumption(Indicator):
-#     path = 'indicators/2078'
-#
-#
-# class GenerationPeninsularStorageBatteryDelivery(Indicator):
-#     path = 'indicators/2167'
-#
-#
+        with it('Returns GenerationPeninsularBalearicLink'):
+            # 554
+            e = Esios(self.token)
+            profile = GenerationPeninsularBalearicLink(e)
+            assert isinstance(profile, GenerationPeninsularBalearicLink)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Enlace Pen\xednsula-Baleares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real enlace balear')
+            )
+
+        with it('Returns GenerationPeninsularSolarPhotovoltaic'):
+            # 1295
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarPhotovoltaic(e)
+            assert isinstance(profile, GenerationPeninsularSolarPhotovoltaic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar fotovoltaica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar fotovoltaica')
+            )
+
+        with it('Returns GenerationPeninsularSolarThermal'):
+            # 1294
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarThermal(e)
+            assert isinstance(profile, GenerationPeninsularSolarThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar t\xe9rmica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar t\xe9rmica')
+            )
+
+        with it('Returns GenerationPeninsularRenewableThermal'):
+            # 1296
+            e = Esios(self.token)
+            profile = GenerationPeninsularRenewableThermal(e)
+            assert isinstance(profile, GenerationPeninsularRenewableThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'T\xe9rmica renovable')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'T\xe9rmica renovable')
+            )
+
+        with it('Returns GenerationPeninsularCogenerationAndWaste'):
+            # 1297
+            e = Esios(self.token)
+            profile = GenerationPeninsularCogenerationAndWaste(e)
+            assert isinstance(profile, GenerationPeninsularCogenerationAndWaste)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Cogeneraci\xf3n y resto')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Cogeneraci\xf3n y resto')
+            )
+
+        with it('Returns GenerationPeninsularHydraulic'):
+            # 2080
+            e = Esios(self.token)
+            profile = GenerationPeninsularHydraulic(e)
+            assert isinstance(profile, GenerationPeninsularHydraulic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica')
+            )
+
+        with it('Returns GenerationPeninsularHydraulicAggregated'):
+            # 546
+            e = Esios(self.token)
+            profile = GenerationPeninsularHydraulicAggregated(e)
+            assert isinstance(profile, GenerationPeninsularHydraulicAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Hidr\xe1ulica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real hidr\xe1ulica')
+            )
+
+        with it('Returns GenerationPeninsularStoragePumpingTurbine'):
+            # 2079
+            e = Esios(self.token)
+            profile = GenerationPeninsularStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationPeninsularStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo')
+            )
+
+        with it('Returns GenerationPeninsularStoragePumpingConsumption'):
+            # 2078
+            e = Esios(self.token)
+            profile = GenerationPeninsularStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationPeninsularStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo')
+            )
+
+        with it('Returns GenerationPeninsularStorageBatteryDelivery'):
+            # 2167
+            e = Esios(self.token)
+            profile = GenerationPeninsularStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationPeninsularStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas')
+            )
+
 # class GenerationPeninsularStorageBatteryCharging(Indicator):
 #     path = 'indicators/2166'
 #
