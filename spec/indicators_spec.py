@@ -2136,61 +2136,171 @@ with description('Indicators file'):
                 contain(u'Generaci\xf3n T.Real turbina de gas SNP')
             )
 
+        with it('Returns GenerationNonPeninsularSystemSteamTurbine'):
+            # 1747
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemSteamTurbine(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemSteamTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Turbina de vapor SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbina de vapor SNP')
+            )
 
-# class GenerationNonPeninsularSystemSteamTurbine(Indicator):
-#     path = 'indicators/1747'
-#
-#
-# class GenerationNonPeninsularSystemAuxiliary(Indicator):
-#     path = 'indicators/1754'
-#
-#
-# class GenerationNonPeninsularSystemCogenerationAndWaste(Indicator):
-#     path = 'indicators/1755'
-#
-#
-# class GenerationNonPeninsularSystemHydraulic(Indicator):
-#     path = 'indicators/2083'
-#
-#
-# class GenerationNonPeninsularSystemHydraulicAggregated(Indicator):
-#     """
-#     Represents peninsular-level hydraulic energy indicators, including:
-#     - Pumping turbine output
-#     - Pumping energy consumption
-#     - Hydraulic generation
-#     Plus or minus some error.
-#     """
-#     path = 'indicators/1749'
-#
-#
-# class GenerationNonPeninsularSystemStoragePumpingTurbine(Indicator):
-#     path = 'indicators/2082'
-#
-#
-# class GenerationNonPeninsularSystemStoragePumpingConsumption(Indicator):
-#     path = 'indicators/2081'
-#
-#
-# class GenerationNonPeninsularSystemStorageBatteryDelivery(Indicator):
-#     path = 'indicators/2169'
-#
-#
-# class GenerationNonPeninsularSystemStorageBatteryCharging(Indicator):
-#     path = 'indicators/2168'
-#
-#
-# class GenerationWindForecast(Indicator):
-#     path = 'indicators/541'
-#
-#
-# class GenerationSolarPhotovoltaicForecast(Indicator):
-#     path = 'indicators/542'
-#
-#
-# class GenerationSolarThermalForecast(Indicator):
-#     path = 'indicators/543'
-#
-#
-# class GenerationSolarAggregatedForecast(Indicator):
-#     path = 'indicators/10034'
+        with it('Returns GenerationNonPeninsularSystemAuxiliary'):
+            # 1754
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemAuxiliary(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemAuxiliary)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n auxiliar SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n auxiliar SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemCogenerationAndWaste'):
+            # 1755
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemCogenerationAndWaste(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemCogenerationAndWaste)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Cogeneraci\xf3n SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real cogeneraci\xf3n SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemHydraulic'):
+            # 2083
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemHydraulic(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemHydraulic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemHydraulicAggregated'):
+            # 1749
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemHydraulicAggregated(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemHydraulicAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Hidr\xe1ulica SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real hidr\xe1ulica SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStoragePumpingTurbine'):
+            # 2082
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStoragePumpingConsumption'):
+            # 2081
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStorageBatteryDelivery'):
+            # 2169
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStorageBatteryCharging'):
+            # 2168
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStorageBatteryCharging(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStorageBatteryCharging)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carga Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Carga Bater\xedas')
+            )
+
+        with it('Returns GenerationWindForecast'):
+            # 541
+            e = Esios(self.token)
+            profile = GenerationWindForecast(e)
+            assert isinstance(profile, GenerationWindForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n e\xf3lica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n de la producci\xf3n e\xf3lica peninsular')
+            )
+
+        with it('Returns GenerationSolarPhotovoltaicForecast'):
+            # 542
+            e = Esios(self.token)
+            profile = GenerationSolarPhotovoltaicForecast(e)
+            assert isinstance(profile, GenerationSolarPhotovoltaicForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar fotovoltaica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar fotovoltaica')
+            )
+
+        with it('Returns GenerationSolarThermalForecast'):
+            # 543
+            e = Esios(self.token)
+            profile = GenerationSolarThermalForecast(e)
+            assert isinstance(profile, GenerationSolarThermalForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar t\xe9rmica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar t\xe9rmica')
+            )
+
+        with it('Returns GenerationSolarAggregatedForecast'):
+            # 10034
+            e = Esios(self.token)
+            profile = GenerationSolarAggregatedForecast(e)
+            assert isinstance(profile, GenerationSolarAggregatedForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n solar')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n prevista Solar')
+            )
