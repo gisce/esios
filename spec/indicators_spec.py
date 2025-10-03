@@ -1067,3 +1067,1240 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
             )
+
+    with context('Generation-Demand Components'):
+        with it('Returns GenerationDemandDeviation'):
+            # 1338
+            # equivalent to grcosdnc Coste Desvios (9th field)
+            e = Esios(self.token)
+            profile = GenerationDemandDeviation(e)
+            assert isinstance(profile, GenerationDemandDeviation)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Volumen desvíos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Volumen neto de los desv\xedos generaci\xf3n-demanda')
+            )
+
+        with it('Returns DemandNationalReal'):
+            # 2037
+            e = Esios(self.token)
+            profile = DemandNationalReal(e)
+            assert isinstance(profile, DemandNationalReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real nacional')
+            )
+
+        with it('Returns DemandNationalForecasted'):
+            # 2052
+            e = Esios(self.token)
+            profile = DemandNationalForecasted(e)
+            assert isinstance(profile, DemandNationalForecasted)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real prevista nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real prevista nacional')
+            )
+
+        with it('Returns DemandNationalScheduled'):
+            # 2053
+            e = Esios(self.token)
+            profile = DemandNationalScheduled(e)
+            assert isinstance(profile, DemandNationalScheduled)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real programada nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real programada nacional')
+            )
+
+        with it('Returns DemandNationalForecastedForSNP'):
+            # 2084
+            e = Esios(self.token)
+            profile = DemandNationalForecastedForSNP(e)
+            assert isinstance(profile, DemandNationalForecastedForSNP)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda prevista nacional para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda prevista nacional para sistemas no peninsulares')
+            )
+
+        with it('Returns DemandPeninsularReal'):
+            # 1293
+            e = Esios(self.token)
+            profile = DemandPeninsularReal(e)
+            assert isinstance(profile, DemandPeninsularReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real')
+            )
+
+        with it('Returns DemandPeninsularRealSumGeneration'):
+            # 10004
+            e = Esios(self.token)
+            profile = DemandPeninsularRealSumGeneration(e)
+            assert isinstance(profile, DemandPeninsularRealSumGeneration)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real suma generaci\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real suma de generaci\xf3n')
+            )
+
+        with it('Returns DemandPeninsularForecasted'):
+            # 544
+            e = Esios(self.token)
+            profile = DemandPeninsularForecasted(e)
+            assert isinstance(profile, DemandPeninsularForecasted)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda prevista')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda prevista')
+            )
+
+        with it('Returns DemandPeninsularScheduled'):
+            # 545
+            e = Esios(self.token)
+            profile = DemandPeninsularScheduled(e)
+            assert isinstance(profile, DemandPeninsularScheduled)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda programada')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda programada')
+            )
+
+        with it('Returns DemandPeninsularForecastDaily'):
+            # 460
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastDaily(e)
+            assert isinstance(profile, DemandPeninsularForecastDaily)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n diaria')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n diaria')
+            )
+
+        with it('Returns DemandPeninsularForecastWeekly'):
+            # 603
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastWeekly(e)
+            assert isinstance(profile, DemandPeninsularForecastWeekly)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n semanal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n semanal')
+            )
+
+        with it('Returns DemandPeninsularForecastMonthly'):
+            # 461
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastMonthly(e)
+            assert isinstance(profile, DemandPeninsularForecastMonthly)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n mensual')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n mensual')
+            )
+
+        with it('Returns DemandPeninsularForecastYearly'):
+            # 1774
+            e = Esios(self.token)
+            profile = DemandPeninsularForecastYearly(e)
+            assert isinstance(profile, DemandPeninsularForecastYearly)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda anual')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n demanda anual')
+            )
+
+        with it('Returns DemandNonPeninsularSystemReal'):
+            # 1740
+            e = Esios(self.token)
+            profile = DemandNonPeninsularSystemReal(e)
+            assert isinstance(profile, DemandNonPeninsularSystemReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda Real SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda Real SNP')
+            )
+
+        with it('Returns DemandNonPeninsularSystemRealSumGeneration'):
+            # 10350
+            e = Esios(self.token)
+            profile = DemandNonPeninsularSystemRealSumGeneration(e)
+            assert isinstance(profile, DemandNonPeninsularSystemRealSumGeneration)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real suma de generaci\xf3n SNP')
+            )
+
+        with it('Returns DemandNonPeninsularSystemForecasted'):
+            # 1742
+            e = Esios(self.token)
+            profile = DemandNonPeninsularSystemForecasted(e)
+            assert isinstance(profile, DemandNonPeninsularSystemForecasted)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda prevista SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda prevista SNP')
+            )
+
+        with it('Returns DemandNonPeninsularSystemScheduled'):
+            # 1741
+            e = Esios(self.token)
+            profile = DemandNonPeninsularSystemScheduled(e)
+            assert isinstance(profile, DemandNonPeninsularSystemScheduled)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda programada SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda programada SNP')
+            )
+
+        with it('Returns GenerationNationalWind'):
+            # 2038
+            e = Esios(self.token)
+            profile = GenerationNationalWind(e)
+            assert isinstance(profile, GenerationNationalWind)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real e\xf3lica nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real e\xf3lica nacional')
+            )
+
+        with it('Returns GenerationNationalNuclear'):
+            # 2039
+            e = Esios(self.token)
+            profile = GenerationNationalNuclear(e)
+            assert isinstance(profile, GenerationNationalNuclear)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real nuclear nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real nuclear nacional')
+            )
+
+        with it('Returns GenerationNationalCoal'):
+            # 2040
+            e = Esios(self.token)
+            profile = GenerationNationalCoal(e)
+            assert isinstance(profile, GenerationNationalCoal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real carb\xf3n nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real carb\xf3n nacional')
+            )
+
+        with it('Returns GenerationNationalCombinedCycle'):
+            # 2041
+            e = Esios(self.token)
+            profile = GenerationNationalCombinedCycle(e)
+            assert isinstance(profile, GenerationNationalCombinedCycle)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real ciclo combinado nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real ciclo combinado nacional')
+            )
+
+        with it('Returns GenerationNationalExchanges'):
+            # 553
+            e = Esios(self.token)
+            profile = GenerationNationalExchanges(e)
+            assert isinstance(profile, GenerationNationalExchanges)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intercambios')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real intercambios')
+            )
+
+        with it('Returns GenerationNationalSolarPhotovoltaic'):
+            # 2044
+            e = Esios(self.token)
+            profile = GenerationNationalSolarPhotovoltaic(e)
+            assert isinstance(profile, GenerationNationalSolarPhotovoltaic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real solar fotovoltaica nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real solar fotovoltaica nacional')
+            )
+
+        with it('Returns GenerationNationalSolarThermal'):
+            # 2045
+            e = Esios(self.token)
+            profile = GenerationNationalSolarThermal(e)
+            assert isinstance(profile, GenerationNationalSolarThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real solar t\xe9rmica nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real solar t\xe9rmica nacional')
+            )
+
+        with it('Returns GenerationNationalRenewableThermal'):
+            # 2046
+            e = Esios(self.token)
+            profile = GenerationNationalRenewableThermal(e)
+            assert isinstance(profile, GenerationNationalRenewableThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real t\xe9rmica renovable nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real t\xe9rmica renovable nacional')
+            )
+
+        with it('Returns GenerationNationalDiesel'):
+            # 2047
+            e = Esios(self.token)
+            profile = GenerationNationalDiesel(e)
+            assert isinstance(profile, GenerationNationalDiesel)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real motor diesel nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real motor diesel nacional')
+            )
+
+        with it('Returns GenerationNationalGasTurbine'):
+            # 2048
+            e = Esios(self.token)
+            profile = GenerationNationalGasTurbine(e)
+            assert isinstance(profile, GenerationNationalGasTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbina de gas nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbina de gas nacional')
+            )
+
+        with it('Returns GenerationNationalSteamTurbine'):
+            # 2049
+            e = Esios(self.token)
+            profile = GenerationNationalSteamTurbine(e)
+            assert isinstance(profile, GenerationNationalSteamTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbina de vapor nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbina de vapor nacional')
+            )
+
+        with it('Returns GenerationNationalAuxiliary'):
+            # 2050
+            e = Esios(self.token)
+            profile = GenerationNationalAuxiliary(e)
+            assert isinstance(profile, GenerationNationalAuxiliary)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n auxiliar nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n auxiliar nacional')
+            )
+
+        with it('Returns GenerationNationalCogenerationAndWaste'):
+            # 2051
+            e = Esios(self.token)
+            profile = GenerationNationalCogenerationAndWaste(e)
+            assert isinstance(profile, GenerationNationalCogenerationAndWaste)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real cogeneraci\xf3n y residuos nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real cogeneraci\xf3n y residuos nacional')
+            )
+
+        with it('Returns GenerationNationalHydraulic'):
+            # 2067
+            e = Esios(self.token)
+            profile = GenerationNationalHydraulic(e)
+            assert isinstance(profile, GenerationNationalHydraulic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica Nacional')
+            )
+
+        with it('Returns GenerationNationalHydraulicAggregated'):
+            # 2042
+            e = Esios(self.token)
+            profile = GenerationNationalHydraulicAggregated(e)
+            assert isinstance(profile, GenerationNationalHydraulicAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real hidra\xfalica nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real hidra\xfalica nacional')
+            )
+
+        with it('Returns GenerationNationalStoragePumpingTurbine'):
+            # 2066
+            e = Esios(self.token)
+            profile = GenerationNationalStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationNationalStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo Nacional')
+            )
+
+        with it('Returns GenerationNationalStoragePumpingConsumption'):
+            # 2065
+            e = Esios(self.token)
+            profile = GenerationNationalStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationNationalStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo Nacional')
+            )
+
+        with it('Returns GenerationNationalStorageBatteryDelivery'):
+            # 2198
+            e = Esios(self.token)
+            profile = GenerationNationalStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationNationalStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas Nacional')
+            )
+
+        with it('Returns GenerationNationalStorageBatteryCharging'):
+            # 2199
+            e = Esios(self.token)
+            profile = GenerationNationalStorageBatteryCharging(e)
+            assert isinstance(profile, GenerationNationalStorageBatteryCharging)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carga Bater\xedas Nacional')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Carga Bater\xedas Nacional')
+            )
+
+        with it('Returns GenerationNationalExportAndorra'):
+            # 2068
+            e = Esios(self.token)
+            profile = GenerationNationalExportAndorra(e)
+            assert isinstance(profile, GenerationNationalExportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+
+        with it('Returns GenerationNationalExportMorocco'):
+            # 2069
+            e = Esios(self.token)
+            profile = GenerationNationalExportMorocco(e)
+            assert isinstance(profile, GenerationNationalExportMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+
+        with it('Returns GenerationNationalExportPortugal'):
+            # 2070
+            e = Esios(self.token)
+            profile = GenerationNationalExportPortugal(e)
+            assert isinstance(profile, GenerationNationalExportPortugal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+
+        with it('Returns GenerationNationalExportFrance'):
+            # 2071
+            e = Esios(self.token)
+            profile = GenerationNationalExportFrance(e)
+            assert isinstance(profile, GenerationNationalExportFrance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+
+        with it('Returns GenerationNationalExportTotal'):
+            # 2072
+            e = Esios(self.token)
+            profile = GenerationNationalExportTotal(e)
+            assert isinstance(profile, GenerationNationalExportTotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+
+        with it('Returns GenerationNationalImportAndorra'):
+            # 2073
+            e = Esios(self.token)
+            profile = GenerationNationalImportAndorra(e)
+            assert isinstance(profile, GenerationNationalImportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+
+        with it('Returns GenerationNationalImportMorocco'):
+            # 2074
+            e = Esios(self.token)
+            profile = GenerationNationalImportMorocco(e)
+            assert isinstance(profile, GenerationNationalImportMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Marruecos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Marruecos')
+            )
+
+        with it('Returns GenerationNationalImportPortugal'):
+            # 2075
+            e = Esios(self.token)
+            profile = GenerationNationalImportPortugal(e)
+            assert isinstance(profile, GenerationNationalImportPortugal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Portugal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Portugal')
+            )
+
+        with it('Returns GenerationNationalImportFrance'):
+            # 2076
+            e = Esios(self.token)
+            profile = GenerationNationalImportFrance(e)
+            assert isinstance(profile, GenerationNationalImportFrance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Francia')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Francia')
+            )
+
+        with it('Returns GenerationNationalImportTotal'):
+            # 2077
+            e = Esios(self.token)
+            profile = GenerationNationalImportTotal(e)
+            assert isinstance(profile, GenerationNationalImportTotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n total')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n total')
+            )
+
+        with it('Returns GenerationPeninsularWind'):
+            # 551
+            e = Esios(self.token)
+            profile = GenerationPeninsularWind(e)
+            assert isinstance(profile, GenerationPeninsularWind)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'E\xf3lica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real e\xf3lica')
+            )
+
+        with it('Returns GenerationPeninsularNuclear'):
+            # 549
+            e = Esios(self.token)
+            profile = GenerationPeninsularNuclear(e)
+            assert isinstance(profile, GenerationPeninsularNuclear)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Nuclear')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real nuclear')
+            )
+
+        with it('Returns GenerationPeninsularFuelGas'):
+            # 548
+            e = Esios(self.token)
+            profile = GenerationPeninsularFuelGas(e)
+            assert isinstance(profile, GenerationPeninsularFuelGas)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Fuel-gas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real fuel-gas')
+            )
+
+        with it('Returns GenerationPeninsularCoal'):
+            # 547
+            e = Esios(self.token)
+            profile = GenerationPeninsularCoal(e)
+            assert isinstance(profile, GenerationPeninsularCoal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carb\xf3n')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real carb\xf3n')
+            )
+
+        with it('Returns GenerationPeninsularCombinedCycle'):
+            # 550
+            e = Esios(self.token)
+            profile = GenerationPeninsularCombinedCycle(e)
+            assert isinstance(profile, GenerationPeninsularCombinedCycle)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Ciclo combinado')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real C.Combinado')
+            )
+
+        with it('Returns GenerationPeninsularExchanges'):
+            # 553
+            e = Esios(self.token)
+            profile = GenerationPeninsularExchanges(e)
+            assert isinstance(profile, GenerationPeninsularExchanges)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Intercambios')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real intercambios')
+            )
+
+        with it('Returns GenerationPeninsularBalearicLink'):
+            # 554
+            e = Esios(self.token)
+            profile = GenerationPeninsularBalearicLink(e)
+            assert isinstance(profile, GenerationPeninsularBalearicLink)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Enlace Pen\xednsula-Baleares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real enlace balear')
+            )
+
+        with it('Returns GenerationPeninsularSolarPhotovoltaic'):
+            # 1295
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarPhotovoltaic(e)
+            assert isinstance(profile, GenerationPeninsularSolarPhotovoltaic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar fotovoltaica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar fotovoltaica')
+            )
+
+        with it('Returns GenerationPeninsularSolarThermal'):
+            # 1294
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarThermal(e)
+            assert isinstance(profile, GenerationPeninsularSolarThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar t\xe9rmica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar t\xe9rmica')
+            )
+
+        with it('Returns GenerationPeninsularRenewableThermal'):
+            # 1296
+            e = Esios(self.token)
+            profile = GenerationPeninsularRenewableThermal(e)
+            assert isinstance(profile, GenerationPeninsularRenewableThermal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'T\xe9rmica renovable')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'T\xe9rmica renovable')
+            )
+
+        with it('Returns GenerationPeninsularCogenerationAndWaste'):
+            # 1297
+            e = Esios(self.token)
+            profile = GenerationPeninsularCogenerationAndWaste(e)
+            assert isinstance(profile, GenerationPeninsularCogenerationAndWaste)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Cogeneraci\xf3n y resto')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Cogeneraci\xf3n y resto')
+            )
+
+        with it('Returns GenerationPeninsularHydraulic'):
+            # 2080
+            e = Esios(self.token)
+            profile = GenerationPeninsularHydraulic(e)
+            assert isinstance(profile, GenerationPeninsularHydraulic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica')
+            )
+
+        with it('Returns GenerationPeninsularHydraulicAggregated'):
+            # 546
+            e = Esios(self.token)
+            profile = GenerationPeninsularHydraulicAggregated(e)
+            assert isinstance(profile, GenerationPeninsularHydraulicAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Hidr\xe1ulica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real hidr\xe1ulica')
+            )
+
+        with it('Returns GenerationPeninsularStoragePumpingTurbine'):
+            # 2079
+            e = Esios(self.token)
+            profile = GenerationPeninsularStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationPeninsularStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo')
+            )
+
+        with it('Returns GenerationPeninsularStoragePumpingConsumption'):
+            # 2078
+            e = Esios(self.token)
+            profile = GenerationPeninsularStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationPeninsularStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo')
+            )
+
+        with it('Returns GenerationPeninsularStorageBatteryDelivery'):
+            # 2167
+            e = Esios(self.token)
+            profile = GenerationPeninsularStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationPeninsularStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas')
+            )
+
+        with it('Returns GenerationPeninsularStorageBatteryCharging'):
+            # 2166
+            e = Esios(self.token)
+            profile = GenerationPeninsularStorageBatteryCharging(e)
+            assert isinstance(profile, GenerationPeninsularStorageBatteryCharging)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carga Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Carga Bater\xedas')
+            )
+
+        with it('Returns GenerationPeninsularExportAndorra'):
+            # 2068
+            e = Esios(self.token)
+            profile = GenerationPeninsularExportAndorra(e)
+            assert isinstance(profile, GenerationPeninsularExportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Andorra')
+            )
+
+        with it('Returns GenerationPeninsularExportMorocco'):
+            # 2069
+            e = Esios(self.token)
+            profile = GenerationPeninsularExportMorocco(e)
+            assert isinstance(profile, GenerationPeninsularExportMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Marruecos')
+            )
+
+        with it('Returns GenerationPeninsularExportPortugal'):
+            # 2070
+            e = Esios(self.token)
+            profile = GenerationPeninsularExportPortugal(e)
+            assert isinstance(profile, GenerationPeninsularExportPortugal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Portugal')
+            )
+
+        with it('Returns GenerationPeninsularExportFrance'):
+            # 2071
+            e = Esios(self.token)
+            profile = GenerationPeninsularExportFrance(e)
+            assert isinstance(profile, GenerationPeninsularExportFrance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n Francia')
+            )
+
+        with it('Returns GenerationPeninsularExportTotal'):
+            # 2072
+            e = Esios(self.token)
+            profile = GenerationPeninsularExportTotal(e)
+            assert isinstance(profile, GenerationPeninsularExportTotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real exportaci\xf3n total')
+            )
+
+        with it('Returns GenerationPeninsularImportAndorra'):
+            # 2073
+            e = Esios(self.token)
+            profile = GenerationPeninsularImportAndorra(e)
+            assert isinstance(profile, GenerationPeninsularImportAndorra)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Andorra')
+            )
+
+        with it('Returns GenerationPeninsularImportMorocco'):
+            # 2074
+            e = Esios(self.token)
+            profile = GenerationPeninsularImportMorocco(e)
+            assert isinstance(profile, GenerationPeninsularImportMorocco)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Marruecos')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Marruecos')
+            )
+
+        with it('Returns GenerationPeninsularImportPortugal'):
+            # 2075
+            e = Esios(self.token)
+            profile = GenerationPeninsularImportPortugal(e)
+            assert isinstance(profile, GenerationPeninsularImportPortugal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Portugal')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Portugal')
+            )
+
+        with it('Returns GenerationPeninsularImportFrance'):
+            # 2076
+            e = Esios(self.token)
+            profile = GenerationPeninsularImportFrance(e)
+            assert isinstance(profile, GenerationPeninsularImportFrance)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n Francia')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n Francia')
+            )
+
+        with it('Returns GenerationPeninsularImportTotal'):
+            # 2077
+            e = Esios(self.token)
+            profile = GenerationPeninsularImportTotal(e)
+            assert isinstance(profile, GenerationPeninsularImportTotal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real importaci\xf3n total')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real importaci\xf3n total')
+            )
+
+        with it('Returns GenerationPeninsularSolarAggregatedOutdated'):
+            # 552
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarAggregatedOutdated(e)
+            assert isinstance(profile, GenerationPeninsularSolarAggregatedOutdated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real solar')
+            )
+
+        with it('Returns GenerationPeninsularSolarAggregated'):
+            # 10206
+            e = Esios(self.token)
+            profile = GenerationPeninsularSolarAggregated(e)
+            assert isinstance(profile, GenerationPeninsularSolarAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemWind'):
+            # 1745
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemWind(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemWind)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'E\xf3lica SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real e\xf3lica SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemCoal'):
+            # 1750
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemCoal(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemCoal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carb\xf3n SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real carb\xf3n SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemCombinedCycle'):
+            # 1746
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemCombinedCycle(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemCombinedCycle)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Ciclo combinado SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real ciclo combinado SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemBalearicLink'):
+            # 1751
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemBalearicLink(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemBalearicLink)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Enlace balear SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real enlace balear SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemSolarPhotovoltaic'):
+            # 1748
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemSolarPhotovoltaic(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemSolarPhotovoltaic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar fotovoltaica SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real solar fotovoltaica SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemDiesel'):
+            # 1743
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemDiesel(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemDiesel)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Motores di\xe9sel SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real motores di\xe9sel SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemGasTurbine'):
+            # 1744
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemGasTurbine(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemGasTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Turbina de gas SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbina de gas SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemSteamTurbine'):
+            # 1747
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemSteamTurbine(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemSteamTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Turbina de vapor SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbina de vapor SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemAuxiliary'):
+            # 1754
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemAuxiliary(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemAuxiliary)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n auxiliar SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n auxiliar SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemCogenerationAndWaste'):
+            # 1755
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemCogenerationAndWaste(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemCogenerationAndWaste)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Cogeneraci\xf3n SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real cogeneraci\xf3n SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemHydraulic'):
+            # 2083
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemHydraulic(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemHydraulic)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real generaci\xf3n hidr\xe1ulica para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemHydraulicAggregated'):
+            # 1749
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemHydraulicAggregated(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemHydraulicAggregated)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Hidr\xe1ulica SNP')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real hidr\xe1ulica SNP')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStoragePumpingTurbine'):
+            # 2082
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStoragePumpingTurbine(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStoragePumpingTurbine)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real turbinaci\xf3n bombeo para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStoragePumpingConsumption'):
+            # 2081
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStoragePumpingConsumption(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStoragePumpingConsumption)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Generaci\xf3n T.Real consumo bombeo para sistemas no peninsulares')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n T.Real consumo bombeo para sistemas no peninsulares')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStorageBatteryDelivery'):
+            # 2169
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStorageBatteryDelivery(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStorageBatteryDelivery)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Entrega Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Entrega Bater\xedas')
+            )
+
+        with it('Returns GenerationNonPeninsularSystemStorageBatteryCharging'):
+            # 2168
+            e = Esios(self.token)
+            profile = GenerationNonPeninsularSystemStorageBatteryCharging(e)
+            assert isinstance(profile, GenerationNonPeninsularSystemStorageBatteryCharging)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Carga Bater\xedas')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Carga Bater\xedas')
+            )
+
+        with it('Returns GenerationWindForecast'):
+            # 541
+            e = Esios(self.token)
+            profile = GenerationWindForecast(e)
+            assert isinstance(profile, GenerationWindForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n e\xf3lica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsi\xf3n de la producci\xf3n e\xf3lica peninsular')
+            )
+
+        with it('Returns GenerationSolarPhotovoltaicForecast'):
+            # 542
+            e = Esios(self.token)
+            profile = GenerationSolarPhotovoltaicForecast(e)
+            assert isinstance(profile, GenerationSolarPhotovoltaicForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar fotovoltaica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar fotovoltaica')
+            )
+
+        with it('Returns GenerationSolarThermalForecast'):
+            # 543
+            e = Esios(self.token)
+            profile = GenerationSolarThermalForecast(e)
+            assert isinstance(profile, GenerationSolarThermalForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Solar t\xe9rmica')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Solar t\xe9rmica')
+            )
+
+        with it('Returns GenerationSolarAggregatedForecast'):
+            # 10034
+            e = Esios(self.token)
+            profile = GenerationSolarAggregatedForecast(e)
+            assert isinstance(profile, GenerationSolarAggregatedForecast)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsi\xf3n solar')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Generaci\xf3n prevista Solar')
+            )
