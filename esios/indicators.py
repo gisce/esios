@@ -7,7 +7,7 @@ from libsaas.services import base
 class Indicator(base.RESTResource):
     path = 'indicators'
     time_trunc = 'hour'
-    time_agg = 'sum'
+    time_agg = 'average'
 
     @staticmethod
     def validate_parameters(start_date, end_date, time_trunc, time_agg):
