@@ -117,8 +117,8 @@ class P48CierreParser(P48Cierre):
                 value = e.get('v')
                 start_str, end_str = value.split('/')
                 start = UTC_TZ.localize(datetime.strptime(start_str, '%Y-%m-%dT%H:%MZ'))
-                end = UTC_TZ.localize(datetime.strptime(end_str, '%Y-%m-%dT%H:%MZ'))
-                # print("P48 for UP {} from {} to {}".format(program_unit, start, end))
+            elif 'Resolucion' in e.tag:
+                integrity = 'p' if e.get('v') == 'PT60M' else 'p4'
             elif 'Intervalo' not in e.tag:
                 continue
             else:
@@ -133,6 +133,7 @@ class P48CierreParser(P48Cierre):
                     'utc_timestamp': utc_timestamp,
                     'local_timestamp': local_timestamp,
                     'cierre': is_cierre,
+                    'type': integrity
                 })
 
         return curve
