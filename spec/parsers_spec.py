@@ -38,9 +38,8 @@ def validate_json(result):
         expect(local_ts).to(equal(expected_local_ts))
 
 
-def validate_data(result, start, end, cierre=None):
+def validate_data(result, start, end, cierre=None, qh=True):
     data = json.loads(result)
-
     target_data = [x for x in data
                    if start <= LOCAL_TZ.normalize(LOCAL_TZ.localize(
             datetime.strptime(x['local_timestamp'][:18], '%Y-%m-%d %H:%M:%S'))) <= end]
@@ -48,8 +47,12 @@ def validate_data(result, start, end, cierre=None):
     max_date = max([d['local_timestamp'] for d in target_data])
     min_date = min([d['local_timestamp'] for d in target_data])
 
-    hours = int(((end - start).total_seconds() / 3600) + 1)
-    expect(len(target_data)).to(be_above_or_equal(hours))  # can include True and False values for "cierre" field
+    if qh:
+        qhs = int((end - start).total_seconds() / 3600 * 4) + 1
+        expect(len(target_data)).to(be_above_or_equal(qhs))  # can include True and False values for "cierre" field
+    else:
+        hours = int(((end - start).total_seconds() / 3600) + 1)
+        expect(len(target_data)).to(be_above_or_equal(hours))  # can include True and False values for "cierre" field
 
     expect(min_date).to(equal(str(start)))
     expect(max_date).to(equal(str(end)))
@@ -89,7 +92,7 @@ with description('Esios Parsers'):
                 result = parser.get_data_json('SOMEC01', start, end)
 
                 validate_json(result)
-                validate_data(result, start + relativedelta(hours=1), end + relativedelta(seconds=1))
+                validate_data(result, start + relativedelta(minutes=15), end + relativedelta(seconds=1))
 
         with context('parses local files'):
 
@@ -130,7 +133,10 @@ with description('Esios Parsers'):
 
                 validate_json(result)
                 validate_data(
-                    result, LOCAL_TZ.localize(datetime(2020, 9, 15, 1, 0)), LOCAL_TZ.localize(datetime(2020, 9, 16, 0, 0), True)
+                    result,
+                    LOCAL_TZ.localize(datetime(2020, 9, 15, 1, 0)),
+                    LOCAL_TZ.localize(datetime(2020, 9, 16, 0, 0), True),
+                    qh=False
                 )
 
 
@@ -140,7 +146,10 @@ with description('Esios Parsers'):
 
                 validate_json(result)
                 validate_data(
-                    result, LOCAL_TZ.localize(datetime(2020, 9, 17, 1, 0)), LOCAL_TZ.localize(datetime(2020, 9, 18, 0, 0), False)
+                    result,
+                    LOCAL_TZ.localize(datetime(2020, 9, 17, 1, 0)),
+                    LOCAL_TZ.localize(datetime(2020, 9, 18, 0, 0), False),
+                    qh=False
                 )
 
             with it('gets 25 registers for a p48cierre xml file from October saving time day'):
@@ -149,7 +158,10 @@ with description('Esios Parsers'):
 
                 validate_json(result)
                 validate_data(
-                    result, LOCAL_TZ.localize(datetime(2019, 10, 27, 1, 0)), LOCAL_TZ.localize(datetime(2019, 10, 28, 0, 0)), True
+                    result,
+                    LOCAL_TZ.localize(datetime(2019, 10, 27, 1, 0)),
+                    LOCAL_TZ.localize(datetime(2019, 10, 28, 0, 0)), True,
+                    qh=False
                 )
                 data = json.loads(result)
                 expect(len(data)).to(equal(25))
@@ -160,7 +172,10 @@ with description('Esios Parsers'):
 
                 validate_json(result)
                 validate_data(
-                    result, LOCAL_TZ.localize(datetime(2020, 3, 29, 1, 0)), LOCAL_TZ.localize(datetime(2020, 3, 30, 0, 0)), True
+                    result,
+                    LOCAL_TZ.localize(datetime(2020, 3, 29, 1, 0)),
+                    LOCAL_TZ.localize(datetime(2020, 3, 30, 0, 0)), True,
+                    qh=False
                 )
 
                 data = json.loads(result)

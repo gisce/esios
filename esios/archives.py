@@ -42,7 +42,7 @@ class Archive(base.RESTResource):
         date_type = 'datos'
         start_date = start_date.isoformat()
         end_date = end_date.isoformat()
-        locale = 'en'
+        locale = 'es'
         param_list = ('locale', 'start_date', 'end_date', 'date_type')
         if taxonomy_terms:
             param_list += ('taxonomy_terms',)

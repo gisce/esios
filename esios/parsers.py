@@ -119,12 +119,13 @@ class P48CierreParser(P48Cierre):
                 start = UTC_TZ.localize(datetime.strptime(start_str, '%Y-%m-%dT%H:%MZ'))
             elif 'Resolucion' in e.tag:
                 integrity = 'p' if e.get('v') == 'PT60M' else 'p4'
+                minutes = 60 if integrity == 'p' else 15
             elif 'Intervalo' not in e.tag:
                 continue
             else:
                 hour = int(e[0].get('v'))
                 value = float(e[1].get('v'))
-                utc_timestamp = start + relativedelta(hours=hour)
+                utc_timestamp = start + relativedelta(minutes=minutes*hour)
                 local_timestamp = LOCAL_TZ.normalize(utc_timestamp.astimezone(LOCAL_TZ))
                 curve.append({
                     'up': program_unit,
