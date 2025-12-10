@@ -83,10 +83,10 @@ with description('Esios Parsers'):
 
                 today = datetime.now()
                 start = LOCAL_TZ.localize(
-                    today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(days=1)
+                    today.replace(hour=0, minute=0, second=0, microsecond=0) - relativedelta(days=2)
                 )
                 end = LOCAL_TZ.localize(
-                    today.replace(hour=23, minute=59, second=59, microsecond=0)
+                    today.replace(hour=23, minute=59, second=59, microsecond=0) - relativedelta(days=1)
                 )
 
                 result = parser.get_data_json('SOMEC01', start, end)
