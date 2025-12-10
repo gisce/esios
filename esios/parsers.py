@@ -108,6 +108,19 @@ class P48CierreParser(P48Cierre):
 
         # SeriesTemporales Node
         st = e[0].getparent()
+
+        # UPEntrada/UPSalida
+        up_entrada_salida = st[2]
+        if 'UPEntrada' in up_entrada_salida.tag:
+            tipo_unidad = 'V'
+        else:
+            tipo_unidad = 'C'
+
+        # UnidadMedida
+        up_unidad_medida = st[3]
+        if 'UnidadMedida' in up_unidad_medida.tag:
+            unidad_medida = up_unidad_medida.get('v')
+
         # Periodo
         periodo = st[4]
         # Curve:
@@ -134,7 +147,9 @@ class P48CierreParser(P48Cierre):
                     'utc_timestamp': utc_timestamp,
                     'local_timestamp': local_timestamp,
                     'cierre': is_cierre,
-                    'type': integrity
+                    'type': integrity,
+                    'tipo_unidad': tipo_unidad,
+                    'unidad_medida': unidad_medida
                 })
 
         return curve
