@@ -256,6 +256,21 @@ with description('Indicators file'):
                 contain(u'Previsión diaria de la demanda eléctrica peninsular')
             )
 
+    with context('DemandaDiariaElectricaPeninsularPrevistaQh'):
+        with it('Returns DemandaDiariaElectricaPeninsularPrevistaQh instance'):
+            # 460
+            e = Esios(self.token)
+            # Hourly case
+            profile = DemandaDiariaElectricaPeninsularPrevistaQh(e)
+            assert isinstance(profile, DemandaDiariaElectricaPeninsularPrevistaQh)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Previsión diaria')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Previsión diaria de la demanda eléctrica peninsular')
+            )
+
     with context('PMDSNP'):
         with it('Returns pmd_snp instance'):
             # 573
@@ -864,6 +879,19 @@ with description('Indicators file'):
             # Hourly case
             profile = DemandaDiariaElectricaPeninsularReal(e)
             assert isinstance(profile, DemandaDiariaElectricaPeninsularReal)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Demanda real')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Demanda real')
+            )
+        with it('Returns DemandaDiariaElectricaPeninsularRealQh instance'):
+            # 1293
+            e = Esios(self.token)
+            # Hourly case
+            profile = DemandaDiariaElectricaPeninsularRealQh(e)
+            assert isinstance(profile, DemandaDiariaElectricaPeninsularRealQh)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
                 equal(u'Demanda real')
