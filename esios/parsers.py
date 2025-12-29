@@ -108,6 +108,19 @@ class P48CierreParser(P48Cierre):
 
         # SeriesTemporales Node
         st = e[0].getparent()
+
+        # UPEntrada/UPSalida
+        up_entrada_salida = st[2]
+        if 'UPEntrada' in up_entrada_salida.tag:
+            tipo_unidad = 'V'
+        else:
+            tipo_unidad = 'C'
+
+        # UnidadMedida
+        up_unidad_medida = st[3]
+        if 'UnidadMedida' in up_unidad_medida.tag:
+            unidad_medida = up_unidad_medida.get('v')
+
         # Periodo
         periodo = st[4]
         # Curve:
@@ -117,14 +130,15 @@ class P48CierreParser(P48Cierre):
                 value = e.get('v')
                 start_str, end_str = value.split('/')
                 start = UTC_TZ.localize(datetime.strptime(start_str, '%Y-%m-%dT%H:%MZ'))
-                end = UTC_TZ.localize(datetime.strptime(end_str, '%Y-%m-%dT%H:%MZ'))
-                # print("P48 for UP {} from {} to {}".format(program_unit, start, end))
+            elif 'Resolucion' in e.tag:
+                integrity = 'p' if e.get('v') == 'PT60M' else 'p4'
+                minutes = 60 if integrity == 'p' else 15
             elif 'Intervalo' not in e.tag:
                 continue
             else:
                 hour = int(e[0].get('v'))
                 value = float(e[1].get('v'))
-                utc_timestamp = start + relativedelta(hours=hour)
+                utc_timestamp = start + relativedelta(minutes=minutes*hour)
                 local_timestamp = LOCAL_TZ.normalize(utc_timestamp.astimezone(LOCAL_TZ))
                 curve.append({
                     'up': program_unit,
@@ -133,6 +147,9 @@ class P48CierreParser(P48Cierre):
                     'utc_timestamp': utc_timestamp,
                     'local_timestamp': local_timestamp,
                     'cierre': is_cierre,
+                    'type': integrity,
+                    'tipo_unidad': tipo_unidad,
+                    'unidad_medida': unidad_medida
                 })
 
         return curve
