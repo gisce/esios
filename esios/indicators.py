@@ -190,6 +190,9 @@ class pmh_bs_free_BS3(Indicator):
 class mhpMeasuredDeviationsFree(Indicator):
     path = 'indicators/799'
 
+class mhpMeasuredDeviationsFreeQh(Indicator):
+    path = 'indicators/799'
+    time_trunc = 'fifteen_minutes'
 
 class pmh_saldo_desv_free_EXD(Indicator):
     path = 'indicators/800'
