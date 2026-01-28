@@ -1095,6 +1095,20 @@ with description('Indicators file'):
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
             )
+    with context('Medium Quarter-Hourly Price Components'):
+        with it('Returns mhpMeasuredDeviationsFreeQh'):
+            #799
+            # equivalent to grcosdnc Coste Desvios (9th field)
+            e = Esios(self.token)
+            profile = mhpMeasuredDeviationsFreeQh(e)
+            assert isinstance(profile, mhpMeasuredDeviationsFreeQh)
+            data = profile.get(self.start_date, self.end_date)
+            expect(data['indicator']['short_name']).to(
+                equal(u'Com. Libre')
+            )
+            expect(data['indicator']['name']).to(
+                contain(u'Precio medio horario componente desvíos medidos contratación libre')
+            )
 
     with context('Generation-Demand Components'):
         with it('Returns GenerationDemandDeviation'):
