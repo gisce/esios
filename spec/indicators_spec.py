@@ -541,10 +541,10 @@ with description('Indicators file'):
             assert isinstance(profile, pmh_pmm_free)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente mercado diario contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente mercado diario contrataci\xf3n libre')
+                contain(u'Precio medio cuarto horario componente mercado diario contratación libre')
             )
 
     with context('RT3 Free'):
@@ -555,10 +555,10 @@ with description('Indicators file'):
             assert isinstance(profile, pmh_pbf_free_RT3)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente restricciones PBF contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente restricciones PBF contrataci\xf3n libre')
+                contain(u'Precio medio cuarto horario componente restricciones PBF contratación libre')
             )
 
     with context('RT6 Free'):
@@ -569,10 +569,10 @@ with description('Indicators file'):
             assert isinstance(profile, pmh_tiempo_real_free_RT6)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente restricciones tiempo real contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente restricciones tiempo real contrataci\xf3n libre')
+                contain(u'Precio medio cuarto horario componente restricciones tiempo real contratación libre')
             )
 
     with context('RT4 Free'):
@@ -611,10 +611,10 @@ with description('Indicators file'):
             assert isinstance(profile, pmh_bs_free_BS3)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente banda secundaria contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente banda secundaria contrataci\xf3n libre')
+                contain(u'Precio medio cuarto horario componente banda secundaria contratación libre')
             )
 
     with context('Medium Hourly Price Components'):
@@ -626,10 +626,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpMeasuredDeviationsFree)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente desvíos contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente desvíos medidos contratación libre')
+                contain(u'Precio medio cuarto horario componente desvíos contratación libre')
             )
         with it('Returns pmh_saldo_desv_free_EXD'):
             #800
@@ -638,10 +638,10 @@ with description('Indicators file'):
             assert isinstance(profile, pmh_saldo_desv_free_EXD)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente saldo desvíos contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente saldo de desv\xedos contrataci\xf3n libre')
+                contain(u'Precio medio cuarto horario componente saldo desvíos contratación libre')
             )
         with it('Returns mhpPO146SaldoFree'):
             #802
@@ -650,10 +650,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpPO146BalanceFree)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Saldo P.O.14.6 contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente saldo P.O.14.6 contratación libre')
+                contain(u'Precio medio cuarto horario componente saldo P.O.14.6. contratación libre')
             )
         with it('Returns mhpFalloNominacionUPGFree'):
             #803
@@ -674,10 +674,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpDailyMarket)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Mercado Diario')
+                equal(u'Precio medio cuarto horario componente mercado diario')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente mercado diario ')
+                contain(u'Precio medio cuarto horario componente mercado diario')
             )
 
         with it('Returns mhpPBF instance'):
@@ -690,7 +690,7 @@ with description('Indicators file'):
                 equal(u'Restricciones PBF')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente restricciones PBF ')
+                contain(u'Precio medio cuarto horario componente restricciones PBF')
             )
         with it('Returns mhpRealTimeRestrictions instance'):
             #807
@@ -702,7 +702,7 @@ with description('Indicators file'):
                 equal(u'Restricciones TR')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente restricciones tiempo real ')
+                contain(u'Precio medio cuarto horario componente restricciones tiempo real')
             )
         with it('Returns mhpIntraDailyMarket instance'):
             #808
@@ -711,10 +711,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpIntraDailyMarket)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Mercado intradiario (subastas MIBEL y continuo)')
+                equal(u'Precio medio cuarto horario componente mercado intradiario')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente mercado intradiario ')
+                contain(u'Precio medio cuarto horario componente mercado intradiario')
             )
         with it('Returns mhpIntradailyMarketRestrictions instance'):
             #809
@@ -747,10 +747,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpSecondaryBand)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Banda Secundaria')
+                equal(u'Precio medio cuarto horario componente banda secundaria')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente banda secundaria ')
+                contain(u'Precio medio cuarto horario componente banda secundaria')
             )
         with it('Returns mhpMeasuredDsv instance'):
             #812
@@ -759,10 +759,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpMeasuredDsv)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Desv\xedos Medidos')
+                equal(u'Precio medio cuarto horario componente desvíos')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente desv\xedos medidos ')
+                contain(u'Precio medio cuarto horario componente desvíos')
             )
         with it('Returns mhpDesviationsBalance instance'):
             #813
@@ -771,10 +771,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpDesviationsBalance)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Saldo Desvíos')
+                equal(u'Precio medio cuarto horario componente saldo desvíos')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente saldo de desvíos ')
+                contain(u'Precio medio cuarto horario componente saldo desvíos')
             )
         with it('Returns mhpCapPayments instance'):
             #814
@@ -783,10 +783,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpCapPayments)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Pagos por capacidad')
+                equal(u'Precio medio cuarto horario componente pagos capacidad')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente pago de capacidad ')
+                contain(u'Precio medio cuarto horario componente pagos capacidad')
             )
         with it('Returns mhpPO146Balance'):
             #815
@@ -795,10 +795,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpPO146Balance)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Saldo P.O.14.6')
+                equal(u'Precio medio cuarto horario componente saldo P.O.14.6.')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente saldo P.O.14.6 ')
+                contain(u'Precio medio cuarto horario componente saldo P.O.14.6.')
             )
         with it('Returns mhpUpgNomination'):
             #816
@@ -856,10 +856,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpPowerFactorControlFree)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente control factor potencia contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente control factor potencia contratación libre')
+                contain(u'Precio medio cuarto horario componente control factor potencia contratación libre')
             )
         with it('Returns mhpPowerFactorControl instance'):
             #1286
@@ -868,10 +868,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpPowerFactorControl)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Control factor de potencia')
+                equal(u'Precio medio cuarto horario componente control factor potencia')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente control factor potencia ')
+                contain(u'Precio medio cuarto horario componente control factor potencia')
             )
         with it('Returns DemandaDiariaElectricaPeninsularReal instance'):
             # 1293
@@ -906,10 +906,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpEnergyBalanceFree)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Incumplimiento energía balance CL')
+                equal(u'Precio medio cuarto horario componente incumplimiento energía de balance contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente incumplimiento energía de balance contratación libre')
+                contain(u'Precio medio cuarto horario componente incumplimiento energía de balance contratación libre')
             )
         with it('Returns mhpEnergyBalanceCUR instance'):
             #1367
@@ -918,10 +918,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpEnergyBalanceCUR)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Incumplimiento energía balance CR')
+                equal(u'Precio medio qh de balance comercializadores de referencia')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente incumplimiento energía de balance comercialización de referencia')
+                contain(u'Precio medio cuarto horario componente incumplimiento energía de balance comercializadores de referencia')
             )
         with it('Returns mhpEnergyBalanceInc instance'):
             # 1368
@@ -930,10 +930,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpEnergyBalanceInc)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Incumplimiento energ\xeda balance')
+                equal(u'Precio medio cuarto horario componente incumplimiento energ\xeda de balance')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente incumplimiento energ\xeda de balance ')
+                contain(u'Precio medio cuarto horario componente incumplimiento energ\xeda de balance')
             )
         with it('Returns PriceMedioHorarioMAJ3total instance'):
             # 1901
@@ -1104,10 +1104,10 @@ with description('Indicators file'):
             assert isinstance(profile, mhpMeasuredDeviationsFreeQh)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Com. Libre')
+                equal(u'Precio medio cuarto horario componente desvíos contratación libre')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Precio medio horario componente desvíos medidos contratación libre')
+                contain(u'Precio medio cuarto horario componente desvíos contratación libre')
             )
 
     with context('Generation-Demand Components'):
