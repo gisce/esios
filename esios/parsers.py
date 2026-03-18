@@ -103,8 +103,13 @@ class P48CierreParser(P48Cierre):
 
         # padrsing
         xmlobj = etree.XML(content)
+
         # Search UP
         e = xmlobj.xpath('//*[@v="{}"]'.format(program_unit))
+
+        # UP not present
+        if not e:
+            return []
 
         # SeriesTemporales Node
         st = e[0].getparent()
