@@ -175,10 +175,10 @@ with description('Indicators file'):
             self.tz.localize(datetime(2021, 6, 30, 23, 59)),
         )
         expect(data['indicator']['short_name']).to(
-            equal(u'Tarifa 2.0TD')
+            equal(u'Perfiles de consumo a efectos de facturación del PVPC Tarifa 2.0 GENERAL BAJA TENSIÓN, POTENCIA INFERIOR A 15 kW')
         )
         expect(data['indicator']['name']).to(
-            contain(u'Perfiles de consumo a efectos de facturación del PVPC Tarifa 2.0TD')
+            contain(u'Perfiles de consumo a efectos de facturación del PVPC Tarifa 2.0 GENERAL BAJA TENSIÓN, POTENCIA INFERIOR A 15 kW')
         )
         expect(dateutil.parser.parse(
             data['indicator']['values'][0]['datetime']
@@ -454,10 +454,10 @@ with description('Indicators file'):
             end_date = self.tz.localize(datetime(2022, 1, 31, 0, 0))
             data = profile.get(start_date, end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Precio de pago desv\xedos a bajar')
+                equal(u'Desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
-                equal(u'Precio de pago desv\xedos a bajar')
+                equal(u'Precio de pago desvíos a bajar')
             )
 
     with context('ChargeBiasHigherProduction'):
@@ -1049,7 +1049,7 @@ with description('Indicators file'):
             assert isinstance(profile, PrecioDesviosBajar)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Precio de pago desvíos a bajar')
+                equal(u'Desvíos a bajar')
             )
             expect(data['indicator']['name']).to(
                 contain(u'Precio de pago desvíos a bajar')
@@ -1130,10 +1130,10 @@ with description('Indicators file'):
             assert isinstance(profile, DemandNationalForecastedForSNP)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Demanda prevista nacional para sistemas no peninsulares')
+                equal(u'Generación T.Real enlace Lanzarote-Fuerteventura')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Demanda prevista nacional para sistemas no peninsulares')
+                contain(u'Generación T.Real enlace Lanzarote-Fuerteventura para sistemas no peninsulares')
             )
 
         with it('Returns DemandPeninsularReal'):
@@ -1250,7 +1250,7 @@ with description('Indicators file'):
                 equal(u'Demanda Real SNP')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Demanda Real SNP')
+                contain(u'Demanda real territorios no peninsulares')
             )
 
         with it('Returns DemandNonPeninsularSystemRealSumGeneration'):
@@ -1276,7 +1276,7 @@ with description('Indicators file'):
                 equal(u'Demanda prevista SNP')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Demanda prevista SNP')
+                contain(u'Demanda prevista territorios no peninsulares')
             )
 
         with it('Returns DemandNonPeninsularSystemScheduled'):
@@ -1289,7 +1289,7 @@ with description('Indicators file'):
                 equal(u'Demanda programada SNP')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Demanda programada SNP')
+                contain(u'Demanda programada territorios no peninsulares')
             )
 
         with it('Returns GenerationNationalWind'):
@@ -1481,10 +1481,10 @@ with description('Indicators file'):
             assert isinstance(profile, GenerationNationalHydraulicAggregated)
             data = profile.get(self.start_date, self.end_date)
             expect(data['indicator']['short_name']).to(
-                equal(u'Generaci\xf3n T.Real hidra\xfalica nacional')
+                equal(u'Generación T.Real hidráulica nacional')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Generaci\xf3n T.Real hidra\xfalica nacional')
+                contain(u'Generación T.Real hidráulica nacional')
             )
 
         with it('Returns GenerationNationalStoragePumpingTurbine'):
@@ -2108,7 +2108,7 @@ with description('Indicators file'):
                 equal(u'Solar fotovoltaica SNP')
             )
             expect(data['indicator']['name']).to(
-                contain(u'Generaci\xf3n T.Real solar fotovoltaica SNP')
+                contain(u'Generación t.real solar fotovoltaica territorios no peninsulares')
             )
 
         with it('Returns GenerationNonPeninsularSystemDiesel'):
