@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python 3.11
+name: Python 3.13
 
 on:
   push:
@@ -9,28 +9,30 @@ on:
   pull_request:
     branches: [ master ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.11"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install -r requirements-dev.txt
-        pip install coveralls
-        pip install -e .
-        pip install --upgrade mamba
-    - name: Test with mamba
-      env:
-        ESIOS_TOKEN: ${{secrets.ESIOS_TOKEN}}
-      run: |
-        export ESIOS_TOKEN="$ESIOS_TOKEN"
-        mamba --enable-coverage
+      - uses: actions/checkout@v7
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          python -m pip install -r requirements-dev.txt -e .
+          python -m pip check
+
+      - name: Test with mamba
+        run: |
+          mamba --enable-coverage
