@@ -34,5 +34,7 @@ jobs:
           python -m pip check
 
       - name: Test with mamba
+        env:
+          ESIOS_TOKEN: ${{secrets.ESIOS_TOKEN}}
         run: |
           mamba --enable-coverage
