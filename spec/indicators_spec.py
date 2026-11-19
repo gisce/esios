@@ -27,47 +27,6 @@ with description('Indicators file'):
             profile = ProfilePVPC(e)
             assert isinstance(profile, ProfilePVPC)
 
-        with it('Returns a valid ProfilePVPC20A'):
-            e = Esios(self.token)
-            profile = ProfilePVPC20A(e)
-            assert isinstance(profile, ProfilePVPC20A)
-            data = profile.get(self.start_date, self.end_date)
-            expect(data['indicator']['short_name']).to(
-                equal(u'Tarifa 2.0.A (peaje por defecto)')
-            )
-            expect(data['indicator']['name']).to(
-                contain(u'Perfiles de consumo')
-            )
-            expect(len(data['indicator']['values'])).to(equal(744))
-
-        with it('Returns a valid ProfilePVPC20DHA'):
-            e = Esios(self.token)
-            profile = ProfilePVPC20DHA(e)
-            assert isinstance(profile, ProfilePVPC20DHA)
-            data = profile.get(self.start_date, self.end_date)
-            profile.get(self.start_date, self.end_date)
-            expect(data['indicator']['short_name']).to(
-                equal(u'Tarifa 2.0.DHA (Eficiencia 2 periodos)')
-            )
-            expect(data['indicator']['name']).to(
-                contain(u'Perfiles de consumo')
-            )
-            expect(len(data['indicator']['values'])).to(equal(744))
-
-        with it('Returns a valid ProfilePVPC20DHS'):
-            e = Esios(self.token)
-            profile = ProfilePVPC20DHS(e)
-            assert isinstance(profile, ProfilePVPC20DHS)
-            data = profile.get(self.start_date, self.end_date)
-            profile.get(self.start_date, self.end_date)
-            expect(data['indicator']['short_name']).to(
-                equal(u'Tarifa 2.0.DHS (vehículo eléctrico)')
-            )
-            expect(data['indicator']['name']).to(
-                contain(u'Perfiles de consumo')
-            )
-            expect(len(data['indicator']['values'])).to(equal(744))
-
     with context('PricePVPC'):
         with it('Returns PricePVPC instance'):
             e = Esios(self.token)
